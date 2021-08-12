@@ -1,18 +1,18 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Extensions;
+namespace Kriegerhost\Extensions;
 
-use Pterodactyl\Models\DatabaseHost;
+use Kriegerhost\Models\DatabaseHost;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Config\Repository as ConfigRepository;
-use Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface;
+use Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface;
 
 class DynamicDatabaseConnection
 {
@@ -31,7 +31,7 @@ class DynamicDatabaseConnection
     protected $encrypter;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface
      */
     protected $repository;
 
@@ -52,10 +52,10 @@ class DynamicDatabaseConnection
      * Adds a dynamic database connection entry to the runtime config.
      *
      * @param string $connection
-     * @param \Pterodactyl\Models\DatabaseHost|int $host
+     * @param \Kriegerhost\Models\DatabaseHost|int $host
      * @param string $database
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function set($connection, $host, $database = 'mysql')
     {

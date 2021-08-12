@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Services\Api;
+namespace Kriegerhost\Services\Api;
 
-use Pterodactyl\Models\ApiKey;
+use Kriegerhost\Models\ApiKey;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Contracts\Repository\ApiKeyRepositoryInterface;
+use Kriegerhost\Contracts\Repository\ApiKeyRepositoryInterface;
 
 class KeyCreationService
 {
@@ -19,7 +19,7 @@ class KeyCreationService
     private $keyType = ApiKey::TYPE_NONE;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ApiKeyRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ApiKeyRepositoryInterface
      */
     private $repository;
 
@@ -36,7 +36,7 @@ class KeyCreationService
      * Set the type of key that should be created. By default an orphaned key will be
      * created. These keys cannot be used for anything, and will not render in the UI.
      *
-     * @return \Pterodactyl\Services\Api\KeyCreationService
+     * @return \Kriegerhost\Services\Api\KeyCreationService
      */
     public function setKeyType(int $type)
     {
@@ -50,7 +50,7 @@ class KeyCreationService
      * This will automatically generate an identifier and an encrypted token that are
      * stored in the database.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function handle(array $data, array $permissions = []): ApiKey
     {

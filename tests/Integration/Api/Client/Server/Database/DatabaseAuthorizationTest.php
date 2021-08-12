@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Database;
+namespace Kriegerhost\Tests\Integration\Api\Client\Server\Database;
 
 use Mockery;
-use Pterodactyl\Models\Subuser;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\DatabaseHost;
-use Pterodactyl\Contracts\Extensions\HashidsInterface;
-use Pterodactyl\Services\Databases\DatabasePasswordService;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Kriegerhost\Models\Subuser;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\DatabaseHost;
+use Kriegerhost\Contracts\Extensions\HashidsInterface;
+use Kriegerhost\Services\Databases\DatabasePasswordService;
+use Kriegerhost\Services\Databases\DatabaseManagementService;
+use Kriegerhost\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class DatabaseAuthorizationTest extends ClientApiIntegrationTestCase
 {

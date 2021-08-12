@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Databases;
+namespace Kriegerhost\Tests\Integration\Services\Databases;
 
 use Mockery;
 use BadMethodCallException;
 use InvalidArgumentException;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\DatabaseHost;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Repositories\Eloquent\DatabaseRepository;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
-use Pterodactyl\Exceptions\Repository\DuplicateDatabaseNameException;
-use Pterodactyl\Exceptions\Service\Database\TooManyDatabasesException;
-use Pterodactyl\Exceptions\Service\Database\DatabaseClientFeatureNotEnabledException;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\DatabaseHost;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Repositories\Eloquent\DatabaseRepository;
+use Kriegerhost\Services\Databases\DatabaseManagementService;
+use Kriegerhost\Exceptions\Repository\DuplicateDatabaseNameException;
+use Kriegerhost\Exceptions\Service\Database\TooManyDatabasesException;
+use Kriegerhost\Exceptions\Service\Database\DatabaseClientFeatureNotEnabledException;
 
 class DatabaseManagementServiceTest extends IntegrationTestCase
 {
@@ -26,7 +26,7 @@ class DatabaseManagementServiceTest extends IntegrationTestCase
     {
         parent::setUp();
 
-        config()->set('pterodactyl.client_features.databases.enabled', true);
+        config()->set('kriegerhost.client_features.databases.enabled', true);
 
         $this->repository = Mockery::mock(DatabaseRepository::class);
         $this->swap(DatabaseRepository::class, $this->repository);
@@ -47,7 +47,7 @@ class DatabaseManagementServiceTest extends IntegrationTestCase
      */
     public function testExceptionIsThrownIfClientDatabasesAreNotEnabled()
     {
-        config()->set('pterodactyl.client_features.databases.enabled', false);
+        config()->set('kriegerhost.client_features.databases.enabled', false);
 
         $this->expectException(DatabaseClientFeatureNotEnabledException::class);
 
@@ -212,7 +212,7 @@ class DatabaseManagementServiceTest extends IntegrationTestCase
     }
 
     /**
-     * @return \Pterodactyl\Services\Databases\DatabaseManagementService
+     * @return \Kriegerhost\Services\Databases\DatabaseManagementService
      */
     private function getService()
     {

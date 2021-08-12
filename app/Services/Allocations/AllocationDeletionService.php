@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Services\Allocations;
+namespace Kriegerhost\Services\Allocations;
 
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Allocation\ServerUsingAllocationException;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Contracts\Repository\AllocationRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Allocation\ServerUsingAllocationException;
 
 class AllocationDeletionService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\AllocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\AllocationRepositoryInterface
      */
     private $repository;
 
@@ -27,7 +27,7 @@ class AllocationDeletionService
      *
      * @return int
      *
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\ServerUsingAllocationException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\ServerUsingAllocationException
      */
     public function handle(Allocation $allocation)
     {

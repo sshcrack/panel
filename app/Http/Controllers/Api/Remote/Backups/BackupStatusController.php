@@ -1,24 +1,24 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Remote\Backups;
+namespace Kriegerhost\Http\Controllers\Api\Remote\Backups;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Backup;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\AuditLog;
+use Kriegerhost\Models\Backup;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\AuditLog;
 use Illuminate\Http\JsonResponse;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Extensions\Backups\BackupManager;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Extensions\Backups\BackupManager;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Pterodactyl\Http\Requests\Api\Remote\ReportBackupCompleteRequest;
+use Kriegerhost\Http\Requests\Api\Remote\ReportBackupCompleteRequest;
 
 class BackupStatusController extends Controller
 {
     /**
-     * @var \Pterodactyl\Extensions\Backups\BackupManager
+     * @var \Kriegerhost\Extensions\Backups\BackupManager
      */
     private $backupManager;
 
@@ -39,7 +39,7 @@ class BackupStatusController extends Controller
      */
     public function index(ReportBackupCompleteRequest $request, string $backup)
     {
-        /** @var \Pterodactyl\Models\Backup $model */
+        /** @var \Kriegerhost\Models\Backup $model */
         $model = Backup::query()->where('uuid', $backup)->firstOrFail();
 
         if ($model->is_successful) {
@@ -91,7 +91,7 @@ class BackupStatusController extends Controller
      */
     public function restore(Request $request, string $backup)
     {
-        /** @var \Pterodactyl\Models\Backup $model */
+        /** @var \Kriegerhost\Models\Backup $model */
         $model = Backup::query()->where('uuid', $backup)->firstOrFail();
         $action = $request->get('successful')
             ? AuditLog::SERVER__BACKUP_RESTORE_COMPLETED
@@ -113,7 +113,7 @@ class BackupStatusController extends Controller
      * the given backup.
      *
      * @throws \Exception
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     protected function completeMultipartUpload(Backup $backup, AwsS3Adapter $adapter, bool $successful)
     {

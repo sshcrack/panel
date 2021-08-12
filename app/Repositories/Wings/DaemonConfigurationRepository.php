@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Repositories\Wings;
+namespace Kriegerhost\Repositories\Wings;
 
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use GuzzleHttp\Exception\TransferException;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class DaemonConfigurationRepository extends DaemonRepository
 {
     /**
      * Returns system information from the wings instance.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function getSystemInformation(): array
     {
@@ -31,7 +31,7 @@ class DaemonConfigurationRepository extends DaemonRepository
      *
      * @return \Psr\Http\Message\ResponseInterface
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function update(Node $node)
     {

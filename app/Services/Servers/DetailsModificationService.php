@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Kriegerhost\Services\Servers;
 
 use Illuminate\Support\Arr;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Traits\Services\ReturnsUpdatedModels;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Traits\Services\ReturnsUpdatedModels;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class DetailsModificationService
 {
@@ -19,7 +19,7 @@ class DetailsModificationService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $serverRepository;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Client;
+namespace Kriegerhost\Transformers\Api\Client;
 
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Subuser;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Models\Permission;
+use Kriegerhost\Models\Egg;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Subuser;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Models\Permission;
 use Illuminate\Container\Container;
-use Pterodactyl\Models\EggVariable;
-use Pterodactyl\Services\Servers\StartupCommandService;
+use Kriegerhost\Models\EggVariable;
+use Kriegerhost\Services\Servers\StartupCommandService;
 
 class ServerTransformer extends BaseClientTransformer
 {
@@ -34,7 +34,7 @@ class ServerTransformer extends BaseClientTransformer
      */
     public function transform(Server $server): array
     {
-        /** @var \Pterodactyl\Services\Servers\StartupCommandService $service */
+        /** @var \Kriegerhost\Services\Servers\StartupCommandService $service */
         $service = Container::getInstance()->make(StartupCommandService::class);
 
         return [
@@ -78,7 +78,7 @@ class ServerTransformer extends BaseClientTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeAllocations(Server $server)
     {
@@ -104,7 +104,7 @@ class ServerTransformer extends BaseClientTransformer
     /**
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeVariables(Server $server)
     {
@@ -124,7 +124,7 @@ class ServerTransformer extends BaseClientTransformer
      *
      * @return \League\Fractal\Resource\Item
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeEgg(Server $server)
     {
@@ -136,7 +136,7 @@ class ServerTransformer extends BaseClientTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeSubusers(Server $server)
     {

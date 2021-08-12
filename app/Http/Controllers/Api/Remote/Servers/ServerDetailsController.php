@@ -1,34 +1,34 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Remote\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Remote\Servers;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\AuditLog;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\AuditLog;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Services\Eggs\EggConfigurationService;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Http\Resources\Wings\ServerConfigurationCollection;
-use Pterodactyl\Services\Servers\ServerConfigurationStructureService;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Services\Eggs\EggConfigurationService;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Http\Resources\Wings\ServerConfigurationCollection;
+use Kriegerhost\Services\Servers\ServerConfigurationStructureService;
 
 class ServerDetailsController extends Controller
 {
     /**
-     * @var \Pterodactyl\Services\Eggs\EggConfigurationService
+     * @var \Kriegerhost\Services\Eggs\EggConfigurationService
      */
     private $eggConfigurationService;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerConfigurationStructureService
+     * @var \Kriegerhost\Services\Servers\ServerConfigurationStructureService
      */
     private $configurationStructureService;
 
@@ -54,7 +54,7 @@ class ServerDetailsController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function __invoke(Request $request, $uuid)
     {
@@ -69,11 +69,11 @@ class ServerDetailsController extends Controller
     /**
      * Lists all servers with their configurations that are assigned to the requesting node.
      *
-     * @return \Pterodactyl\Http\Resources\Wings\ServerConfigurationCollection
+     * @return \Kriegerhost\Http\Resources\Wings\ServerConfigurationCollection
      */
     public function list(Request $request)
     {
-        /** @var \Pterodactyl\Models\Node $node */
+        /** @var \Kriegerhost\Models\Node $node */
         $node = $request->attributes->get('node');
 
         // Avoid run-away N+1 SQL queries by pre-loading the relationships that are used
@@ -108,7 +108,7 @@ class ServerDetailsController extends Controller
         //
         // For each of those servers we'll track a new audit log entry to mark them as
         // failed and then update them all to be in a valid state.
-        /** @var \Pterodactyl\Models\Server[] $servers */
+        /** @var \Kriegerhost\Models\Server[] $servers */
         $servers = Server::query()
             ->select('servers.*')
             ->selectRaw('JSON_UNQUOTE(JSON_EXTRACT(started.metadata, "$.backup_uuid")) as backup_uuid')

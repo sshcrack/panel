@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Auth;
+namespace Kriegerhost\Http\Controllers\Auth;
 
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
 use PragmaRX\Google2FA\Google2FA;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Pterodactyl\Http\Requests\Auth\LoginCheckpointRequest;
+use Kriegerhost\Http\Requests\Auth\LoginCheckpointRequest;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Repositories\Eloquent\RecoveryTokenRepository;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Repositories\Eloquent\RecoveryTokenRepository;
 
 class LoginCheckpointController extends AbstractLoginController
 {
@@ -22,7 +22,7 @@ class LoginCheckpointController extends AbstractLoginController
     private $cache;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\UserRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\UserRepositoryInterface
      */
     private $repository;
 
@@ -37,7 +37,7 @@ class LoginCheckpointController extends AbstractLoginController
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\RecoveryTokenRepository
+     * @var \Kriegerhost\Repositories\Eloquent\RecoveryTokenRepository
      */
     private $recoveryTokenRepository;
 
@@ -83,7 +83,7 @@ class LoginCheckpointController extends AbstractLoginController
 
         $token = $request->input('confirmation_token');
         try {
-            /** @var \Pterodactyl\Models\User $user */
+            /** @var \Kriegerhost\Models\User $user */
             $user = User::query()->findOrFail($this->cache->get($token, 0));
         } catch (ModelNotFoundException $exception) {
             $this->incrementLoginAttempts($request);
@@ -103,7 +103,7 @@ class LoginCheckpointController extends AbstractLoginController
         } else {
             $decrypted = $this->encrypter->decrypt($user->totp_secret);
 
-            if ($this->google2FA->verifyKey($decrypted, (string) $request->input('authentication_code') ?? '', config('pterodactyl.auth.2fa.window'))) {
+            if ($this->google2FA->verifyKey($decrypted, (string) $request->input('authentication_code') ?? '', config('kriegerhost.auth.2fa.window'))) {
                 $this->cache->delete($token);
 
                 return $this->sendLoginResponse($user, $request);

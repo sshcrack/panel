@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Admin;
+namespace Kriegerhost\Http\Requests\Admin;
 
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Validation\Rule;
 
 class ServerFormRequest extends AdminFormRequest

@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Application;
+namespace Kriegerhost\Transformers\Api\Application;
 
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\EggVariable;
+use Kriegerhost\Models\Egg;
+use Kriegerhost\Models\EggVariable;
 
 class EggVariableTransformer extends BaseTransformer
 {

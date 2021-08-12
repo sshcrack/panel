@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Application;
+namespace Kriegerhost\Transformers\Api\Application;
 
-use Pterodactyl\Models\Node;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Models\Node;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
 
 class NodeTransformer extends BaseTransformer
 {
@@ -54,7 +54,7 @@ class NodeTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeAllocations(Node $node)
     {
@@ -76,7 +76,7 @@ class NodeTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Item|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeLocation(Node $node)
     {
@@ -98,7 +98,7 @@ class NodeTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeServers(Node $node)
     {

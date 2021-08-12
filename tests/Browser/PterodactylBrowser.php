@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser;
+namespace Kriegerhost\Tests\Browser;
 
 use Laravel\Dusk\Browser;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Assert as PHPUnit;
 
-class PterodactylBrowser extends Browser
+class KriegerhostBrowser extends Browser
 {
     /**
      * Move the mouse to a specific location and then perform a left click action.
@@ -25,7 +25,7 @@ class PterodactylBrowser extends Browser
      *
      * @param string $text
      *
-     * @return \Pterodactyl\Tests\Browser\PterodactylBrowser
+     * @return \Kriegerhost\Tests\Browser\KriegerhostBrowser
      */
     public function assertSee($text)
     {
@@ -38,7 +38,7 @@ class PterodactylBrowser extends Browser
      * @param string $selector
      * @param string $text
      *
-     * @return \Pterodactyl\Tests\Browser\PterodactylBrowser
+     * @return \Kriegerhost\Tests\Browser\KriegerhostBrowser
      */
     public function assertSeeIn($selector, $text)
     {

@@ -1,6 +1,6 @@
 <?php
 
-use Pterodactyl\Http\Middleware\RequireTwoFactorAuthentication;
+use Kriegerhost\Http\Middleware\RequireTwoFactorAuthentication;
 
 Route::get('/', 'IndexController@index')->name('index')->fallback();
 Route::get('/account', 'IndexController@index')

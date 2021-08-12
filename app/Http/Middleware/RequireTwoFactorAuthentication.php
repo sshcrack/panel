@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware;
+namespace Kriegerhost\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Exceptions\Http\TwoFactorAuthRequiredException;
+use Kriegerhost\Exceptions\Http\TwoFactorAuthRequiredException;
 
 class RequireTwoFactorAuthentication
 {
@@ -42,11 +42,11 @@ class RequireTwoFactorAuthentication
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Http\TwoFactorAuthRequiredException
+     * @throws \Kriegerhost\Exceptions\Http\TwoFactorAuthRequiredException
      */
     public function handle(Request $request, Closure $next)
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = $request->user();
         $uri = rtrim($request->getRequestUri(), '/') . '/';
         $current = $request->route()->getName();
@@ -55,7 +55,7 @@ class RequireTwoFactorAuthentication
             return $next($request);
         }
 
-        $level = (int) config('pterodactyl.auth.2fa_required');
+        $level = (int) config('kriegerhost.auth.2fa_required');
         // If this setting is not configured, or the user is already using 2FA then we can just
         // send them right through, nothing else needs to be checked.
         //

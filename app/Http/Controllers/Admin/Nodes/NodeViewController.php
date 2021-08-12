@@ -1,26 +1,26 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Nodes;
+namespace Kriegerhost\Http\Controllers\Admin\Nodes;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Illuminate\Support\Collection;
-use Pterodactyl\Models\Allocation;
+use Kriegerhost\Models\Allocation;
 use Illuminate\Contracts\View\Factory;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Traits\Controllers\JavascriptInjection;
-use Pterodactyl\Services\Helpers\SoftwareVersionService;
-use Pterodactyl\Repositories\Eloquent\LocationRepository;
-use Pterodactyl\Repositories\Eloquent\AllocationRepository;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Traits\Controllers\JavascriptInjection;
+use Kriegerhost\Services\Helpers\SoftwareVersionService;
+use Kriegerhost\Repositories\Eloquent\LocationRepository;
+use Kriegerhost\Repositories\Eloquent\AllocationRepository;
 
 class NodeViewController extends Controller
 {
     use JavascriptInjection;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NodeRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NodeRepository
      */
     private $repository;
 
@@ -30,22 +30,22 @@ class NodeViewController extends Controller
     private $view;
 
     /**
-     * @var \Pterodactyl\Services\Helpers\SoftwareVersionService
+     * @var \Kriegerhost\Services\Helpers\SoftwareVersionService
      */
     private $versionService;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\LocationRepository
+     * @var \Kriegerhost\Repositories\Eloquent\LocationRepository
      */
     private $locationRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\AllocationRepository
+     * @var \Kriegerhost\Repositories\Eloquent\AllocationRepository
      */
     private $allocationRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $serverRepository;
 

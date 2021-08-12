@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 use Illuminate\Notifications\Notifiable;
 
@@ -11,8 +11,8 @@ use Illuminate\Notifications\Notifiable;
  * @property array $permissions
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Pterodactyl\Models\User $user
- * @property \Pterodactyl\Models\Server $server
+ * @property \Kriegerhost\Models\User $user
+ * @property \Kriegerhost\Models\Server $server
  */
 class Subuser extends Model
 {

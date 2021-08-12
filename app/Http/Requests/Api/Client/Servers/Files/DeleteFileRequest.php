@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Client\Servers\Files;
+namespace Kriegerhost\Http\Requests\Api\Client\Servers\Files;
 
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Contracts\Http\ClientPermissionsRequest;
-use Pterodactyl\Http\Requests\Api\Client\ClientApiRequest;
+use Kriegerhost\Models\Permission;
+use Kriegerhost\Contracts\Http\ClientPermissionsRequest;
+use Kriegerhost\Http\Requests\Api\Client\ClientApiRequest;
 
 class DeleteFileRequest extends ClientApiRequest implements ClientPermissionsRequest
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
@@ -17,8 +17,8 @@ use Illuminate\Container\Container;
  * @property array $device
  * @property array $metadata
  * @property \Carbon\CarbonImmutable $created_at
- * @property \Pterodactyl\Models\User|null $user
- * @property \Pterodactyl\Models\Server|null $server
+ * @property \Kriegerhost\Models\User|null $user
+ * @property \Kriegerhost\Models\Server|null $server
  */
 class AuditLog extends Model
 {

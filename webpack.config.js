@@ -117,7 +117,7 @@ module.exports = {
         contentBase: path.join(__dirname, '/public'),
         publicPath: (process.env.PUBLIC_PATH || '') + '/assets/',
         allowedHosts: [
-            '.pterodactyl.test',
+            '.kriegerhost.test',
         ],
         headers: {
             'Access-Control-Allow-Origin': '*',

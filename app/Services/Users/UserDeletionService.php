@@ -1,24 +1,24 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Services\Users;
+namespace Kriegerhost\Services\Users;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Exceptions\DisplayException;
+use Kriegerhost\Models\User;
+use Kriegerhost\Exceptions\DisplayException;
 use Illuminate\Contracts\Translation\Translator;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
 
 class UserDeletionService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\UserRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\UserRepositoryInterface
      */
     protected $repository;
 
@@ -28,7 +28,7 @@ class UserDeletionService
     protected $translator;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     protected $serverRepository;
 
@@ -48,11 +48,11 @@ class UserDeletionService
     /**
      * Delete a user from the panel only if they have no servers attached to their account.
      *
-     * @param int|\Pterodactyl\Models\User $user
+     * @param int|\Kriegerhost\Models\User $user
      *
      * @return bool|null
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function handle($user)
     {

@@ -1,4 +1,4 @@
-{{-- Pterodactyl - Panel --}}
+{{-- Kriegerhost - Panel --}}
 {{-- Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com> --}}
 
 {{-- This software is licensed under the terms of the MIT license. --}}
@@ -108,7 +108,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="pDaemonBase" class="form-label">Daemon Server File Directory</label>
-                            <input type="text" name="daemonBase" id="pDaemonBase" class="form-control" value="/var/lib/pterodactyl/volumes" />
+                            <input type="text" name="daemonBase" id="pDaemonBase" class="form-control" value="/var/lib/kriegerhost/volumes" />
                             <p class="text-muted small">Enter the directory where server files should be stored. <strong>If you use OVH you should check your partition scheme. You may need to use <code>/home/daemon-data</code> to have enough space.</strong></p>
                         </div>
                         <div class="form-group col-md-6">

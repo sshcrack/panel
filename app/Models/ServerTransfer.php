@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 /**
  * @property int $id
@@ -15,9 +15,9 @@ namespace Pterodactyl\Models;
  * @property bool $archived
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Pterodactyl\Models\Server $server
- * @property \Pterodactyl\Models\Node $oldNode
- * @property \Pterodactyl\Models\Node $newNode
+ * @property \Kriegerhost\Models\Server $server
+ * @property \Kriegerhost\Models\Node $oldNode
+ * @property \Kriegerhost\Models\Node $newNode
  */
 class ServerTransfer extends Model
 {

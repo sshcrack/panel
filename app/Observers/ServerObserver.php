@@ -1,16 +1,16 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Observers;
+namespace Kriegerhost\Observers;
 
-use Pterodactyl\Events;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Events;
+use Kriegerhost\Models\Server;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class ServerObserver

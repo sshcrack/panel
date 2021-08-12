@@ -1,24 +1,24 @@
 <?php
 
-namespace Pterodactyl\Services\Databases;
+namespace Kriegerhost\Services\Databases;
 
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\DatabaseHost;
-use Pterodactyl\Exceptions\Service\Database\NoSuitableDatabaseHostException;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\DatabaseHost;
+use Kriegerhost\Exceptions\Service\Database\NoSuitableDatabaseHostException;
 
 class DeployServerDatabaseService
 {
     /**
-     * @var \Pterodactyl\Services\Databases\DatabaseManagementService
+     * @var \Kriegerhost\Services\Databases\DatabaseManagementService
      */
     private $managementService;
 
     /**
      * ServerDatabaseCreationService constructor.
      *
-     * @param \Pterodactyl\Services\Databases\DatabaseManagementService $managementService
+     * @param \Kriegerhost\Services\Databases\DatabaseManagementService $managementService
      */
     public function __construct(DatabaseManagementService $managementService)
     {
@@ -27,8 +27,8 @@ class DeployServerDatabaseService
 
     /**
      * @throws \Throwable
-     * @throws \Pterodactyl\Exceptions\Service\Database\TooManyDatabasesException
-     * @throws \Pterodactyl\Exceptions\Service\Database\DatabaseClientFeatureNotEnabledException
+     * @throws \Kriegerhost\Exceptions\Service\Database\TooManyDatabasesException
+     * @throws \Kriegerhost\Exceptions\Service\Database\DatabaseClientFeatureNotEnabledException
      */
     public function handle(Server $server, array $data): Database
     {
@@ -41,7 +41,7 @@ class DeployServerDatabaseService
         } else {
             $nodeHosts = $hosts->where('node_id', $server->node_id)->toBase();
 
-            if ($nodeHosts->isEmpty() && !config('pterodactyl.client_features.databases.allow_random')) {
+            if ($nodeHosts->isEmpty() && !config('kriegerhost.client_features.databases.allow_random')) {
                 throw new NoSuitableDatabaseHostException();
             }
         }

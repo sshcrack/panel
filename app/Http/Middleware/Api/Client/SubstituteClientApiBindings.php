@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware\Api\Client;
+namespace Kriegerhost\Http\Middleware\Api\Client;
 
 use Closure;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Backup;
-use Pterodactyl\Models\Database;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Backup;
+use Kriegerhost\Models\Database;
 use Illuminate\Container\Container;
-use Pterodactyl\Contracts\Extensions\HashidsInterface;
-use Pterodactyl\Http\Middleware\Api\ApiSubstituteBindings;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Contracts\Extensions\HashidsInterface;
+use Kriegerhost\Http\Middleware\Api\ApiSubstituteBindings;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
 
 class SubstituteClientApiBindings extends ApiSubstituteBindings
 {

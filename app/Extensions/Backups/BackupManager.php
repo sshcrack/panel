@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Extensions\Backups;
+namespace Kriegerhost\Extensions\Backups;
 
 use Closure;
 use Aws\S3\S3Client;

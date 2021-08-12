@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Repositories\Wings;
+namespace Kriegerhost\Repositories\Wings;
 
-use Pterodactyl\Models\Node;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Node;
+use Kriegerhost\Models\Server;
 use GuzzleHttp\Exception\TransferException;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class DaemonTransferRepository extends DaemonRepository
 {

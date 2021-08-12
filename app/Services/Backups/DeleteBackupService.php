@@ -1,26 +1,26 @@
 <?php
 
-namespace Pterodactyl\Services\Backups;
+namespace Kriegerhost\Services\Backups;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Backup;
+use Kriegerhost\Models\Backup;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Extensions\Backups\BackupManager;
-use Pterodactyl\Repositories\Eloquent\BackupRepository;
-use Pterodactyl\Repositories\Wings\DaemonBackupRepository;
-use Pterodactyl\Exceptions\Service\Backup\BackupLockedException;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Extensions\Backups\BackupManager;
+use Kriegerhost\Repositories\Eloquent\BackupRepository;
+use Kriegerhost\Repositories\Wings\DaemonBackupRepository;
+use Kriegerhost\Exceptions\Service\Backup\BackupLockedException;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class DeleteBackupService
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\BackupRepository
+     * @var \Kriegerhost\Repositories\Eloquent\BackupRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonBackupRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonBackupRepository
      */
     private $daemonBackupRepository;
 
@@ -30,7 +30,7 @@ class DeleteBackupService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Extensions\Backups\BackupManager
+     * @var \Kriegerhost\Extensions\Backups\BackupManager
      */
     private $manager;
 

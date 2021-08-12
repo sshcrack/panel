@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware;
+namespace Kriegerhost\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -29,7 +29,7 @@ class MaintenanceMiddleware
      */
     public function handle($request, Closure $next)
     {
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         $server = $request->attributes->get('server');
         $node = $server->getRelation('node');
 

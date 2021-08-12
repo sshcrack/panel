@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Services\Subusers;
+namespace Kriegerhost\Services\Subusers;
 
 use Illuminate\Support\Str;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Subuser;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Subuser;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Services\Users\UserCreationService;
-use Pterodactyl\Repositories\Eloquent\SubuserRepository;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Exceptions\Service\Subuser\UserIsServerOwnerException;
-use Pterodactyl\Exceptions\Service\Subuser\ServerSubuserExistsException;
+use Kriegerhost\Services\Users\UserCreationService;
+use Kriegerhost\Repositories\Eloquent\SubuserRepository;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Exceptions\Service\Subuser\UserIsServerOwnerException;
+use Kriegerhost\Exceptions\Service\Subuser\ServerSubuserExistsException;
 
 class SubuserCreationService
 {
@@ -21,17 +21,17 @@ class SubuserCreationService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\SubuserRepository
+     * @var \Kriegerhost\Repositories\Eloquent\SubuserRepository
      */
     private $subuserRepository;
 
     /**
-     * @var \Pterodactyl\Services\Users\UserCreationService
+     * @var \Kriegerhost\Services\Users\UserCreationService
      */
     private $userCreationService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\UserRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\UserRepositoryInterface
      */
     private $userRepository;
 
@@ -55,9 +55,9 @@ class SubuserCreationService
      * If the email address already belongs to a user on the system a new user will not
      * be created.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Service\Subuser\ServerSubuserExistsException
-     * @throws \Pterodactyl\Exceptions\Service\Subuser\UserIsServerOwnerException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Service\Subuser\ServerSubuserExistsException
+     * @throws \Kriegerhost\Exceptions\Service\Subuser\UserIsServerOwnerException
      * @throws \Throwable
      */
     public function handle(Server $server, string $email, array $permissions): Subuser

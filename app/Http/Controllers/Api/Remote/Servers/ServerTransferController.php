@@ -1,23 +1,23 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Remote\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Remote\Servers;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Models\Allocation;
+use Kriegerhost\Models\Allocation;
 use Illuminate\Support\Facades\Log;
-use Pterodactyl\Models\ServerTransfer;
+use Kriegerhost\Models\ServerTransfer;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Services\Nodes\NodeJWTService;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Repositories\Wings\DaemonTransferRepository;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
-use Pterodactyl\Services\Servers\ServerConfigurationStructureService;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Services\Nodes\NodeJWTService;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Repositories\Wings\DaemonTransferRepository;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Services\Servers\ServerConfigurationStructureService;
 
 class ServerTransferController extends Controller
 {
@@ -27,27 +27,27 @@ class ServerTransferController extends Controller
     private $connection;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $daemonServerRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonTransferRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonTransferRepository
      */
     private $daemonTransferRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerConfigurationStructureService
+     * @var \Kriegerhost\Services\Servers\ServerConfigurationStructureService
      */
     private $configurationStructureService;
 
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeJWTService
+     * @var \Kriegerhost\Services\Nodes\NodeJWTService
      */
     private $jwtService;
 
@@ -75,7 +75,7 @@ class ServerTransferController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      * @throws \Throwable
      */
     public function archive(Request $request, string $uuid)
@@ -151,7 +151,7 @@ class ServerTransferController extends Controller
         $server = $this->repository->getByUuid($uuid);
         $transfer = $server->transfer;
 
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         $server = $this->connection->transaction(function () use ($server, $transfer) {
             $allocations = [$transfer->old_allocation];
             if (!empty($transfer->old_additional_allocations)) {

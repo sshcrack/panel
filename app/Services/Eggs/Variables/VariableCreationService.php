@@ -1,19 +1,19 @@
 <?php
 
-namespace Pterodactyl\Services\Eggs\Variables;
+namespace Kriegerhost\Services\Eggs\Variables;
 
-use Pterodactyl\Models\EggVariable;
+use Kriegerhost\Models\EggVariable;
 use Illuminate\Contracts\Validation\Factory;
-use Pterodactyl\Traits\Services\ValidatesValidationRules;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException;
+use Kriegerhost\Traits\Services\ValidatesValidationRules;
+use Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Egg\Variable\ReservedVariableNameException;
 
 class VariableCreationService
 {
     use ValidatesValidationRules;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface
      */
     private $repository;
 
@@ -43,9 +43,9 @@ class VariableCreationService
     /**
      * Create a new variable for a given Egg.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\BadValidationRuleException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\Variable\BadValidationRuleException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\Variable\ReservedVariableNameException
      */
     public function handle(int $egg, array $data): EggVariable
     {

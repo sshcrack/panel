@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Services\Users;
+namespace Kriegerhost\Services\Users;
 
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Illuminate\Contracts\Hashing\Hasher;
-use Pterodactyl\Traits\Services\HasUserLevels;
-use Pterodactyl\Repositories\Eloquent\UserRepository;
+use Kriegerhost\Traits\Services\HasUserLevels;
+use Kriegerhost\Repositories\Eloquent\UserRepository;
 
 class UserUpdateService
 {
@@ -17,7 +17,7 @@ class UserUpdateService
     private $hasher;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\UserRepository
+     * @var \Kriegerhost\Repositories\Eloquent\UserRepository
      */
     private $repository;
 
@@ -33,10 +33,10 @@ class UserUpdateService
     /**
      * Update the user model instance.
      *
-     * @return \Pterodactyl\Models\User
+     * @return \Kriegerhost\Models\User
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function handle(User $user, array $data)
     {
@@ -46,7 +46,7 @@ class UserUpdateService
             unset($data['password']);
         }
 
-        /** @var \Pterodactyl\Models\User $response */
+        /** @var \Kriegerhost\Models\User $response */
         $response = $this->repository->update($user->id, $data);
 
         return $response;

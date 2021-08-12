@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Application;
+namespace Kriegerhost\Http\Requests\Api\Application;
 
-use Pterodactyl\Models\ApiKey;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Models\ApiKey;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
 use Illuminate\Foundation\Http\FormRequest;
-use Pterodactyl\Exceptions\PterodactylException;
-use Pterodactyl\Http\Middleware\Api\ApiSubstituteBindings;
+use Kriegerhost\Exceptions\KriegerhostException;
+use Kriegerhost\Http\Middleware\Api\ApiSubstituteBindings;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 
@@ -40,12 +40,12 @@ abstract class ApplicationApiRequest extends FormRequest
      * Determine if the current user is authorized to perform
      * the requested action against the API.
      *
-     * @throws \Pterodactyl\Exceptions\PterodactylException
+     * @throws \Kriegerhost\Exceptions\KriegerhostException
      */
     public function authorize(): bool
     {
         if (is_null($this->resource)) {
-            throw new PterodactylException('An ACL resource must be defined on API requests.');
+            throw new KriegerhostException('An ACL resource must be defined on API requests.');
         }
 
         return AdminAcl::check($this->key(), $this->resource, $this->permission);

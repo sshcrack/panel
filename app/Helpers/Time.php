@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Helpers;
+namespace Kriegerhost\Helpers;
 
 use Carbon\CarbonImmutable;
 

@@ -1,16 +1,16 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Exceptions\Service\Server;
+namespace Kriegerhost\Exceptions\Service\Server;
 
-use Pterodactyl\Exceptions\PterodactylException;
+use Kriegerhost\Exceptions\KriegerhostException;
 
-class RequiredVariableMissingException extends PterodactylException
+class RequiredVariableMissingException extends KriegerhostException
 {
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Subuser;
+namespace Kriegerhost\Tests\Integration\Api\Client\Server\Subuser;
 
 use Mockery;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Subuser;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Subuser;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class SubuserAuthorizationTest extends ClientApiIntegrationTestCase
 {
@@ -18,7 +18,7 @@ class SubuserAuthorizationTest extends ClientApiIntegrationTestCase
     public function testUserCannotAccessResourceBelongingToOtherServers(string $method)
     {
         // Generic subuser, the specific resource we're trying to access.
-        /** @var \Pterodactyl\Models\User $internal */
+        /** @var \Kriegerhost\Models\User $internal */
         $internal = User::factory()->create();
 
         // The API $user is the owner of $server1.

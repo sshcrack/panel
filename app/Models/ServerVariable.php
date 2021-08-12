@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 /**
  * @property int $id
@@ -9,8 +9,8 @@ namespace Pterodactyl\Models;
  * @property string $variable_value
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
- * @property \Pterodactyl\Models\EggVariable $variable
- * @property \Pterodactyl\Models\Server $server
+ * @property \Kriegerhost\Models\EggVariable $variable
+ * @property \Kriegerhost\Models\Server $server
  */
 class ServerVariable extends Model
 {

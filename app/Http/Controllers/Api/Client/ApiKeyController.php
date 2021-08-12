@@ -1,22 +1,22 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client;
+namespace Kriegerhost\Http\Controllers\Api\Client;
 
-use Pterodactyl\Models\ApiKey;
+use Kriegerhost\Models\ApiKey;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Exceptions\DisplayException;
+use Kriegerhost\Exceptions\DisplayException;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Services\Api\KeyCreationService;
-use Pterodactyl\Repositories\Eloquent\ApiKeyRepository;
-use Pterodactyl\Http\Requests\Api\Client\ClientApiRequest;
-use Pterodactyl\Transformers\Api\Client\ApiKeyTransformer;
+use Kriegerhost\Services\Api\KeyCreationService;
+use Kriegerhost\Repositories\Eloquent\ApiKeyRepository;
+use Kriegerhost\Http\Requests\Api\Client\ClientApiRequest;
+use Kriegerhost\Transformers\Api\Client\ApiKeyTransformer;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Pterodactyl\Http\Requests\Api\Client\Account\StoreApiKeyRequest;
+use Kriegerhost\Http\Requests\Api\Client\Account\StoreApiKeyRequest;
 
 class ApiKeyController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Services\Api\KeyCreationService
+     * @var \Kriegerhost\Services\Api\KeyCreationService
      */
     private $keyCreationService;
 
@@ -26,7 +26,7 @@ class ApiKeyController extends ClientApiController
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ApiKeyRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ApiKeyRepository
      */
     private $repository;
 
@@ -62,8 +62,8 @@ class ApiKeyController extends ClientApiController
      *
      * @return array
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function store(StoreApiKeyRequest $request)
     {

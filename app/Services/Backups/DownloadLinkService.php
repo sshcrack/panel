@@ -1,22 +1,22 @@
 <?php
 
-namespace Pterodactyl\Services\Backups;
+namespace Kriegerhost\Services\Backups;
 
 use Carbon\CarbonImmutable;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Backup;
-use Pterodactyl\Services\Nodes\NodeJWTService;
-use Pterodactyl\Extensions\Backups\BackupManager;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Backup;
+use Kriegerhost\Services\Nodes\NodeJWTService;
+use Kriegerhost\Extensions\Backups\BackupManager;
 
 class DownloadLinkService
 {
     /**
-     * @var \Pterodactyl\Extensions\Backups\BackupManager
+     * @var \Kriegerhost\Extensions\Backups\BackupManager
      */
     private $backupManager;
 
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeJWTService
+     * @var \Kriegerhost\Services\Nodes\NodeJWTService
      */
     private $jwtService;
 

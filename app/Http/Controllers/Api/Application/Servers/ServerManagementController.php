@@ -1,23 +1,23 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Application\Servers;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Servers\SuspensionService;
-use Pterodactyl\Services\Servers\ReinstallServerService;
-use Pterodactyl\Http\Requests\Api\Application\Servers\ServerWriteRequest;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Services\Servers\SuspensionService;
+use Kriegerhost\Services\Servers\ReinstallServerService;
+use Kriegerhost\Http\Requests\Api\Application\Servers\ServerWriteRequest;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
 
 class ServerManagementController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Services\Servers\ReinstallServerService
+     * @var \Kriegerhost\Services\Servers\ReinstallServerService
      */
     private $reinstallServerService;
 
     /**
-     * @var \Pterodactyl\Services\Servers\SuspensionService
+     * @var \Kriegerhost\Services\Servers\SuspensionService
      */
     private $suspensionService;
 
@@ -61,9 +61,9 @@ class ServerManagementController extends ApplicationApiController
     /**
      * Mark a server as needing to be reinstalled.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function reinstall(ServerWriteRequest $request, Server $server): Response
     {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Application;
+namespace Kriegerhost\Transformers\Api\Application;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Models\User;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
 
 class UserTransformer extends BaseTransformer
 {
@@ -48,7 +48,7 @@ class UserTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeServers(User $user)
     {

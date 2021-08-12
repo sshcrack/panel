@@ -1,20 +1,20 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Servers;
+namespace Kriegerhost\Tests\Integration\Services\Servers;
 
 use Mockery;
 use Exception;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\DatabaseHost;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\DatabaseHost;
 use GuzzleHttp\Exception\BadResponseException;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Servers\ServerDeletionService;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Services\Servers\ServerDeletionService;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Services\Databases\DatabaseManagementService;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class ServerDeletionServiceTest extends IntegrationTestCase
 {
@@ -116,7 +116,7 @@ class ServerDeletionServiceTest extends IntegrationTestCase
         $server = $this->createServerModel();
         $host = DatabaseHost::factory()->create();
 
-        /** @var \Pterodactyl\Models\Database $db */
+        /** @var \Kriegerhost\Models\Database $db */
         $db = Database::factory()->create(['database_host_id' => $host->id, 'server_id' => $server->id]);
 
         $server->refresh();
@@ -141,7 +141,7 @@ class ServerDeletionServiceTest extends IntegrationTestCase
         $server = $this->createServerModel();
         $host = DatabaseHost::factory()->create();
 
-        /** @var \Pterodactyl\Models\Database $db */
+        /** @var \Kriegerhost\Models\Database $db */
         $db = Database::factory()->create(['database_host_id' => $host->id, 'server_id' => $server->id]);
 
         $server->refresh();
@@ -158,7 +158,7 @@ class ServerDeletionServiceTest extends IntegrationTestCase
     }
 
     /**
-     * @return \Pterodactyl\Services\Servers\ServerDeletionService
+     * @return \Kriegerhost\Services\Servers\ServerDeletionService
      */
     private function getService()
     {

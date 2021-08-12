@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Auth;
+namespace Kriegerhost\Http\Controllers\Auth;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Str;
@@ -11,8 +11,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
 
 class LoginController extends AbstractLoginController
 {
@@ -27,7 +27,7 @@ class LoginController extends AbstractLoginController
     private $cache;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\UserRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\UserRepositoryInterface
      */
     private $repository;
 
@@ -63,7 +63,7 @@ class LoginController extends AbstractLoginController
      *
      * @return \Illuminate\Http\JsonResponse|void
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request): JsonResponse

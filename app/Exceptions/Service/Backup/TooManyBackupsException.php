@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Service\Backup;
+namespace Kriegerhost\Exceptions\Service\Backup;
 
-use Pterodactyl\Exceptions\DisplayException;
+use Kriegerhost\Exceptions\DisplayException;
 
 class TooManyBackupsException extends DisplayException
 {

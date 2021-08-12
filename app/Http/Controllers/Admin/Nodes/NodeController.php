@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Nodes;
+namespace Kriegerhost\Http\Controllers\Admin\Nodes;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Contracts\View\Factory;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
 
 class NodeController extends Controller
 {
@@ -17,7 +17,7 @@ class NodeController extends Controller
     private $view;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NodeRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NodeRepository
      */
     private $repository;
 

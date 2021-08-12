@@ -1,21 +1,21 @@
 <?php
 
-namespace Pterodactyl\Services\Eggs\Variables;
+namespace Kriegerhost\Services\Eggs\Variables;
 
 use Illuminate\Support\Str;
-use Pterodactyl\Models\EggVariable;
+use Kriegerhost\Models\EggVariable;
 use Illuminate\Contracts\Validation\Factory;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Traits\Services\ValidatesValidationRules;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Traits\Services\ValidatesValidationRules;
+use Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Egg\Variable\ReservedVariableNameException;
 
 class VariableUpdateService
 {
     use ValidatesValidationRules;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface
      */
     private $repository;
 
@@ -47,10 +47,10 @@ class VariableUpdateService
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\Variable\ReservedVariableNameException
      */
     public function handle(EggVariable $variable, array $data)
     {

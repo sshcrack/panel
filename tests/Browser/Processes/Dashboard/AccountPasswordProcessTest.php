@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser\Processes\Dashboard;
+namespace Kriegerhost\Tests\Browser\Processes\Dashboard;
 
-use Pterodactyl\Tests\Browser\PterodactylBrowser;
-use Pterodactyl\Tests\Browser\Pages\Dashboard\AccountPage;
+use Kriegerhost\Tests\Browser\KriegerhostBrowser;
+use Kriegerhost\Tests\Browser\Pages\Dashboard\AccountPage;
 
 class AccountPasswordProcessTest extends DashboardTestCase
 {
@@ -12,7 +12,7 @@ class AccountPasswordProcessTest extends DashboardTestCase
      */
     public function testPasswordCanBeChanged()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->loginAs($this->user)
                 ->visit(new AccountPage())
                 ->type('@current_password', self::$userPassword)
@@ -40,7 +40,7 @@ class AccountPasswordProcessTest extends DashboardTestCase
      */
     public function testInvalidPassword()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->loginAs($this->user)
                 ->visit(new AccountPage())
                 ->type('@current_password', 'badpassword')

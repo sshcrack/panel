@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Settings;
+namespace Kriegerhost\Http\Controllers\Admin\Settings;
 
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
 use Illuminate\Contracts\Console\Kernel;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Traits\Helpers\AvailableLanguages;
-use Pterodactyl\Services\Helpers\SoftwareVersionService;
-use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
-use Pterodactyl\Http\Requests\Admin\Settings\BaseSettingsFormRequest;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Traits\Helpers\AvailableLanguages;
+use Kriegerhost\Services\Helpers\SoftwareVersionService;
+use Kriegerhost\Contracts\Repository\SettingsRepositoryInterface;
+use Kriegerhost\Http\Requests\Admin\Settings\BaseSettingsFormRequest;
 
 class IndexController extends Controller
 {
@@ -27,12 +27,12 @@ class IndexController extends Controller
     private $kernel;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\SettingsRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\SettingsRepositoryInterface
      */
     private $settings;
 
     /**
-     * @var \Pterodactyl\Services\Helpers\SoftwareVersionService
+     * @var \Kriegerhost\Services\Helpers\SoftwareVersionService
      */
     private $versionService;
 
@@ -65,8 +65,8 @@ class IndexController extends Controller
     /**
      * Handle settings update.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update(BaseSettingsFormRequest $request): RedirectResponse
     {

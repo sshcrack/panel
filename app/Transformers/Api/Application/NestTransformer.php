@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Application;
+namespace Kriegerhost\Transformers\Api\Application;
 
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\Nest;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Models\Egg;
+use Kriegerhost\Models\Nest;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
 
 class NestTransformer extends BaseTransformer
 {
@@ -47,7 +47,7 @@ class NestTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeEggs(Nest $model)
     {
@@ -65,7 +65,7 @@ class NestTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeServers(Nest $model)
     {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Services\Backups;
+namespace Kriegerhost\Services\Backups;
 
 use Ramsey\Uuid\Uuid;
 use Carbon\CarbonImmutable;
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Backup;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Backup;
+use Kriegerhost\Models\Server;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Extensions\Backups\BackupManager;
-use Pterodactyl\Repositories\Eloquent\BackupRepository;
-use Pterodactyl\Repositories\Wings\DaemonBackupRepository;
-use Pterodactyl\Exceptions\Service\Backup\TooManyBackupsException;
+use Kriegerhost\Extensions\Backups\BackupManager;
+use Kriegerhost\Repositories\Eloquent\BackupRepository;
+use Kriegerhost\Repositories\Wings\DaemonBackupRepository;
+use Kriegerhost\Exceptions\Service\Backup\TooManyBackupsException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 class InitiateBackupService
@@ -27,7 +27,7 @@ class InitiateBackupService
     private $isLocked = false;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\BackupRepository
+     * @var \Kriegerhost\Repositories\Eloquent\BackupRepository
      */
     private $repository;
 
@@ -37,28 +37,28 @@ class InitiateBackupService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonBackupRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonBackupRepository
      */
     private $daemonBackupRepository;
 
     /**
-     * @var \Pterodactyl\Extensions\Backups\BackupManager
+     * @var \Kriegerhost\Extensions\Backups\BackupManager
      */
     private $backupManager;
 
     /**
-     * @var \Pterodactyl\Services\Backups\DeleteBackupService
+     * @var \Kriegerhost\Services\Backups\DeleteBackupService
      */
     private $deleteBackupService;
 
     /**
      * InitiateBackupService constructor.
      *
-     * @param \Pterodactyl\Repositories\Eloquent\BackupRepository $repository
+     * @param \Kriegerhost\Repositories\Eloquent\BackupRepository $repository
      * @param \Illuminate\Database\ConnectionInterface $connection
-     * @param \Pterodactyl\Repositories\Wings\DaemonBackupRepository $daemonBackupRepository
-     * @param \Pterodactyl\Services\Backups\DeleteBackupService $deleteBackupService
-     * @param \Pterodactyl\Extensions\Backups\BackupManager $backupManager
+     * @param \Kriegerhost\Repositories\Wings\DaemonBackupRepository $daemonBackupRepository
+     * @param \Kriegerhost\Services\Backups\DeleteBackupService $deleteBackupService
+     * @param \Kriegerhost\Extensions\Backups\BackupManager $backupManager
      */
     public function __construct(
         BackupRepository $repository,
@@ -116,7 +116,7 @@ class InitiateBackupService
      * Initiates the backup process for a server on Wings.
      *
      * @throws \Throwable
-     * @throws \Pterodactyl\Exceptions\Service\Backup\TooManyBackupsException
+     * @throws \Kriegerhost\Exceptions\Service\Backup\TooManyBackupsException
      * @throws \Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException
      */
     public function handle(Server $server, string $name = null, bool $override = false): Backup
@@ -147,7 +147,7 @@ class InitiateBackupService
             // Get the oldest backup the server has that is not "locked" (indicating a backup that should
             // never be automatically purged). If we find a backup we will delete it and then continue with
             // this process. If no backup is found that can be used an exception is thrown.
-            /** @var \Pterodactyl\Models\Backup $oldest */
+            /** @var \Kriegerhost\Models\Backup $oldest */
             $oldest = $successful->where('is_locked', false)->orderBy('created_at')->first();
             if (!$oldest) {
                 throw new TooManyBackupsException($server->backup_limit);
@@ -157,7 +157,7 @@ class InitiateBackupService
         }
 
         return $this->connection->transaction(function () use ($server, $name) {
-            /** @var \Pterodactyl\Models\Backup $backup */
+            /** @var \Kriegerhost\Models\Backup $backup */
             $backup = $this->repository->create([
                 'server_id' => $server->id,
                 'uuid' => Uuid::uuid4()->toString(),

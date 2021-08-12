@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 /**
  * @property int $id
@@ -13,8 +13,8 @@ namespace Pterodactyl\Models;
  * @property int $max_connections
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Pterodactyl\Models\Server $server
- * @property \Pterodactyl\Models\DatabaseHost $host
+ * @property \Kriegerhost\Models\Server $server
+ * @property \Kriegerhost\Models\DatabaseHost $host
  */
 class Database extends Model
 {

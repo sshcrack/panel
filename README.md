@@ -1,21 +1,21 @@
-[![Logo Image](https://cdn.pterodactyl.io/logos/new/pterodactyl_logo.png)](https://pterodactyl.io)
+[![Logo Image](https://cdn.krieger.host/logos/new/kriegerhost_logo.png)](https://krieger.host)
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pterodactyl/panel/tests?label=Tests&style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kriegerhost/panel/tests?label=Tests&style=for-the-badge)
 ![Discord](https://img.shields.io/discord/122900397965705216?label=Discord&logo=Discord&logoColor=white&style=for-the-badge)
-![GitHub Releases](https://img.shields.io/github/downloads/pterodactyl/panel/latest/total?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/pterodactyl/panel?style=for-the-badge)
+![GitHub Releases](https://img.shields.io/github/downloads/kriegerhost/panel/latest/total?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/kriegerhost/panel?style=for-the-badge)
 
-# Pterodactyl Panel
-Pterodactyl is an open-source game server management panel built with PHP 7, React, and Go. Designed with security 
-in mind, Pterodactyl runs all game servers in isolated Docker containers while exposing a beautiful and intuitive
+# Kriegerhost Panel
+Kriegerhost is an open-source game server management panel built with PHP 7, React, and Go. Designed with security 
+in mind, Kriegerhost runs all game servers in isolated Docker containers while exposing a beautiful and intuitive
 UI to end users.
 
 Stop settling for less. Make game servers a first class citizen on your platform.
 
-![Image](https://cdn.pterodactyl.io/site-assets/pterodactyl_v1_demo.gif)
+![Image](https://cdn.krieger.host/site-assets/kriegerhost_v1_demo.gif)
 
 ## Sponsors
-I would like to extend my sincere thanks to the following sponsors for helping fund Pterodactyl's developement.
+I would like to extend my sincere thanks to the following sponsors for helping fund Kriegerhost's developement.
 [Interested in becoming a sponsor?](https://github.com/sponsors/DaneEveritt)
 
 | Company | About |
@@ -33,15 +33,15 @@ I would like to extend my sincere thanks to the following sponsors for helping f
 | [**DeinServerHost**](https://deinserverhost.de/) | DeinServerHost offers Dedicated, vps and Gameservers for many popular Games like Minecraft and Rust in Germany since 2013. |
 | [**HostBend**](https://hostbend.com/) | HostBend offers a variety of solutions for developers, students, and others who have a tight budget but don't want to compromise quality and support. |
 | [**Capitol Hosting Solutions**](https://capitolsolutions.cloud/) | CHS is *the* budget friendly hosting company for Australian and American gamers, offering a variety of plans from Web Hosting to Game Servers; Custom Solutions too! |
-| [**ByteAnia**](https://byteania.com/?utm_source=pterodactyl) | ByteAnia offers the best performing and most affordable **Ryzen 5000 Series hosting** on the market for *unbeatable prices*! |
+| [**ByteAnia**](https://byteania.com/?utm_source=kriegerhost) | ByteAnia offers the best performing and most affordable **Ryzen 5000 Series hosting** on the market for *unbeatable prices*! |
 | [**Aussie Server Hosts**](https://aussieserverhosts.com/) | No frills Australian Owned and operated High Performance Server hosting for some of the most demanding games serving Australia and New Zealand. |
 | [**VibeGAMES**](https://vibegames.net/) | VibeGAMES is a game server provider that specializes in DDOS protection for the games we offer. We have multiple locations in the US, Brazil, France, Germany, Singapore, Australia and South Africa.|
 
 ## Documentation
-* [Panel Documentation](https://pterodactyl.io/panel/1.0/getting_started.html)
-* [Wings Documentation](https://pterodactyl.io/wings/1.0/installing.html)
-* [Community Guides](https://pterodactyl.io/community/about.html)
-* Or, get additional help [via Discord](https://discord.gg/pterodactyl)
+* [Panel Documentation](https://krieger.host/panel/1.0/getting_started.html)
+* [Wings Documentation](https://krieger.host/wings/1.0/installing.html)
+* [Community Guides](https://krieger.host/community/about.html)
+* Or, get additional help [via Discord](https://discord.gg/kriegerhost)
 
 ### Supported Games
 We support a huge variety of games by utilizing Docker containers to isolate each instance, giving you the power to

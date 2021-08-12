@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Kriegerhost\Services\Servers;
 
 use Illuminate\Support\Arr;
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\ServerVariable;
+use Kriegerhost\Models\Egg;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\ServerVariable;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Traits\Services\HasUserLevels;
+use Kriegerhost\Traits\Services\HasUserLevels;
 
 class StartupModificationService
 {
@@ -20,14 +20,14 @@ class StartupModificationService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Services\Servers\VariableValidatorService
+     * @var \Kriegerhost\Services\Servers\VariableValidatorService
      */
     private $validatorService;
 
     /**
      * StartupModificationService constructor.
      *
-     * @param \Pterodactyl\Services\Servers\VariableValidatorService $validatorService
+     * @param \Kriegerhost\Services\Servers\VariableValidatorService $validatorService
      */
     public function __construct(ConnectionInterface $connection, VariableValidatorService $validatorService)
     {
@@ -84,7 +84,7 @@ class StartupModificationService
         $eggId = Arr::get($data, 'egg_id');
 
         if (is_digit($eggId) && $server->egg_id !== (int) $eggId) {
-            /** @var \Pterodactyl\Models\Egg $egg */
+            /** @var \Kriegerhost\Models\Egg $egg */
             $egg = Egg::query()->findOrFail($data['egg_id']);
 
             $server = $server->forceFill([

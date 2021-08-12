@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Kriegerhost\Http\Controllers\Admin;
 
 use Illuminate\View\View;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Services\Helpers\SoftwareVersionService;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Services\Helpers\SoftwareVersionService;
 
 class BaseController extends Controller
 {
     /**
-     * @var \Pterodactyl\Services\Helpers\SoftwareVersionService
+     * @var \Kriegerhost\Services\Helpers\SoftwareVersionService
      */
     private $version;
 

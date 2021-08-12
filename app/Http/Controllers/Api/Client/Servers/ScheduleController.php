@@ -1,36 +1,36 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
 use Exception;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Schedule;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Schedule;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Helpers\Utilities;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Repositories\Eloquent\ScheduleRepository;
-use Pterodactyl\Services\Schedules\ProcessScheduleService;
-use Pterodactyl\Transformers\Api\Client\ScheduleTransformer;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Helpers\Utilities;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Repositories\Eloquent\ScheduleRepository;
+use Kriegerhost\Services\Schedules\ProcessScheduleService;
+use Kriegerhost\Transformers\Api\Client\ScheduleTransformer;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Schedules\ViewScheduleRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Schedules\StoreScheduleRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Schedules\DeleteScheduleRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Schedules\UpdateScheduleRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Schedules\TriggerScheduleRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Schedules\ViewScheduleRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Schedules\StoreScheduleRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Schedules\DeleteScheduleRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Schedules\UpdateScheduleRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Schedules\TriggerScheduleRequest;
 
 class ScheduleController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ScheduleRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ScheduleRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Schedules\ProcessScheduleService
+     * @var \Kriegerhost\Services\Schedules\ProcessScheduleService
      */
     private $service;
 
@@ -65,12 +65,12 @@ class ScheduleController extends ClientApiController
      *
      * @return array
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function store(StoreScheduleRequest $request, Server $server)
     {
-        /** @var \Pterodactyl\Models\Schedule $model */
+        /** @var \Kriegerhost\Models\Schedule $model */
         $model = $this->repository->create([
             'server_id' => $server->id,
             'name' => $request->input('name'),
@@ -112,9 +112,9 @@ class ScheduleController extends ClientApiController
      *
      * @return array
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UpdateScheduleRequest $request, Server $server, Schedule $schedule)
     {
@@ -135,7 +135,7 @@ class ScheduleController extends ClientApiController
         // Toggle the processing state of the scheduled task when it is enabled or disabled so that an
         // invalid state can be reset without manual database intervention.
         //
-        // @see https://github.com/pterodactyl/panel/issues/2425
+        // @see https://github.com/kriegerhost/panel/issues/2425
         if ($schedule->is_active !== $active) {
             $data['is_processing'] = false;
         }
@@ -177,7 +177,7 @@ class ScheduleController extends ClientApiController
     /**
      * Get the next run timestamp based on the cron data provided.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     protected function getNextRunAt(Request $request): Carbon
     {

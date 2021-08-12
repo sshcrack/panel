@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Http\Server;
+namespace Kriegerhost\Exceptions\Http\Server;
 
 use Throwable;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class ServerStateConflictException extends ConflictHttpException

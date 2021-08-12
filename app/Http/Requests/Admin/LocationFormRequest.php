@@ -1,15 +1,15 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Http\Requests\Admin;
+namespace Kriegerhost\Http\Requests\Admin;
 
-use Pterodactyl\Models\Location;
+use Kriegerhost\Models\Location;
 
 class LocationFormRequest extends AdminFormRequest
 {

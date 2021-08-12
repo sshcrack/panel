@@ -1,39 +1,39 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Kriegerhost\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Allocation;
+use Kriegerhost\Models\Allocation;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Services\Nodes\NodeUpdateService;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Services\Nodes\NodeUpdateService;
 use Illuminate\Cache\Repository as CacheRepository;
-use Pterodactyl\Services\Nodes\NodeCreationService;
-use Pterodactyl\Services\Nodes\NodeDeletionService;
-use Pterodactyl\Services\Allocations\AssignmentService;
-use Pterodactyl\Services\Helpers\SoftwareVersionService;
-use Pterodactyl\Http\Requests\Admin\Node\NodeFormRequest;
-use Pterodactyl\Contracts\Repository\NodeRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
-use Pterodactyl\Http\Requests\Admin\Node\AllocationFormRequest;
-use Pterodactyl\Services\Allocations\AllocationDeletionService;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
-use Pterodactyl\Http\Requests\Admin\Node\AllocationAliasFormRequest;
+use Kriegerhost\Services\Nodes\NodeCreationService;
+use Kriegerhost\Services\Nodes\NodeDeletionService;
+use Kriegerhost\Services\Allocations\AssignmentService;
+use Kriegerhost\Services\Helpers\SoftwareVersionService;
+use Kriegerhost\Http\Requests\Admin\Node\NodeFormRequest;
+use Kriegerhost\Contracts\Repository\NodeRepositoryInterface;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Http\Requests\Admin\Node\AllocationFormRequest;
+use Kriegerhost\Services\Allocations\AllocationDeletionService;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Contracts\Repository\AllocationRepositoryInterface;
+use Kriegerhost\Http\Requests\Admin\Node\AllocationAliasFormRequest;
 
 class NodesController extends Controller
 {
     /**
-     * @var \Pterodactyl\Services\Allocations\AllocationDeletionService
+     * @var \Kriegerhost\Services\Allocations\AllocationDeletionService
      */
     protected $allocationDeletionService;
 
@@ -43,12 +43,12 @@ class NodesController extends Controller
     protected $alert;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\AllocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\AllocationRepositoryInterface
      */
     protected $allocationRepository;
 
     /**
-     * @var \Pterodactyl\Services\Allocations\AssignmentService
+     * @var \Kriegerhost\Services\Allocations\AssignmentService
      */
     protected $assignmentService;
 
@@ -58,37 +58,37 @@ class NodesController extends Controller
     protected $cache;
 
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeCreationService
+     * @var \Kriegerhost\Services\Nodes\NodeCreationService
      */
     protected $creationService;
 
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeDeletionService
+     * @var \Kriegerhost\Services\Nodes\NodeDeletionService
      */
     protected $deletionService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\LocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\LocationRepositoryInterface
      */
     protected $locationRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\NodeRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NodeRepositoryInterface
      */
     protected $repository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     protected $serverRepository;
 
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeUpdateService
+     * @var \Kriegerhost\Services\Nodes\NodeUpdateService
      */
     protected $updateService;
 
     /**
-     * @var \Pterodactyl\Services\Helpers\SoftwareVersionService
+     * @var \Kriegerhost\Services\Helpers\SoftwareVersionService
      */
     protected $versionService;
 
@@ -145,7 +145,7 @@ class NodesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function store(NodeFormRequest $request)
     {
@@ -160,9 +160,9 @@ class NodesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function updateSettings(NodeFormRequest $request, Node $node)
     {
@@ -175,7 +175,7 @@ class NodesController extends Controller
     /**
      * Removes a single allocation from a node.
      *
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\ServerUsingAllocationException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\ServerUsingAllocationException
      */
     public function allocationRemoveSingle(int $node, Allocation $allocation): Response
     {
@@ -187,7 +187,7 @@ class NodesController extends Controller
     /**
      * Removes multiple individual allocations from a node.
      *
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\ServerUsingAllocationException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\ServerUsingAllocationException
      */
     public function allocationRemoveMultiple(Request $request, int $node): Response
     {
@@ -227,8 +227,8 @@ class NodesController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function allocationSetAlias(AllocationAliasFormRequest $request)
     {
@@ -242,14 +242,14 @@ class NodesController extends Controller
     /**
      * Creates new allocations on a node.
      *
-     * @param int|\Pterodactyl\Models\Node $node
+     * @param int|\Kriegerhost\Models\Node $node
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\CidrOutOfRangeException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\InvalidPortMappingException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\PortOutOfRangeException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\TooManyPortsInRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\CidrOutOfRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\InvalidPortMappingException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\PortOutOfRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\TooManyPortsInRangeException
      */
     public function createAllocation(AllocationFormRequest $request, Node $node)
     {
@@ -266,7 +266,7 @@ class NodesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function delete($node)
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Allocation;
+namespace Kriegerhost\Tests\Integration\Api\Client\Server\Allocation;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Models\Permission;
+use Kriegerhost\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class DeleteAllocationTest extends ClientApiIntegrationTestCase
 {
@@ -17,10 +17,10 @@ class DeleteAllocationTest extends ClientApiIntegrationTestCase
      */
     public function testAllocationCanBeDeletedFromServer(array $permission)
     {
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         [$user, $server] = $this->generateTestAccount($permission);
 
-        /** @var \Pterodactyl\Models\Allocation $allocation */
+        /** @var \Kriegerhost\Models\Allocation $allocation */
         $allocation = Allocation::factory()->create([
             'server_id' => $server->id,
             'node_id' => $server->node_id,
@@ -37,10 +37,10 @@ class DeleteAllocationTest extends ClientApiIntegrationTestCase
      */
     public function testErrorIsReturnedIfUserDoesNotHavePermission()
     {
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         [$user, $server] = $this->generateTestAccount([Permission::ACTION_ALLOCATION_CREATE]);
 
-        /** @var \Pterodactyl\Models\Allocation $allocation */
+        /** @var \Kriegerhost\Models\Allocation $allocation */
         $allocation = Allocation::factory()->create([
             'server_id' => $server->id,
             'node_id' => $server->node_id,
@@ -58,7 +58,7 @@ class DeleteAllocationTest extends ClientApiIntegrationTestCase
      */
     public function testErrorIsReturnedIfAllocationIsPrimary()
     {
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         [$user, $server] = $this->generateTestAccount();
 
         $this->actingAs($user)->deleteJson($this->link($server->allocation))
@@ -72,7 +72,7 @@ class DeleteAllocationTest extends ClientApiIntegrationTestCase
      */
     public function testErrorIsReturnedIfAllocationDoesNotBelongToServer()
     {
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         [$user, $server] = $this->generateTestAccount();
         [, $server2] = $this->generateTestAccount();
 

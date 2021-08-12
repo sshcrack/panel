@@ -1,20 +1,20 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware\Api\Daemon;
+namespace Kriegerhost\Http\Middleware\Api\Daemon;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class DaemonAuthenticate
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NodeRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NodeRepository
      */
     private $repository;
 
@@ -65,7 +65,7 @@ class DaemonAuthenticate
         }
 
         try {
-            /** @var \Pterodactyl\Models\Node $node */
+            /** @var \Kriegerhost\Models\Node $node */
             $node = $this->repository->findFirstWhere([
                 'daemon_token_id' => $parts[0],
             ]);

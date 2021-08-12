@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-use Pterodactyl\Helpers\Time;
+use Kriegerhost\Helpers\Time;
 
 return [
     /*
@@ -40,7 +40,7 @@ return [
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'panel'),
-            'username' => env('DB_USERNAME', 'pterodactyl'),
+            'username' => env('DB_USERNAME', 'kriegerhost'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
@@ -63,7 +63,7 @@ return [
         | Test Database Connection
         | -------------------------------------------------------------------------
         |
-        | This connection is used by the integration and HTTP tests for Pterodactyl
+        | This connection is used by the integration and HTTP tests for Kriegerhost
         | development. Normal users of the Panel do not need to adjust any settings
         | in here.
         */
@@ -72,7 +72,7 @@ return [
             'host' => env('TESTING_DB_HOST', '127.0.0.1'),
             'port' => env('TESTING_DB_PORT', '3306'),
             'database' => env('TESTING_DB_DATABASE', 'panel_test'),
-            'username' => env('TESTING_DB_USERNAME', 'pterodactyl_test'),
+            'username' => env('TESTING_DB_USERNAME', 'kriegerhost_test'),
             'password' => env('TESTING_DB_PASSWORD', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

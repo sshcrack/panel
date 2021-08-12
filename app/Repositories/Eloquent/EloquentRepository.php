@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Repositories\Eloquent;
+namespace Kriegerhost\Repositories\Eloquent;
 
 use Illuminate\Http\Request;
 use Webmozart\Assert\Assert;
 use Illuminate\Support\Collection;
-use Pterodactyl\Repositories\Repository;
+use Kriegerhost\Repositories\Repository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Pterodactyl\Contracts\Repository\RepositoryInterface;
-use Pterodactyl\Exceptions\Model\DataValidationException;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Contracts\Repository\RepositoryInterface;
+use Kriegerhost\Exceptions\Model\DataValidationException;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
 
 abstract class EloquentRepository extends Repository implements RepositoryInterface
 {
@@ -87,7 +87,7 @@ abstract class EloquentRepository extends Repository implements RepositoryInterf
      *
      * @return \Illuminate\Database\Eloquent\Model|bool
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function create(array $fields, bool $validate = true, bool $force = false)
     {
@@ -110,7 +110,7 @@ abstract class EloquentRepository extends Repository implements RepositoryInterf
      *
      * @return \Illuminate\Database\Eloquent\Model
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function find(int $id)
     {
@@ -134,7 +134,7 @@ abstract class EloquentRepository extends Repository implements RepositoryInterf
      *
      * @return \Illuminate\Database\Eloquent\Model
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function findFirstWhere(array $fields)
     {
@@ -178,8 +178,8 @@ abstract class EloquentRepository extends Repository implements RepositoryInterf
      *
      * @return \Illuminate\Database\Eloquent\Model|bool
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update($id, array $fields, bool $validate = true, bool $force = false)
     {
@@ -230,8 +230,8 @@ abstract class EloquentRepository extends Repository implements RepositoryInterf
      *
      * @return \Illuminate\Database\Eloquent\Model
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function updateOrCreate(array $where, array $fields, bool $validate = true, bool $force = false)
     {

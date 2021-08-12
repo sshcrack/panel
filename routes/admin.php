@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Pterodactyl\Http\Middleware\Admin\Servers\ServerInstalled;
+use Kriegerhost\Http\Middleware\Admin\Servers\ServerInstalled;
 
 Route::get('/', 'BaseController@index')->name('admin.index');
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Repositories\Eloquent;
+namespace Kriegerhost\Repositories\Eloquent;
 
-use Pterodactyl\Models\Allocation;
+use Kriegerhost\Models\Allocation;
 use Illuminate\Database\Eloquent\Builder;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
+use Kriegerhost\Contracts\Repository\AllocationRepositoryInterface;
 
 class AllocationRepository extends EloquentRepository implements AllocationRepositoryInterface
 {
@@ -58,7 +58,7 @@ class AllocationRepository extends EloquentRepository implements AllocationRepos
     /**
      * Return a single allocation from those meeting the requirements.
      *
-     * @return \Pterodactyl\Models\Allocation|null
+     * @return \Kriegerhost\Models\Allocation|null
      */
     public function getRandomAllocation(array $nodes, array $ports, bool $dedicated = false)
     {

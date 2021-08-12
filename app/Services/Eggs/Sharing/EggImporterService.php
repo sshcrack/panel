@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Services\Eggs\Sharing;
+namespace Kriegerhost\Services\Eggs\Sharing;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Arr;
-use Pterodactyl\Models\Egg;
+use Kriegerhost\Models\Egg;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Egg\BadJsonFormatException;
-use Pterodactyl\Exceptions\Service\InvalidFileUploadException;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Contracts\Repository\NestRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Egg\BadJsonFormatException;
+use Kriegerhost\Exceptions\Service\InvalidFileUploadException;
+use Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface;
 
 class EggImporterService
 {
@@ -22,17 +22,17 @@ class EggImporterService
     protected $connection;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface
      */
     protected $eggVariableRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\NestRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NestRepositoryInterface
      */
     protected $nestRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggRepositoryInterface
      */
     protected $repository;
 
@@ -54,10 +54,10 @@ class EggImporterService
     /**
      * Take an uploaded JSON file and parse it into a new egg.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\BadJsonFormatException
-     * @throws \Pterodactyl\Exceptions\Service\InvalidFileUploadException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\BadJsonFormatException
+     * @throws \Kriegerhost\Exceptions\Service\InvalidFileUploadException
      */
     public function handle(UploadedFile $file, int $nest): Egg
     {
@@ -78,7 +78,7 @@ class EggImporterService
         $nest = $this->nestRepository->getWithEggs($nest);
         $this->connection->beginTransaction();
 
-        /** @var \Pterodactyl\Models\Egg $egg */
+        /** @var \Kriegerhost\Models\Egg $egg */
         $egg = $this->repository->create([
             'uuid' => Uuid::uuid4()->toString(),
             'nest_id' => $nest->id,

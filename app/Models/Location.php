@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 /**
  * @property int $id
@@ -8,8 +8,8 @@ namespace Pterodactyl\Models;
  * @property string $long
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Pterodactyl\Models\Node[] $nodes
- * @property \Pterodactyl\Models\Server[] $servers
+ * @property \Kriegerhost\Models\Node[] $nodes
+ * @property \Kriegerhost\Models\Server[] $servers
  */
 class Location extends Model
 {

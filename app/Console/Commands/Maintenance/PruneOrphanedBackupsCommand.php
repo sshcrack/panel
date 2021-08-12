@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Console\Commands\Maintenance;
+namespace Kriegerhost\Console\Commands\Maintenance;
 
 use Carbon\CarbonImmutable;
 use InvalidArgumentException;
 use Illuminate\Console\Command;
-use Pterodactyl\Repositories\Eloquent\BackupRepository;
+use Kriegerhost\Repositories\Eloquent\BackupRepository;
 
 class PruneOrphanedBackupsCommand extends Command
 {

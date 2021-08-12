@@ -1,15 +1,15 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Events\Subuser;
+namespace Kriegerhost\Events\Subuser;
 
-use Pterodactyl\Models\Subuser;
+use Kriegerhost\Models\Subuser;
 use Illuminate\Queue\SerializesModels;
 
 class Deleting
@@ -19,7 +19,7 @@ class Deleting
     /**
      * The Eloquent model of the server.
      *
-     * @var \Pterodactyl\Models\Subuser
+     * @var \Kriegerhost\Models\Subuser
      */
     public $subuser;
 

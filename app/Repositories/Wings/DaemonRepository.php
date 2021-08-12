@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Repositories\Wings;
+namespace Kriegerhost\Repositories\Wings;
 
 use GuzzleHttp\Client;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Contracts\Foundation\Application;
 
 abstract class DaemonRepository
@@ -16,12 +16,12 @@ abstract class DaemonRepository
     protected $app;
 
     /**
-     * @var \Pterodactyl\Models\Server|null
+     * @var \Kriegerhost\Models\Server|null
      */
     protected $server;
 
     /**
-     * @var \Pterodactyl\Models\Node|null
+     * @var \Kriegerhost\Models\Node|null
      */
     protected $node;
 
@@ -69,8 +69,8 @@ abstract class DaemonRepository
         return new Client([
             'verify' => $this->app->environment('production'),
             'base_uri' => $this->node->getConnectionAddress(),
-            'timeout' => config('pterodactyl.guzzle.timeout'),
-            'connect_timeout' => config('pterodactyl.guzzle.connect_timeout'),
+            'timeout' => config('kriegerhost.guzzle.timeout'),
+            'connect_timeout' => config('kriegerhost.guzzle.connect_timeout'),
             'headers' => array_merge($headers, [
                 'Authorization' => 'Bearer ' . $this->node->getDecryptedKey(),
                 'Accept' => 'application/json',

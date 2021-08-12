@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware\Api\Client\Server;
+namespace Kriegerhost\Http\Middleware\Api\Client\Server;
 
 use Closure;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Task;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\Task;
+use Kriegerhost\Models\User;
 use InvalidArgumentException;
-use Pterodactyl\Models\Backup;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Subuser;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\Schedule;
-use Pterodactyl\Models\Allocation;
+use Kriegerhost\Models\Backup;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Subuser;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\Schedule;
+use Kriegerhost\Models\Allocation;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -35,7 +35,7 @@ class ResourceBelongsToServer
             throw new InvalidArgumentException('This middleware cannot be used in a context that is missing a server in the parameters.');
         }
 
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         $server = $request->route()->parameter('server');
         $exception = new NotFoundHttpException('The requested resource was not found for this server.');
         foreach ($params as $key => $model) {

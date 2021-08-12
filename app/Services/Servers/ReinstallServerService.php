@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Kriegerhost\Services\Servers;
 
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
 
 class ReinstallServerService
 {
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $daemonServerRepository;
 
@@ -32,7 +32,7 @@ class ReinstallServerService
     /**
      * Reinstall a server on the remote daemon.
      *
-     * @return \Pterodactyl\Models\Server
+     * @return \Kriegerhost\Models\Server
      *
      * @throws \Throwable
      */

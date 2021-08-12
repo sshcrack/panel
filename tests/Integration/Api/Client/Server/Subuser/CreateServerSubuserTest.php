@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Subuser;
+namespace Kriegerhost\Tests\Integration\Api\Client\Server\Subuser;
 
 use Illuminate\Support\Str;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Subuser;
-use Pterodactyl\Models\Permission;
+use Kriegerhost\Models\Subuser;
+use Kriegerhost\Models\Permission;
 use Illuminate\Foundation\Testing\WithFaker;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Kriegerhost\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class CreateServerSubuserTest extends ClientApiIntegrationTestCase
 {
@@ -33,7 +33,7 @@ class CreateServerSubuserTest extends ClientApiIntegrationTestCase
 
         $response->assertOk();
 
-        /** @var \Pterodactyl\Models\User $subuser */
+        /** @var \Kriegerhost\Models\User $subuser */
         $subuser = User::query()->where('email', $email)->firstOrFail();
 
         $response->assertJsonPath('object', Subuser::RESOURCE_NAME);
@@ -112,7 +112,7 @@ class CreateServerSubuserTest extends ClientApiIntegrationTestCase
     {
         [$user, $server] = $this->generateTestAccount();
 
-        /** @var \Pterodactyl\Models\User $existing */
+        /** @var \Kriegerhost\Models\User $existing */
         $existing = User::factory()->create(['email' => $this->faker->email]);
 
         $response = $this->actingAs($user)->postJson($this->link($server) . '/users', [

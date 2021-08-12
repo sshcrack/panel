@@ -56,7 +56,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM'),
-        'name' => env('MAIL_FROM_NAME', 'Pterodactyl Panel'),
+        'name' => env('MAIL_FROM_NAME', 'Kriegerhost Panel'),
     ],
 
     /*

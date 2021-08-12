@@ -1,22 +1,22 @@
 <?php
 
-namespace Pterodactyl\Contracts\Repository;
+namespace Kriegerhost\Contracts\Repository;
 
-use Pterodactyl\Models\Task;
+use Kriegerhost\Models\Task;
 
 interface TaskRepositoryInterface extends RepositoryInterface
 {
     /**
      * Get a task and the server relationship for that task.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function getTaskForJobProcess(int $id): Task;
 
     /**
      * Returns the next task in a schedule.
      *
-     * @return \Pterodactyl\Models\Task|null
+     * @return \Kriegerhost\Models\Task|null
      */
     public function getNextTask(int $schedule, int $index);
 }

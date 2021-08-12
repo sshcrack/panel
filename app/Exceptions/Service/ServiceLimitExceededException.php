@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Service;
+namespace Kriegerhost\Exceptions\Service;
 
 use Throwable;
-use Pterodactyl\Exceptions\DisplayException;
+use Kriegerhost\Exceptions\DisplayException;
 
 class ServiceLimitExceededException extends DisplayException
 {

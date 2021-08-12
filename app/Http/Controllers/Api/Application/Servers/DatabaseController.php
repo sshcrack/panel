@@ -1,35 +1,35 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Application\Servers;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Database;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Database;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Services\Databases\DatabasePasswordService;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
-use Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface;
-use Pterodactyl\Transformers\Api\Application\ServerDatabaseTransformer;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
-use Pterodactyl\Http\Requests\Api\Application\Servers\Databases\GetServerDatabaseRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\Databases\GetServerDatabasesRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\Databases\ServerDatabaseWriteRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\Databases\StoreServerDatabaseRequest;
+use Kriegerhost\Services\Databases\DatabasePasswordService;
+use Kriegerhost\Services\Databases\DatabaseManagementService;
+use Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface;
+use Kriegerhost\Transformers\Api\Application\ServerDatabaseTransformer;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Http\Requests\Api\Application\Servers\Databases\GetServerDatabaseRequest;
+use Kriegerhost\Http\Requests\Api\Application\Servers\Databases\GetServerDatabasesRequest;
+use Kriegerhost\Http\Requests\Api\Application\Servers\Databases\ServerDatabaseWriteRequest;
+use Kriegerhost\Http\Requests\Api\Application\Servers\Databases\StoreServerDatabaseRequest;
 
 class DatabaseController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Services\Databases\DatabaseManagementService
+     * @var \Kriegerhost\Services\Databases\DatabaseManagementService
      */
     private $databaseManagementService;
 
     /**
-     * @var \Pterodactyl\Services\Databases\DatabasePasswordService
+     * @var \Kriegerhost\Services\Databases\DatabasePasswordService
      */
     private $databasePasswordService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface
      */
     private $repository;
 
@@ -106,7 +106,7 @@ class DatabaseController extends ApplicationApiController
     /**
      * Handle a request to delete a specific server database from the Panel.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function delete(ServerDatabaseWriteRequest $request): Response
     {

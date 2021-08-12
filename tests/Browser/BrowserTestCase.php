@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser;
+namespace Kriegerhost\Tests\Browser;
 
 use Laravel\Dusk\TestCase;
 use BadMethodCallException;
-use Pterodactyl\Models\User;
-use Pterodactyl\Console\Kernel;
+use Kriegerhost\Models\User;
+use Kriegerhost\Console\Kernel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
-use Pterodactyl\Tests\CreatesApplication;
+use Kriegerhost\Tests\CreatesApplication;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
@@ -39,7 +39,7 @@ abstract class BrowserTestCase extends TestCase
 
         $app = require __DIR__ . '/../../bootstrap/app.php';
 
-        /** @var \Pterodactyl\Console\Kernel $kernel */
+        /** @var \Kriegerhost\Console\Kernel $kernel */
         $kernel = $app->make(Kernel::class);
 
         $kernel->bootstrap();
@@ -76,7 +76,7 @@ abstract class BrowserTestCase extends TestCase
         ]);
 
         return RemoteWebDriver::create(
-            'http://host.pterodactyl.local:4444/wd/hub',
+            'http://host.kriegerhost.local:4444/wd/hub',
             DesiredCapabilities::chrome()->setCapability(
                 ChromeOptions::CAPABILITY,
                 $options
@@ -89,11 +89,11 @@ abstract class BrowserTestCase extends TestCase
      *
      * @param \Facebook\WebDriver\Remote\RemoteWebDriver $driver
      *
-     * @return \Pterodactyl\Tests\Browser\PterodactylBrowser
+     * @return \Kriegerhost\Tests\Browser\KriegerhostBrowser
      */
-    protected function newBrowser($driver): PterodactylBrowser
+    protected function newBrowser($driver): KriegerhostBrowser
     {
-        return new PterodactylBrowser($driver);
+        return new KriegerhostBrowser($driver);
     }
 
     /**
@@ -102,7 +102,7 @@ abstract class BrowserTestCase extends TestCase
      */
     protected function tearDown(): void
     {
-        /** @var \Pterodactyl\Tests\Browser\PterodactylBrowser $browser */
+        /** @var \Kriegerhost\Tests\Browser\KriegerhostBrowser $browser */
         foreach (static::$browsers as $browser) {
             $browser->driver->manage()->deleteAllCookies();
         }

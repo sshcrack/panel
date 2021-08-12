@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Allocations;
+namespace Kriegerhost\Tests\Integration\Services\Allocations;
 
 use Exception;
 use InvalidArgumentException;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Allocations\FindAssignableAllocationService;
-use Pterodactyl\Exceptions\Service\Allocation\AutoAllocationNotEnabledException;
-use Pterodactyl\Exceptions\Service\Allocation\NoAutoAllocationSpaceAvailableException;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Services\Allocations\FindAssignableAllocationService;
+use Kriegerhost\Exceptions\Service\Allocation\AutoAllocationNotEnabledException;
+use Kriegerhost\Exceptions\Service\Allocation\NoAutoAllocationSpaceAvailableException;
 
 class FindAssignableAllocationServiceTest extends IntegrationTestCase
 {
@@ -19,9 +19,9 @@ class FindAssignableAllocationServiceTest extends IntegrationTestCase
     {
         parent::setUp();
 
-        config()->set('pterodactyl.client_features.allocations.enabled', true);
-        config()->set('pterodactyl.client_features.allocations.range_start', 0);
-        config()->set('pterodactyl.client_features.allocations.range_end', 0);
+        config()->set('kriegerhost.client_features.allocations.enabled', true);
+        config()->set('kriegerhost.client_features.allocations.range_start', 0);
+        config()->set('kriegerhost.client_features.allocations.range_end', 0);
     }
 
     /**
@@ -52,8 +52,8 @@ class FindAssignableAllocationServiceTest extends IntegrationTestCase
     public function testNewAllocationIsCreatedIfOneIsNotFound()
     {
         $server = $this->createServerModel();
-        config()->set('pterodactyl.client_features.allocations.range_start', 5000);
-        config()->set('pterodactyl.client_features.allocations.range_end', 5005);
+        config()->set('kriegerhost.client_features.allocations.range_start', 5000);
+        config()->set('kriegerhost.client_features.allocations.range_end', 5005);
 
         $response = $this->getService()->handle($server);
         $this->assertSame($server->id, $response->server_id);
@@ -71,8 +71,8 @@ class FindAssignableAllocationServiceTest extends IntegrationTestCase
         $server = $this->createServerModel();
         $server2 = $this->createServerModel(['node_id' => $server->node_id]);
 
-        config()->set('pterodactyl.client_features.allocations.range_start', 5000);
-        config()->set('pterodactyl.client_features.allocations.range_end', 5001);
+        config()->set('kriegerhost.client_features.allocations.range_start', 5000);
+        config()->set('kriegerhost.client_features.allocations.range_end', 5001);
 
         Allocation::factory()->create([
             'server_id' => $server2->id,
@@ -89,8 +89,8 @@ class FindAssignableAllocationServiceTest extends IntegrationTestCase
     {
         $server = $this->createServerModel();
         $server2 = $this->createServerModel(['node_id' => $server->node_id]);
-        config()->set('pterodactyl.client_features.allocations.range_start', 5000);
-        config()->set('pterodactyl.client_features.allocations.range_end', 5005);
+        config()->set('kriegerhost.client_features.allocations.range_start', 5000);
+        config()->set('kriegerhost.client_features.allocations.range_end', 5005);
 
         for ($i = 5000; $i <= 5005; ++$i) {
             Allocation::factory()->create([
@@ -136,8 +136,8 @@ class FindAssignableAllocationServiceTest extends IntegrationTestCase
     public function testExceptionIsThrownIfStartOrEndRangeIsNotNumeric()
     {
         $server = $this->createServerModel();
-        config()->set('pterodactyl.client_features.allocations.range_start', 'hodor');
-        config()->set('pterodactyl.client_features.allocations.range_end', 10);
+        config()->set('kriegerhost.client_features.allocations.range_start', 'hodor');
+        config()->set('kriegerhost.client_features.allocations.range_end', 10);
 
         try {
             $this->getService()->handle($server);
@@ -147,8 +147,8 @@ class FindAssignableAllocationServiceTest extends IntegrationTestCase
             $this->assertSame('Expected an integerish value. Got: string', $exception->getMessage());
         }
 
-        config()->set('pterodactyl.client_features.allocations.range_start', 10);
-        config()->set('pterodactyl.client_features.allocations.range_end', 'hodor');
+        config()->set('kriegerhost.client_features.allocations.range_start', 10);
+        config()->set('kriegerhost.client_features.allocations.range_end', 'hodor');
 
         try {
             $this->getService()->handle($server);
@@ -161,7 +161,7 @@ class FindAssignableAllocationServiceTest extends IntegrationTestCase
 
     public function testExceptionIsThrownIfFeatureIsNotEnabled()
     {
-        config()->set('pterodactyl.client_features.allocations.enabled', false);
+        config()->set('kriegerhost.client_features.allocations.enabled', false);
         $server = $this->createServerModel();
 
         $this->expectException(AutoAllocationNotEnabledException::class);
@@ -170,7 +170,7 @@ class FindAssignableAllocationServiceTest extends IntegrationTestCase
     }
 
     /**
-     * @return \Pterodactyl\Services\Allocations\FindAssignableAllocationService
+     * @return \Kriegerhost\Services\Allocations\FindAssignableAllocationService
      */
     private function getService()
     {

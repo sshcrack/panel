@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Tests\Unit\Http\Middleware\Api;
+namespace Kriegerhost\Tests\Unit\Http\Middleware\Api;
 
 use Mockery as m;
 use Carbon\CarbonImmutable;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\ApiKey;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\ApiKey;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Http\Middleware\Api\AuthenticateKey;
+use Kriegerhost\Http\Middleware\Api\AuthenticateKey;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Tests\Unit\Http\Middleware\MiddlewareTestCase;
-use Pterodactyl\Contracts\Repository\ApiKeyRepositoryInterface;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Tests\Unit\Http\Middleware\MiddlewareTestCase;
+use Kriegerhost\Contracts\Repository\ApiKeyRepositoryInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AuthenticateKeyTest extends MiddlewareTestCase
@@ -28,7 +28,7 @@ class AuthenticateKeyTest extends MiddlewareTestCase
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ApiKeyRepositoryInterface|\Mockery\Mock
+     * @var \Kriegerhost\Contracts\Repository\ApiKeyRepositoryInterface|\Mockery\Mock
      */
     private $repository;
 

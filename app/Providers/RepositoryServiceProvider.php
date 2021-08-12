@@ -1,42 +1,42 @@
 <?php
 
-namespace Pterodactyl\Providers;
+namespace Kriegerhost\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Pterodactyl\Repositories\Eloquent\EggRepository;
-use Pterodactyl\Repositories\Eloquent\NestRepository;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Repositories\Eloquent\TaskRepository;
-use Pterodactyl\Repositories\Eloquent\UserRepository;
-use Pterodactyl\Repositories\Eloquent\ApiKeyRepository;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Repositories\Eloquent\SessionRepository;
-use Pterodactyl\Repositories\Eloquent\SubuserRepository;
-use Pterodactyl\Repositories\Eloquent\DatabaseRepository;
-use Pterodactyl\Repositories\Eloquent\LocationRepository;
-use Pterodactyl\Repositories\Eloquent\ScheduleRepository;
-use Pterodactyl\Repositories\Eloquent\SettingsRepository;
-use Pterodactyl\Repositories\Eloquent\AllocationRepository;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Repositories\Eloquent\EggVariableRepository;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Contracts\Repository\NodeRepositoryInterface;
-use Pterodactyl\Contracts\Repository\TaskRepositoryInterface;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Repositories\Eloquent\DatabaseHostRepository;
-use Pterodactyl\Contracts\Repository\ApiKeyRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
-use Pterodactyl\Repositories\Eloquent\ServerVariableRepository;
-use Pterodactyl\Contracts\Repository\SessionRepositoryInterface;
-use Pterodactyl\Contracts\Repository\SubuserRepositoryInterface;
-use Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ScheduleRepositoryInterface;
-use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
-use Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface;
-use Pterodactyl\Contracts\Repository\ServerVariableRepositoryInterface;
+use Kriegerhost\Repositories\Eloquent\EggRepository;
+use Kriegerhost\Repositories\Eloquent\NestRepository;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Repositories\Eloquent\TaskRepository;
+use Kriegerhost\Repositories\Eloquent\UserRepository;
+use Kriegerhost\Repositories\Eloquent\ApiKeyRepository;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Repositories\Eloquent\SessionRepository;
+use Kriegerhost\Repositories\Eloquent\SubuserRepository;
+use Kriegerhost\Repositories\Eloquent\DatabaseRepository;
+use Kriegerhost\Repositories\Eloquent\LocationRepository;
+use Kriegerhost\Repositories\Eloquent\ScheduleRepository;
+use Kriegerhost\Repositories\Eloquent\SettingsRepository;
+use Kriegerhost\Repositories\Eloquent\AllocationRepository;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Repositories\Eloquent\EggVariableRepository;
+use Kriegerhost\Contracts\Repository\NestRepositoryInterface;
+use Kriegerhost\Contracts\Repository\NodeRepositoryInterface;
+use Kriegerhost\Contracts\Repository\TaskRepositoryInterface;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Repositories\Eloquent\DatabaseHostRepository;
+use Kriegerhost\Contracts\Repository\ApiKeyRepositoryInterface;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Repositories\Eloquent\ServerVariableRepository;
+use Kriegerhost\Contracts\Repository\SessionRepositoryInterface;
+use Kriegerhost\Contracts\Repository\SubuserRepositoryInterface;
+use Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Contracts\Repository\ScheduleRepositoryInterface;
+use Kriegerhost\Contracts\Repository\SettingsRepositoryInterface;
+use Kriegerhost\Contracts\Repository\AllocationRepositoryInterface;
+use Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface;
+use Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface;
+use Kriegerhost\Contracts\Repository\ServerVariableRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

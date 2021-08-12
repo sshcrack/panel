@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Client;
+namespace Kriegerhost\Transformers\Api\Client;
 
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\Permission;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\Permission;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Contracts\Extensions\HashidsInterface;
+use Kriegerhost\Contracts\Extensions\HashidsInterface;
 
 class DatabaseTransformer extends BaseClientTransformer
 {
@@ -17,7 +17,7 @@ class DatabaseTransformer extends BaseClientTransformer
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Contracts\Extensions\HashidsInterface
+     * @var \Kriegerhost\Contracts\Extensions\HashidsInterface
      */
     private $hashids;
 

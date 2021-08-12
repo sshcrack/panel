@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Services\Eggs\Sharing;
+namespace Kriegerhost\Services\Eggs\Sharing;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
-use Pterodactyl\Models\EggVariable;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Models\EggVariable;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
 
 class EggExporterService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggRepositoryInterface
      */
     protected $repository;
 
@@ -25,7 +25,7 @@ class EggExporterService
     /**
      * Return a JSON representation of an egg and its variables.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function handle(int $egg): string
     {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Services\Users;
+namespace Kriegerhost\Services\Users;
 
 use Exception;
 use RuntimeException;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 class TwoFactorSetupService
@@ -24,7 +24,7 @@ class TwoFactorSetupService
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\UserRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\UserRepositoryInterface
      */
     private $repository;
 
@@ -46,14 +46,14 @@ class TwoFactorSetupService
      * QR code URL. This URL will need to be attached to a QR generating service in
      * order to function.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function handle(User $user): array
     {
         $secret = '';
         try {
-            for ($i = 0; $i < $this->config->get('pterodactyl.auth.2fa.bytes', 16); ++$i) {
+            for ($i = 0; $i < $this->config->get('kriegerhost.auth.2fa.bytes', 16); ++$i) {
                 $secret .= substr(self::VALID_BASE32_CHARACTERS, random_int(0, 31), 1);
             }
         } catch (Exception $exception) {

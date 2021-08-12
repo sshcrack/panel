@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 use Closure;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Query\JoinClause;
 use Znck\Eloquent\Traits\BelongsToThrough;
-use Pterodactyl\Exceptions\Http\Server\ServerStateConflictException;
+use Kriegerhost\Exceptions\Http\Server\ServerStateConflictException;
 
 /**
  * @property int $id
@@ -36,21 +36,21 @@ use Pterodactyl\Exceptions\Http\Server\ServerStateConflictException;
  * @property int $backup_limit
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Pterodactyl\Models\User $user
- * @property \Pterodactyl\Models\Subuser[]|\Illuminate\Database\Eloquent\Collection $subusers
- * @property \Pterodactyl\Models\Allocation $allocation
- * @property \Pterodactyl\Models\Allocation[]|\Illuminate\Database\Eloquent\Collection $allocations
- * @property \Pterodactyl\Models\Node $node
- * @property \Pterodactyl\Models\Nest $nest
- * @property \Pterodactyl\Models\Egg $egg
- * @property \Pterodactyl\Models\EggVariable[]|\Illuminate\Database\Eloquent\Collection $variables
- * @property \Pterodactyl\Models\Schedule[]|\Illuminate\Database\Eloquent\Collection $schedule
- * @property \Pterodactyl\Models\Database[]|\Illuminate\Database\Eloquent\Collection $databases
- * @property \Pterodactyl\Models\Location $location
- * @property \Pterodactyl\Models\ServerTransfer $transfer
- * @property \Pterodactyl\Models\Backup[]|\Illuminate\Database\Eloquent\Collection $backups
- * @property \Pterodactyl\Models\Mount[]|\Illuminate\Database\Eloquent\Collection $mounts
- * @property \Pterodactyl\Models\AuditLog[] $audits
+ * @property \Kriegerhost\Models\User $user
+ * @property \Kriegerhost\Models\Subuser[]|\Illuminate\Database\Eloquent\Collection $subusers
+ * @property \Kriegerhost\Models\Allocation $allocation
+ * @property \Kriegerhost\Models\Allocation[]|\Illuminate\Database\Eloquent\Collection $allocations
+ * @property \Kriegerhost\Models\Node $node
+ * @property \Kriegerhost\Models\Nest $nest
+ * @property \Kriegerhost\Models\Egg $egg
+ * @property \Kriegerhost\Models\EggVariable[]|\Illuminate\Database\Eloquent\Collection $variables
+ * @property \Kriegerhost\Models\Schedule[]|\Illuminate\Database\Eloquent\Collection $schedule
+ * @property \Kriegerhost\Models\Database[]|\Illuminate\Database\Eloquent\Collection $databases
+ * @property \Kriegerhost\Models\Location $location
+ * @property \Kriegerhost\Models\ServerTransfer $transfer
+ * @property \Kriegerhost\Models\Backup[]|\Illuminate\Database\Eloquent\Collection $backups
+ * @property \Kriegerhost\Models\Mount[]|\Illuminate\Database\Eloquent\Collection $mounts
+ * @property \Kriegerhost\Models\AuditLog[] $audits
  */
 class Server extends Model
 {
@@ -252,7 +252,7 @@ class Server extends Model
                 // would actually return all of the variables and their values for _all_ servers using that egg,\
                 // rather than only the server for this model.
                 //
-                // @see https://github.com/pterodactyl/panel/issues/2250
+                // @see https://github.com/kriegerhost/panel/issues/2250
                 $join->on('server_variables.variable_id', 'egg_variables.id')
                     ->where('server_variables.server_id', $this->id);
             });
@@ -332,7 +332,7 @@ class Server extends Model
      * Returns a fresh AuditLog model for the server. This model is not saved to the
      * database when created, so it is up to the caller to correctly store it as needed.
      *
-     * @return \Pterodactyl\Models\AuditLog
+     * @return \Kriegerhost\Models\AuditLog
      */
     public function newAuditEvent(string $action, array $metadata = []): AuditLog
     {
@@ -378,7 +378,7 @@ class Server extends Model
      * exception is raised. This should be called whenever something needs to make
      * sure the server is not in a weird state that should block user access.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Server\ServerStateConflictException
+     * @throws \Kriegerhost\Exceptions\Http\Server\ServerStateConflictException
      */
     public function validateCurrentState()
     {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Services\Nodes;
+namespace Kriegerhost\Services\Nodes;
 
 use Illuminate\Support\Str;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Repositories\Wings\DaemonConfigurationRepository;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
-use Pterodactyl\Exceptions\Service\Node\ConfigurationNotPersistedException;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Repositories\Wings\DaemonConfigurationRepository;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Exceptions\Service\Node\ConfigurationNotPersistedException;
 
 class NodeUpdateService
 {
@@ -20,7 +20,7 @@ class NodeUpdateService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonConfigurationRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonConfigurationRepository
      */
     private $configurationRepository;
 
@@ -30,7 +30,7 @@ class NodeUpdateService
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NodeRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NodeRepository
      */
     private $repository;
 
@@ -52,7 +52,7 @@ class NodeUpdateService
     /**
      * Update the configuration values for a given node on the machine.
      *
-     * @return \Pterodactyl\Models\Node
+     * @return \Kriegerhost\Models\Node
      *
      * @throws \Throwable
      */
@@ -64,7 +64,7 @@ class NodeUpdateService
         }
 
         [$updated, $exception] = $this->connection->transaction(function () use ($data, $node) {
-            /** @var \Pterodactyl\Models\Node $updated */
+            /** @var \Kriegerhost\Models\Node $updated */
             $updated = $this->repository->withFreshModel()->update($node->id, $data, true, true);
 
             try {
@@ -76,7 +76,7 @@ class NodeUpdateService
                 // This makes more sense anyways, because only the Panel uses the FQDN for connecting, the
                 // node doesn't actually care about this.
                 //
-                // @see https://github.com/pterodactyl/panel/issues/1931
+                // @see https://github.com/kriegerhost/panel/issues/1931
                 $node->fqdn = $updated->fqdn;
 
                 $this->configurationRepository->setNode($node)->update($updated);
@@ -90,7 +90,7 @@ class NodeUpdateService
                 // This avoids issues with proxies such as CloudFlare which will see Wings as offline and then
                 // inject their own response pages, causing this logic to get fucked up.
                 //
-                // @see https://github.com/pterodactyl/panel/issues/2712
+                // @see https://github.com/kriegerhost/panel/issues/2712
                 return [$updated, true];
             }
 

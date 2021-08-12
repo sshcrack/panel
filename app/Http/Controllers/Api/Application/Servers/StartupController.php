@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Application\Servers;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Servers\StartupModificationService;
-use Pterodactyl\Transformers\Api\Application\ServerTransformer;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
-use Pterodactyl\Http\Requests\Api\Application\Servers\UpdateServerStartupRequest;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Services\Servers\StartupModificationService;
+use Kriegerhost\Transformers\Api\Application\ServerTransformer;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Http\Requests\Api\Application\Servers\UpdateServerStartupRequest;
 
 class StartupController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Services\Servers\StartupModificationService
+     * @var \Kriegerhost\Services\Servers\StartupModificationService
      */
     private $modificationService;
 
@@ -30,9 +30,9 @@ class StartupController extends ApplicationApiController
      * Update the startup and environment settings for a specific server.
      *
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function index(UpdateServerStartupRequest $request): array
     {

@@ -1,25 +1,25 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Kriegerhost\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Node;
-use Pterodactyl\Models\ApiKey;
+use Kriegerhost\Models\Node;
+use Kriegerhost\Models\ApiKey;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Http\Controllers\Controller;
+use Kriegerhost\Http\Controllers\Controller;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Services\Api\KeyCreationService;
-use Pterodactyl\Repositories\Eloquent\ApiKeyRepository;
+use Kriegerhost\Services\Api\KeyCreationService;
+use Kriegerhost\Repositories\Eloquent\ApiKeyRepository;
 
 class NodeAutoDeployController extends Controller
 {
     /**
-     * @var \Pterodactyl\Services\Api\KeyCreationService
+     * @var \Kriegerhost\Services\Api\KeyCreationService
      */
     private $keyCreationService;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ApiKeyRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ApiKeyRepository
      */
     private $repository;
 
@@ -47,11 +47,11 @@ class NodeAutoDeployController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function __invoke(Request $request, Node $node)
     {
-        /** @var \Pterodactyl\Models\ApiKey|null $key */
+        /** @var \Kriegerhost\Models\ApiKey|null $key */
         $key = $this->repository->getApplicationKeys($request->user())
             ->filter(function (ApiKey $key) {
                 foreach ($key->getAttributes() as $permission => $value) {

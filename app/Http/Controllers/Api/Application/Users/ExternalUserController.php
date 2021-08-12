@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Users;
+namespace Kriegerhost\Http\Controllers\Api\Application\Users;
 
-use Pterodactyl\Transformers\Api\Application\UserTransformer;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
-use Pterodactyl\Http\Requests\Api\Application\Users\GetExternalUserRequest;
+use Kriegerhost\Transformers\Api\Application\UserTransformer;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Http\Requests\Api\Application\Users\GetExternalUserRequest;
 
 class ExternalUserController extends ApplicationApiController
 {

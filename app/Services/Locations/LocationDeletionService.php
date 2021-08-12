@@ -1,29 +1,29 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Services\Locations;
+namespace Kriegerhost\Services\Locations;
 
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Location;
-use Pterodactyl\Contracts\Repository\NodeRepositoryInterface;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Location\HasActiveNodesException;
+use Kriegerhost\Models\Location;
+use Kriegerhost\Contracts\Repository\NodeRepositoryInterface;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Location\HasActiveNodesException;
 
 class LocationDeletionService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\NodeRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NodeRepositoryInterface
      */
     protected $nodeRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\LocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\LocationRepositoryInterface
      */
     protected $repository;
 
@@ -41,11 +41,11 @@ class LocationDeletionService
     /**
      * Delete an existing location.
      *
-     * @param int|\Pterodactyl\Models\Location $location
+     * @param int|\Kriegerhost\Models\Location $location
      *
      * @return int|null
      *
-     * @throws \Pterodactyl\Exceptions\Service\Location\HasActiveNodesException
+     * @throws \Kriegerhost\Exceptions\Service\Location\HasActiveNodesException
      */
     public function handle($location)
     {

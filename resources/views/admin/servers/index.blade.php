@@ -1,4 +1,4 @@
-{{-- Pterodactyl - Panel --}}
+{{-- Kriegerhost - Panel --}}
 {{-- Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com> --}}
 
 {{-- This software is licensed under the terms of the MIT license. --}}
@@ -88,7 +88,7 @@
     <script>
         $('.console-popout').on('click', function (event) {
             event.preventDefault();
-            window.open($(this).attr('href'), 'Pterodactyl Console', 'width=800,height=400');
+            window.open($(this).attr('href'), 'Kriegerhost Console', 'width=800,height=400');
         });
     </script>
 @endsection

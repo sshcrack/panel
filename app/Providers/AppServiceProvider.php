@@ -1,19 +1,19 @@
 <?php
 
-namespace Pterodactyl\Providers;
+namespace Kriegerhost\Providers;
 
 use View;
 use Cache;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Subuser;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Subuser;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Pterodactyl\Observers\UserObserver;
-use Pterodactyl\Extensions\Themes\Theme;
-use Pterodactyl\Observers\ServerObserver;
-use Pterodactyl\Observers\SubuserObserver;
+use Kriegerhost\Observers\UserObserver;
+use Kriegerhost\Extensions\Themes\Theme;
+use Kriegerhost\Observers\ServerObserver;
+use Kriegerhost\Observers\SubuserObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Only load the settings service provider if the environment
         // is configured to allow it.
-        if (!config('pterodactyl.load_environment_only', false) && $this->app->environment() !== 'testing') {
+        if (!config('kriegerhost.load_environment_only', false) && $this->app->environment() !== 'testing') {
             $this->app->register(SettingsServiceProvider::class);
         }
 

@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Servers;
+namespace Kriegerhost\Http\Controllers\Admin\Servers;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Models\ServerTransfer;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Services\Servers\TransferService;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Repositories\Eloquent\LocationRepository;
-use Pterodactyl\Repositories\Wings\DaemonConfigurationRepository;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
+use Kriegerhost\Models\ServerTransfer;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Services\Servers\TransferService;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Repositories\Eloquent\LocationRepository;
+use Kriegerhost\Repositories\Wings\DaemonConfigurationRepository;
+use Kriegerhost\Contracts\Repository\AllocationRepositoryInterface;
 
 class ServerTransferController extends Controller
 {
@@ -22,32 +22,32 @@ class ServerTransferController extends Controller
     private $alert;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\AllocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\AllocationRepositoryInterface
      */
     private $allocationRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\LocationRepository
+     * @var \Kriegerhost\Repositories\Eloquent\LocationRepository
      */
     private $locationRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NodeRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NodeRepository
      */
     private $nodeRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\TransferService
+     * @var \Kriegerhost\Services\Servers\TransferService
      */
     private $transferService;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonConfigurationRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonConfigurationRepository
      */
     private $daemonConfigurationRepository;
 

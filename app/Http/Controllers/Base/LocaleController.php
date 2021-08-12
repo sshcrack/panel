@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Base;
+namespace Kriegerhost\Http\Controllers\Base;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Translation\Translator;
-use Pterodactyl\Http\Controllers\Controller;
+use Kriegerhost\Http\Controllers\Controller;
 
 class LocaleController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Extensions\Themes;
+namespace Kriegerhost\Extensions\Themes;
 
 class Theme
 {
@@ -16,6 +16,6 @@ class Theme
 
     protected function getUrl($path)
     {
-        return '/themes/pterodactyl/' . ltrim($path, '/');
+        return '/themes/kriegerhost/' . ltrim($path, '/');
     }
 }

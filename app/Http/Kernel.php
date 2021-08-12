@@ -1,39 +1,39 @@
 <?php
 
-namespace Pterodactyl\Http;
+namespace Kriegerhost\Http;
 
-use Pterodactyl\Models\ApiKey;
+use Kriegerhost\Models\ApiKey;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\Authenticate;
-use Pterodactyl\Http\Middleware\TrimStrings;
-use Pterodactyl\Http\Middleware\TrustProxies;
+use Kriegerhost\Http\Middleware\TrimStrings;
+use Kriegerhost\Http\Middleware\TrustProxies;
 use Illuminate\Session\Middleware\StartSession;
-use Pterodactyl\Http\Middleware\EncryptCookies;
-use Pterodactyl\Http\Middleware\Api\IsValidJson;
-use Pterodactyl\Http\Middleware\VerifyCsrfToken;
-use Pterodactyl\Http\Middleware\VerifyReCaptcha;
-use Pterodactyl\Http\Middleware\AdminAuthenticate;
+use Kriegerhost\Http\Middleware\EncryptCookies;
+use Kriegerhost\Http\Middleware\Api\IsValidJson;
+use Kriegerhost\Http\Middleware\VerifyCsrfToken;
+use Kriegerhost\Http\Middleware\VerifyReCaptcha;
+use Kriegerhost\Http\Middleware\AdminAuthenticate;
 use Illuminate\Routing\Middleware\ThrottleRequests;
-use Pterodactyl\Http\Middleware\LanguageMiddleware;
+use Kriegerhost\Http\Middleware\LanguageMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Pterodactyl\Http\Middleware\Api\AuthenticateKey;
+use Kriegerhost\Http\Middleware\Api\AuthenticateKey;
 use Illuminate\Routing\Middleware\SubstituteBindings;
-use Pterodactyl\Http\Middleware\Api\SetSessionDriver;
+use Kriegerhost\Http\Middleware\Api\SetSessionDriver;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Pterodactyl\Http\Middleware\MaintenanceMiddleware;
-use Pterodactyl\Http\Middleware\RedirectIfAuthenticated;
+use Kriegerhost\Http\Middleware\MaintenanceMiddleware;
+use Kriegerhost\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
-use Pterodactyl\Http\Middleware\Api\AuthenticateIPAccess;
-use Pterodactyl\Http\Middleware\Api\ApiSubstituteBindings;
+use Kriegerhost\Http\Middleware\Api\AuthenticateIPAccess;
+use Kriegerhost\Http\Middleware\Api\ApiSubstituteBindings;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Pterodactyl\Http\Middleware\Api\Daemon\DaemonAuthenticate;
-use Pterodactyl\Http\Middleware\RequireTwoFactorAuthentication;
+use Kriegerhost\Http\Middleware\Api\Daemon\DaemonAuthenticate;
+use Kriegerhost\Http\Middleware\RequireTwoFactorAuthentication;
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
-use Pterodactyl\Http\Middleware\Api\Client\SubstituteClientApiBindings;
-use Pterodactyl\Http\Middleware\Api\Application\AuthenticateApplicationUser;
+use Kriegerhost\Http\Middleware\Api\Client\SubstituteClientApiBindings;
+use Kriegerhost\Http\Middleware\Api\Application\AuthenticateApplicationUser;
 
 class Kernel extends HttpKernel
 {

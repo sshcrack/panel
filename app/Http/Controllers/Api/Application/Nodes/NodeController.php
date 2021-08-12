@@ -1,41 +1,41 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Nodes;
+namespace Kriegerhost\Http\Controllers\Api\Application\Nodes;
 
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
-use Pterodactyl\Services\Nodes\NodeUpdateService;
-use Pterodactyl\Services\Nodes\NodeCreationService;
-use Pterodactyl\Services\Nodes\NodeDeletionService;
-use Pterodactyl\Contracts\Repository\NodeRepositoryInterface;
-use Pterodactyl\Transformers\Api\Application\NodeTransformer;
-use Pterodactyl\Http\Requests\Api\Application\Nodes\GetNodeRequest;
-use Pterodactyl\Http\Requests\Api\Application\Nodes\GetNodesRequest;
-use Pterodactyl\Http\Requests\Api\Application\Nodes\StoreNodeRequest;
-use Pterodactyl\Http\Requests\Api\Application\Nodes\DeleteNodeRequest;
-use Pterodactyl\Http\Requests\Api\Application\Nodes\UpdateNodeRequest;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Services\Nodes\NodeUpdateService;
+use Kriegerhost\Services\Nodes\NodeCreationService;
+use Kriegerhost\Services\Nodes\NodeDeletionService;
+use Kriegerhost\Contracts\Repository\NodeRepositoryInterface;
+use Kriegerhost\Transformers\Api\Application\NodeTransformer;
+use Kriegerhost\Http\Requests\Api\Application\Nodes\GetNodeRequest;
+use Kriegerhost\Http\Requests\Api\Application\Nodes\GetNodesRequest;
+use Kriegerhost\Http\Requests\Api\Application\Nodes\StoreNodeRequest;
+use Kriegerhost\Http\Requests\Api\Application\Nodes\DeleteNodeRequest;
+use Kriegerhost\Http\Requests\Api\Application\Nodes\UpdateNodeRequest;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
 
 class NodeController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeCreationService
+     * @var \Kriegerhost\Services\Nodes\NodeCreationService
      */
     private $creationService;
 
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeDeletionService
+     * @var \Kriegerhost\Services\Nodes\NodeDeletionService
      */
     private $deletionService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\NodeRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NodeRepositoryInterface
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeUpdateService
+     * @var \Kriegerhost\Services\Nodes\NodeUpdateService
      */
     private $updateService;
 
@@ -85,7 +85,7 @@ class NodeController extends ApplicationApiController
      * Create a new node on the Panel. Returns the created node and a HTTP/201
      * status response on success.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function store(StoreNodeRequest $request): JsonResponse
     {
@@ -123,7 +123,7 @@ class NodeController extends ApplicationApiController
      * Deletes a given node from the Panel as long as there are no servers
      * currently attached to it.
      *
-     * @throws \Pterodactyl\Exceptions\Service\HasActiveServersException
+     * @throws \Kriegerhost\Exceptions\Service\HasActiveServersException
      */
     public function delete(DeleteNodeRequest $request, Node $node): JsonResponse
     {

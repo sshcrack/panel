@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Contracts\Repository;
+namespace Kriegerhost\Contracts\Repository;
 
-use Pterodactyl\Models\Database;
+use Kriegerhost\Models\Database;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 

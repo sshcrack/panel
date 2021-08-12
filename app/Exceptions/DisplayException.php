@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Exceptions;
+namespace Kriegerhost\Exceptions;
 
 use Exception;
 use Throwable;
@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Container\Container;
 use Prologue\Alerts\AlertsMessageBag;
 
-class DisplayException extends PterodactylException
+class DisplayException extends KriegerhostException
 {
     public const LEVEL_DEBUG = 'debug';
     public const LEVEL_INFO = 'info';

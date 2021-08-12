@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Application\Servers;
+namespace Kriegerhost\Http\Requests\Api\Application\Servers;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
-use Pterodactyl\Http\Requests\Api\Application\ApplicationApiRequest;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Http\Requests\Api\Application\ApplicationApiRequest;
 
 class GetExternalServerRequest extends ApplicationApiRequest
 {
     /**
-     * @var \Pterodactyl\Models\Server
+     * @var \Kriegerhost\Models\Server
      */
     private $serverModel;
 

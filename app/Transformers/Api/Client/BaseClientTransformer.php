@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Client;
+namespace Kriegerhost\Transformers\Api\Client;
 
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Container\Container;
-use Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException;
-use Pterodactyl\Transformers\Api\Application\BaseTransformer as BaseApplicationTransformer;
+use Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException;
+use Kriegerhost\Transformers\Api\Application\BaseTransformer as BaseApplicationTransformer;
 
 abstract class BaseClientTransformer extends BaseApplicationTransformer
 {
     /**
-     * @var \Pterodactyl\Models\User
+     * @var \Kriegerhost\Models\User
      */
     private $user;
 
@@ -37,7 +37,7 @@ abstract class BaseClientTransformer extends BaseApplicationTransformer
      * to access a different resource. This is used when including other
      * models on a transformation request.
      *
-     * @param \Pterodactyl\Models\Server $server
+     * @param \Kriegerhost\Models\Server $server
      */
     protected function authorize(string $ability, Server $server = null): bool
     {
@@ -52,11 +52,11 @@ abstract class BaseClientTransformer extends BaseApplicationTransformer
      *
      * @return self
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     protected function makeTransformer(string $abstract, array $parameters = [])
     {
-        /** @var \Pterodactyl\Transformers\Api\Application\BaseTransformer $transformer */
+        /** @var \Kriegerhost\Transformers\Api\Application\BaseTransformer $transformer */
         $transformer = Container::getInstance()->makeWith($abstract, $parameters);
         $transformer->setKey($this->getKey());
 

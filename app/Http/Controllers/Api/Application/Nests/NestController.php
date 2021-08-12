@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Nests;
+namespace Kriegerhost\Http\Controllers\Api\Application\Nests;
 
-use Pterodactyl\Models\Nest;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Transformers\Api\Application\NestTransformer;
-use Pterodactyl\Http\Requests\Api\Application\Nests\GetNestsRequest;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Models\Nest;
+use Kriegerhost\Contracts\Repository\NestRepositoryInterface;
+use Kriegerhost\Transformers\Api\Application\NestTransformer;
+use Kriegerhost\Http\Requests\Api\Application\Nests\GetNestsRequest;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
 
 class NestController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\NestRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NestRepositoryInterface
      */
     private $repository;
 

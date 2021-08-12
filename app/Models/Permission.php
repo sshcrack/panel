@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 use Illuminate\Support\Collection;
 
@@ -107,7 +107,7 @@ class Permission extends Model
      *
      * @var array
      *
-     * @see \Pterodactyl\Models\Permission::permissions()
+     * @see \Kriegerhost\Models\Permission::permissions()
      */
     protected static $permissions = [
         'websocket' => [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 use Illuminate\Validation\Rules\NotIn;
 
@@ -13,9 +13,9 @@ use Illuminate\Validation\Rules\NotIn;
  * @property string $target
  * @property bool $read_only
  * @property bool $user_mountable
- * @property \Pterodactyl\Models\Egg[]|\Illuminate\Database\Eloquent\Collection $eggs
- * @property \Pterodactyl\Models\Node[]|\Illuminate\Database\Eloquent\Collection $nodes
- * @property \Pterodactyl\Models\Server[]|\Illuminate\Database\Eloquent\Collection $servers
+ * @property \Kriegerhost\Models\Egg[]|\Illuminate\Database\Eloquent\Collection $eggs
+ * @property \Kriegerhost\Models\Node[]|\Illuminate\Database\Eloquent\Collection $nodes
+ * @property \Kriegerhost\Models\Server[]|\Illuminate\Database\Eloquent\Collection $servers
  */
 class Mount extends Model
 {
@@ -91,8 +91,8 @@ class Mount extends Model
      * @var string[]
      */
     public static $invalidSourcePaths = [
-        '/etc/pterodactyl',
-        '/var/lib/pterodactyl/volumes',
+        '/etc/kriegerhost',
+        '/var/lib/kriegerhost/volumes',
         '/srv/daemon-data',
     ];
 

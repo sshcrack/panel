@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Client\Servers\Schedules;
+namespace Kriegerhost\Http\Requests\Api\Client\Servers\Schedules;
 
-use Pterodactyl\Models\Schedule;
-use Pterodactyl\Models\Permission;
+use Kriegerhost\Models\Schedule;
+use Kriegerhost\Models\Permission;
 
 class StoreScheduleRequest extends ViewScheduleRequest
 {

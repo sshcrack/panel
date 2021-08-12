@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Client\Servers\Databases;
+namespace Kriegerhost\Http\Requests\Api\Client\Servers\Databases;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Contracts\Http\ClientPermissionsRequest;
-use Pterodactyl\Http\Requests\Api\Client\ClientApiRequest;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\Permission;
+use Kriegerhost\Contracts\Http\ClientPermissionsRequest;
+use Kriegerhost\Http\Requests\Api\Client\ClientApiRequest;
 
 class DeleteDatabaseRequest extends ClientApiRequest implements ClientPermissionsRequest
 {

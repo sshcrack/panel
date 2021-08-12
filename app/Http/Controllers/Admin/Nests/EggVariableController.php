@@ -1,25 +1,25 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Http\Controllers\Admin\Nests;
+namespace Kriegerhost\Http\Controllers\Admin\Nests;
 
 use Illuminate\View\View;
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\EggVariable;
+use Kriegerhost\Models\Egg;
+use Kriegerhost\Models\EggVariable;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Services\Eggs\Variables\VariableUpdateService;
-use Pterodactyl\Http\Requests\Admin\Egg\EggVariableFormRequest;
-use Pterodactyl\Services\Eggs\Variables\VariableCreationService;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Services\Eggs\Variables\VariableUpdateService;
+use Kriegerhost\Http\Requests\Admin\Egg\EggVariableFormRequest;
+use Kriegerhost\Services\Eggs\Variables\VariableCreationService;
+use Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface;
 
 class EggVariableController extends Controller
 {
@@ -29,22 +29,22 @@ class EggVariableController extends Controller
     protected $alert;
 
     /**
-     * @var \Pterodactyl\Services\Eggs\Variables\VariableCreationService
+     * @var \Kriegerhost\Services\Eggs\Variables\VariableCreationService
      */
     protected $creationService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggRepositoryInterface
      */
     protected $repository;
 
     /**
-     * @var \Pterodactyl\Services\Eggs\Variables\VariableUpdateService
+     * @var \Kriegerhost\Services\Eggs\Variables\VariableUpdateService
      */
     protected $updateService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface
      */
     protected $variableRepository;
 
@@ -68,7 +68,7 @@ class EggVariableController extends Controller
     /**
      * Handle request to view the variables attached to an Egg.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function view(int $egg): View
     {
@@ -80,9 +80,9 @@ class EggVariableController extends Controller
     /**
      * Handle a request to create a new Egg variable.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\BadValidationRuleException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\Variable\BadValidationRuleException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\Variable\ReservedVariableNameException
      */
     public function store(EggVariableFormRequest $request, Egg $egg): RedirectResponse
     {
@@ -95,10 +95,10 @@ class EggVariableController extends Controller
     /**
      * Handle a request to update an existing Egg variable.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\Variable\ReservedVariableNameException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\Variable\ReservedVariableNameException
      */
     public function update(EggVariableFormRequest $request, Egg $egg, EggVariable $variable): RedirectResponse
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 use Illuminate\Container\Container;
 use Znck\Eloquent\Traits\BelongsToThrough;
-use Pterodactyl\Contracts\Extensions\HashidsInterface;
+use Kriegerhost\Contracts\Extensions\HashidsInterface;
 
 /**
  * @property int $id
@@ -18,8 +18,8 @@ use Pterodactyl\Contracts\Extensions\HashidsInterface;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $hashid
- * @property \Pterodactyl\Models\Schedule $schedule
- * @property \Pterodactyl\Models\Server $server
+ * @property \Kriegerhost\Models\Schedule $schedule
+ * @property \Kriegerhost\Models\Server $server
  */
 class Task extends Model
 {
@@ -32,7 +32,7 @@ class Task extends Model
     public const RESOURCE_NAME = 'schedule_task';
 
     /**
-     * The default actions that can exist for a task in Pterodactyl.
+     * The default actions that can exist for a task in Kriegerhost.
      */
     public const ACTION_POWER = 'power';
     public const ACTION_COMMAND = 'command';

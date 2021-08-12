@@ -1,19 +1,19 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Console\Commands\Environment;
+namespace Kriegerhost\Console\Commands\Environment;
 
 use PDOException;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\DatabaseManager;
-use Pterodactyl\Traits\Commands\EnvironmentWriterTrait;
+use Kriegerhost\Traits\Commands\EnvironmentWriterTrait;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 class DatabaseSettingsCommand extends Command
@@ -72,7 +72,7 @@ class DatabaseSettingsCommand extends Command
      *
      * @return int
      *
-     * @throws \Pterodactyl\Exceptions\PterodactylException
+     * @throws \Kriegerhost\Exceptions\KriegerhostException
      */
     public function handle()
     {
@@ -95,7 +95,7 @@ class DatabaseSettingsCommand extends Command
         $this->output->note(trans('command/messages.environment.database.username_warning'));
         $this->variables['DB_USERNAME'] = $this->option('username') ?? $this->ask(
             trans('command/messages.environment.database.username'),
-            $this->config->get('database.connections.mysql.username', 'pterodactyl')
+            $this->config->get('database.connections.mysql.username', 'kriegerhost')
         );
 
         $askForMySQLPassword = true;
@@ -115,7 +115,7 @@ class DatabaseSettingsCommand extends Command
             $this->output->error(trans('command/messages.environment.database.creds_not_saved'));
 
             if ($this->confirm(trans('command/messages.environment.database.try_again'))) {
-                $this->database->disconnect('_pterodactyl_command_test');
+                $this->database->disconnect('_kriegerhost_command_test');
 
                 return $this->handle();
             }
@@ -135,7 +135,7 @@ class DatabaseSettingsCommand extends Command
      */
     private function testMySQLConnection()
     {
-        $this->config->set('database.connections._pterodactyl_command_test', [
+        $this->config->set('database.connections._kriegerhost_command_test', [
             'driver' => 'mysql',
             'host' => $this->variables['DB_HOST'],
             'port' => $this->variables['DB_PORT'],
@@ -147,6 +147,6 @@ class DatabaseSettingsCommand extends Command
             'strict' => true,
         ]);
 
-        $this->database->connection('_pterodactyl_command_test')->getPdo();
+        $this->database->connection('_kriegerhost_command_test')->getPdo();
     }
 }

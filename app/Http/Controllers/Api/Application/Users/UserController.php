@@ -1,41 +1,41 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Users;
+namespace Kriegerhost\Http\Controllers\Api\Application\Users;
 
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
-use Pterodactyl\Services\Users\UserUpdateService;
-use Pterodactyl\Services\Users\UserCreationService;
-use Pterodactyl\Services\Users\UserDeletionService;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Transformers\Api\Application\UserTransformer;
-use Pterodactyl\Http\Requests\Api\Application\Users\GetUsersRequest;
-use Pterodactyl\Http\Requests\Api\Application\Users\StoreUserRequest;
-use Pterodactyl\Http\Requests\Api\Application\Users\DeleteUserRequest;
-use Pterodactyl\Http\Requests\Api\Application\Users\UpdateUserRequest;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Services\Users\UserUpdateService;
+use Kriegerhost\Services\Users\UserCreationService;
+use Kriegerhost\Services\Users\UserDeletionService;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Transformers\Api\Application\UserTransformer;
+use Kriegerhost\Http\Requests\Api\Application\Users\GetUsersRequest;
+use Kriegerhost\Http\Requests\Api\Application\Users\StoreUserRequest;
+use Kriegerhost\Http\Requests\Api\Application\Users\DeleteUserRequest;
+use Kriegerhost\Http\Requests\Api\Application\Users\UpdateUserRequest;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
 
 class UserController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Services\Users\UserCreationService
+     * @var \Kriegerhost\Services\Users\UserCreationService
      */
     private $creationService;
 
     /**
-     * @var \Pterodactyl\Services\Users\UserDeletionService
+     * @var \Kriegerhost\Services\Users\UserDeletionService
      */
     private $deletionService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\UserRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\UserRepositoryInterface
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Users\UserUpdateService
+     * @var \Kriegerhost\Services\Users\UserUpdateService
      */
     private $updateService;
 
@@ -92,8 +92,8 @@ class UserController extends ApplicationApiController
      * Revocation errors are returned under the 'revocation_errors' key in the response
      * meta. If there are no errors this is an empty array.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UpdateUserRequest $request, User $user): array
     {
@@ -111,7 +111,7 @@ class UserController extends ApplicationApiController
      * header on successful creation.
      *
      * @throws \Exception
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function store(StoreUserRequest $request): JsonResponse
     {
@@ -131,7 +131,7 @@ class UserController extends ApplicationApiController
      * Handle a request to delete a user from the Panel. Returns a HTTP/204 response
      * on successful deletion.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function delete(DeleteUserRequest $request, User $user): JsonResponse
     {

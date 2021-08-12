@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -20,8 +20,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property \Carbon\CarbonImmutable|null $deleted_at
- * @property \Pterodactyl\Models\Server $server
- * @property \Pterodactyl\Models\AuditLog[] $audits
+ * @property \Kriegerhost\Models\Server $server
+ * @property \Kriegerhost\Models\AuditLog[] $audits
  */
 class Backup extends Model
 {

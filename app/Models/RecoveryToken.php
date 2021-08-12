@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 /**
  * @property int $id
  * @property int $user_id
  * @property string $token
  * @property \Carbon\CarbonImmutable $created_at
- * @property \Pterodactyl\Models\User $user
+ * @property \Kriegerhost\Models\User $user
  */
 class RecoveryToken extends Model
 {

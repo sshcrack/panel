@@ -1,21 +1,21 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Kriegerhost\Http\Controllers\Admin;
 
 use Exception;
 use PDOException;
 use Illuminate\View\View;
-use Pterodactyl\Models\DatabaseHost;
+use Kriegerhost\Models\DatabaseHost;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Services\Databases\Hosts\HostUpdateService;
-use Pterodactyl\Http\Requests\Admin\DatabaseHostFormRequest;
-use Pterodactyl\Services\Databases\Hosts\HostCreationService;
-use Pterodactyl\Services\Databases\Hosts\HostDeletionService;
-use Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
-use Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Services\Databases\Hosts\HostUpdateService;
+use Kriegerhost\Http\Requests\Admin\DatabaseHostFormRequest;
+use Kriegerhost\Services\Databases\Hosts\HostCreationService;
+use Kriegerhost\Services\Databases\Hosts\HostDeletionService;
+use Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface;
 
 class DatabaseController extends Controller
 {
@@ -25,32 +25,32 @@ class DatabaseController extends Controller
     private $alert;
 
     /**
-     * @var \Pterodactyl\Services\Databases\Hosts\HostCreationService
+     * @var \Kriegerhost\Services\Databases\Hosts\HostCreationService
      */
     private $creationService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface
      */
     private $databaseRepository;
 
     /**
-     * @var \Pterodactyl\Services\Databases\Hosts\HostDeletionService
+     * @var \Kriegerhost\Services\Databases\Hosts\HostDeletionService
      */
     private $deletionService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\LocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\LocationRepositoryInterface
      */
     private $locationRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Databases\Hosts\HostUpdateService
+     * @var \Kriegerhost\Services\Databases\Hosts\HostUpdateService
      */
     private $updateService;
 
@@ -89,7 +89,7 @@ class DatabaseController extends Controller
     /**
      * Display database host to user.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function view(int $host): View
     {
@@ -158,7 +158,7 @@ class DatabaseController extends Controller
     /**
      * Handle request to delete a database host.
      *
-     * @throws \Pterodactyl\Exceptions\Service\HasActiveServersException
+     * @throws \Kriegerhost\Exceptions\Service\HasActiveServersException
      */
     public function delete(int $host): RedirectResponse
     {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Services\Acl\Api;
+namespace Kriegerhost\Services\Acl\Api;
 
 use ReflectionClass;
-use Pterodactyl\Models\ApiKey;
+use Kriegerhost\Models\ApiKey;
 
 class AdminAcl
 {

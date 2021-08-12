@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Services\Schedules;
+namespace Kriegerhost\Services\Schedules;
 
 use Exception;
-use Pterodactyl\Models\Schedule;
+use Kriegerhost\Models\Schedule;
 use Illuminate\Contracts\Bus\Dispatcher;
-use Pterodactyl\Jobs\Schedule\RunTaskJob;
+use Kriegerhost\Jobs\Schedule\RunTaskJob;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class ProcessScheduleService
 {
@@ -24,7 +24,7 @@ class ProcessScheduleService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $serverRepository;
 
@@ -45,7 +45,7 @@ class ProcessScheduleService
      */
     public function handle(Schedule $schedule, bool $now = false)
     {
-        /** @var \Pterodactyl\Models\Task $task */
+        /** @var \Kriegerhost\Models\Task $task */
         $task = $schedule->tasks()->orderBy('sequence_id')->first();
 
         if (is_null($task)) {
@@ -93,7 +93,7 @@ class ProcessScheduleService
             // When using dispatchNow the RunTaskJob::failed() function is not called automatically
             // so we need to manually trigger it and then continue with the exception throw.
             //
-            // @see https://github.com/pterodactyl/panel/issues/2550
+            // @see https://github.com/kriegerhost/panel/issues/2550
             try {
                 $this->dispatcher->dispatchNow($job);
             } catch (Exception $exception) {

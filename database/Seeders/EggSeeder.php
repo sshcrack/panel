@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use Pterodactyl\Models\Nest;
+use Kriegerhost\Models\Nest;
 use Illuminate\Database\Seeder;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Filesystem\Filesystem;
-use Pterodactyl\Services\Eggs\Sharing\EggImporterService;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Services\Eggs\Sharing\EggUpdateImporterService;
+use Kriegerhost\Services\Eggs\Sharing\EggImporterService;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Contracts\Repository\NestRepositoryInterface;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Services\Eggs\Sharing\EggUpdateImporterService;
 
 class EggSeeder extends Seeder
 {
@@ -21,22 +21,22 @@ class EggSeeder extends Seeder
     private $filesystem;
 
     /**
-     * @var \Pterodactyl\Services\Eggs\Sharing\EggImporterService
+     * @var \Kriegerhost\Services\Eggs\Sharing\EggImporterService
      */
     private $importerService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\NestRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NestRepositoryInterface
      */
     private $nestRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggRepositoryInterface
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Eggs\Sharing\EggUpdateImporterService
+     * @var \Kriegerhost\Services\Eggs\Sharing\EggUpdateImporterService
      */
     private $updateImporterService;
 
@@ -83,12 +83,12 @@ class EggSeeder extends Seeder
     /**
      * Find the nest that these eggs should be attached to.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     private function findMatchingNest(string $nestName): Nest
     {
         return $this->nestRepository->findFirstWhere([
-            ['author', '=', 'support@pterodactyl.io'],
+            ['author', '=', 'support@krieger.host'],
             ['name', '=', $nestName],
         ]);
     }

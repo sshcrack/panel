@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Repositories\Eloquent;
+namespace Kriegerhost\Repositories\Eloquent;
 
-use Pterodactyl\Models\Task;
+use Kriegerhost\Models\Task;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Pterodactyl\Contracts\Repository\TaskRepositoryInterface;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Contracts\Repository\TaskRepositoryInterface;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
 
 class TaskRepository extends EloquentRepository implements TaskRepositoryInterface
 {
@@ -22,7 +22,7 @@ class TaskRepository extends EloquentRepository implements TaskRepositoryInterfa
     /**
      * Get a task and the server relationship for that task.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function getTaskForJobProcess(int $id): Task
     {
@@ -36,7 +36,7 @@ class TaskRepository extends EloquentRepository implements TaskRepositoryInterfa
     /**
      * Returns the next task in a schedule.
      *
-     * @return \Pterodactyl\Models\Task|null
+     * @return \Kriegerhost\Models\Task|null
      */
     public function getNextTask(int $schedule, int $index)
     {

@@ -1,24 +1,24 @@
 <?php
 
-namespace Pterodactyl\Services\Allocations;
+namespace Kriegerhost\Services\Allocations;
 
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Exceptions\Service\Allocation\AutoAllocationNotEnabledException;
-use Pterodactyl\Exceptions\Service\Allocation\NoAutoAllocationSpaceAvailableException;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Exceptions\Service\Allocation\AutoAllocationNotEnabledException;
+use Kriegerhost\Exceptions\Service\Allocation\NoAutoAllocationSpaceAvailableException;
 
 class FindAssignableAllocationService
 {
     /**
-     * @var \Pterodactyl\Services\Allocations\AssignmentService
+     * @var \Kriegerhost\Services\Allocations\AssignmentService
      */
     private $service;
 
     /**
      * FindAssignableAllocationService constructor.
      *
-     * @param \Pterodactyl\Services\Allocations\AssignmentService $service
+     * @param \Kriegerhost\Services\Allocations\AssignmentService $service
      */
     public function __construct(AssignmentService $service)
     {
@@ -30,24 +30,24 @@ class FindAssignableAllocationService
      * no allocation can be found, a new one will be created with a random port between the defined
      * range from the configuration.
      *
-     * @return \Pterodactyl\Models\Allocation
+     * @return \Kriegerhost\Models\Allocation
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\CidrOutOfRangeException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\InvalidPortMappingException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\PortOutOfRangeException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\TooManyPortsInRangeException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\CidrOutOfRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\InvalidPortMappingException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\PortOutOfRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\TooManyPortsInRangeException
      */
     public function handle(Server $server)
     {
-        if (!config('pterodactyl.client_features.allocations.enabled')) {
+        if (!config('kriegerhost.client_features.allocations.enabled')) {
             throw new AutoAllocationNotEnabledException();
         }
 
         // Attempt to find a given available allocation for a server. If one cannot be found
         // we will fall back to attempting to create a new allocation that can be used for the
         // server.
-        /** @var \Pterodactyl\Models\Allocation|null $allocation */
+        /** @var \Kriegerhost\Models\Allocation|null $allocation */
         $allocation = $server->node->allocations()
             ->where('ip', $server->allocation->ip)
             ->whereNull('server_id')
@@ -66,16 +66,16 @@ class FindAssignableAllocationService
      * in the settings. If there are no matches in that range, or something is wrong with the
      * range information provided an exception will be raised.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\CidrOutOfRangeException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\InvalidPortMappingException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\PortOutOfRangeException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\TooManyPortsInRangeException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\CidrOutOfRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\InvalidPortMappingException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\PortOutOfRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\TooManyPortsInRangeException
      */
     protected function createNewAllocation(Server $server): Allocation
     {
-        $start = config('pterodactyl.client_features.allocations.range_start', null);
-        $end = config('pterodactyl.client_features.allocations.range_end', null);
+        $start = config('kriegerhost.client_features.allocations.range_start', null);
+        $end = config('kriegerhost.client_features.allocations.range_end', null);
 
         if (!$start || !$end) {
             throw new NoAutoAllocationSpaceAvailableException();
@@ -110,7 +110,7 @@ class FindAssignableAllocationService
             'allocation_ports' => [$port],
         ]);
 
-        /** @var \Pterodactyl\Models\Allocation $allocation */
+        /** @var \Kriegerhost\Models\Allocation $allocation */
         $allocation = $server->node->allocations()
             ->where('ip', $server->allocation->ip)
             ->where('port', $port)

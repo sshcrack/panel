@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser\Pages\Dashboard;
+namespace Kriegerhost\Tests\Browser\Pages\Dashboard;
 
-use Pterodactyl\Tests\Browser\Pages\BasePage;
+use Kriegerhost\Tests\Browser\Pages\BasePage;
 
 class AccountPage extends BasePage
 {

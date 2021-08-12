@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Databases;
+namespace Kriegerhost\Tests\Integration\Services\Databases;
 
 use Mockery;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use InvalidArgumentException;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\DatabaseHost;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
-use Pterodactyl\Services\Databases\DeployServerDatabaseService;
-use Pterodactyl\Exceptions\Service\Database\NoSuitableDatabaseHostException;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\DatabaseHost;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Services\Databases\DatabaseManagementService;
+use Kriegerhost\Services\Databases\DeployServerDatabaseService;
+use Kriegerhost\Exceptions\Service\Database\NoSuitableDatabaseHostException;
 
 class DeployServerDatabaseServiceTest extends IntegrationTestCase
 {
@@ -33,7 +33,7 @@ class DeployServerDatabaseServiceTest extends IntegrationTestCase
      */
     protected function tearDown(): void
     {
-        config()->set('pterodactyl.client_features.databases.allow_random', true);
+        config()->set('kriegerhost.client_features.databases.allow_random', true);
 
         Database::query()->delete();
         DatabaseHost::query()->delete();
@@ -67,7 +67,7 @@ class DeployServerDatabaseServiceTest extends IntegrationTestCase
         $node = Node::factory()->create(['location_id' => $server->location->id]);
         DatabaseHost::factory()->create(['node_id' => $node->id]);
 
-        config()->set('pterodactyl.client_features.databases.allow_random', false);
+        config()->set('kriegerhost.client_features.databases.allow_random', false);
 
         $this->expectException(NoSuitableDatabaseHostException::class);
 
@@ -155,7 +155,7 @@ class DeployServerDatabaseServiceTest extends IntegrationTestCase
     }
 
     /**
-     * @return \Pterodactyl\Services\Databases\DeployServerDatabaseService
+     * @return \Kriegerhost\Services\Databases\DeployServerDatabaseService
      */
     private function getService()
     {

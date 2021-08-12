@@ -1,27 +1,27 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Services\Servers\ReinstallServerService;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Services\Servers\ReinstallServerService;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Settings\RenameServerRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Settings\SetDockerImageRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Settings\ReinstallServerRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Settings\RenameServerRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Settings\SetDockerImageRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Settings\ReinstallServerRequest;
 
 class SettingsController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ReinstallServerService
+     * @var \Kriegerhost\Services\Servers\ReinstallServerService
      */
     private $reinstallServerService;
 
@@ -43,8 +43,8 @@ class SettingsController extends ClientApiController
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function rename(RenameServerRequest $request, Server $server)
     {

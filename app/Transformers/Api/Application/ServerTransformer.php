@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Application;
+namespace Kriegerhost\Transformers\Api\Application;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Services\Servers\EnvironmentService;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Services\Servers\EnvironmentService;
 
 class ServerTransformer extends BaseTransformer
 {
     /**
-     * @var \Pterodactyl\Services\Servers\EnvironmentService
+     * @var \Kriegerhost\Services\Servers\EnvironmentService
      */
     private $environmentService;
 
@@ -97,7 +97,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeAllocations(Server $server)
     {
@@ -115,7 +115,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeSubusers(Server $server)
     {
@@ -133,7 +133,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Item|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeUser(Server $server)
     {
@@ -151,7 +151,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Item|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeNest(Server $server)
     {
@@ -169,7 +169,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Item|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeEgg(Server $server)
     {
@@ -187,7 +187,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeVariables(Server $server)
     {
@@ -205,7 +205,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Item|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeLocation(Server $server)
     {
@@ -223,7 +223,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Item|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeNode(Server $server)
     {
@@ -241,7 +241,7 @@ class ServerTransformer extends BaseTransformer
      *
      * @return \League\Fractal\Resource\Collection|\League\Fractal\Resource\NullResource
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeDatabases(Server $server)
     {

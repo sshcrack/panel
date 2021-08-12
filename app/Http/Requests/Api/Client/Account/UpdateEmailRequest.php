@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Client\Account;
+namespace Kriegerhost\Http\Requests\Api\Client\Account;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Http\Requests\Api\Client\ClientApiRequest;
-use Pterodactyl\Exceptions\Http\Base\InvalidPasswordProvidedException;
+use Kriegerhost\Models\User;
+use Kriegerhost\Http\Requests\Api\Client\ClientApiRequest;
+use Kriegerhost\Exceptions\Http\Base\InvalidPasswordProvidedException;
 
 class UpdateEmailRequest extends ClientApiRequest
 {
     /**
-     * @throws \Pterodactyl\Exceptions\Http\Base\InvalidPasswordProvidedException
+     * @throws \Kriegerhost\Exceptions\Http\Base\InvalidPasswordProvidedException
      */
     public function authorize(): bool
     {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Services\Helpers;
+namespace Kriegerhost\Services\Helpers;
 
 use Exception;
 use GuzzleHttp\Client;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
-use Pterodactyl\Exceptions\Service\Helper\CdnVersionFetchingException;
+use Kriegerhost\Exceptions\Service\Helper\CdnVersionFetchingException;
 
 class SoftwareVersionService
 {
-    public const VERSION_CACHE_KEY = 'pterodactyl:versioning_data';
+    public const VERSION_CACHE_KEY = 'kriegerhost:versioning_data';
 
     /**
      * @var array
@@ -68,7 +68,7 @@ class SoftwareVersionService
      */
     public function getDiscord()
     {
-        return Arr::get(self::$result, 'discord') ?? 'https://pterodactyl.io/discord';
+        return Arr::get(self::$result, 'discord') ?? 'https://krieger.host/discord';
     }
 
     /**
@@ -78,7 +78,7 @@ class SoftwareVersionService
      */
     public function getDonations()
     {
-        return Arr::get(self::$result, 'donations') ?? 'https://paypal.me/PterodactylSoftware';
+        return Arr::get(self::$result, 'donations') ?? 'https://paypal.me/KriegerhostSoftware';
     }
 
     /**
@@ -118,9 +118,9 @@ class SoftwareVersionService
      */
     protected function cacheVersionData()
     {
-        return $this->cache->remember(self::VERSION_CACHE_KEY, CarbonImmutable::now()->addMinutes(config()->get('pterodactyl.cdn.cache_time', 60)), function () {
+        return $this->cache->remember(self::VERSION_CACHE_KEY, CarbonImmutable::now()->addMinutes(config()->get('kriegerhost.cdn.cache_time', 60)), function () {
             try {
-                $response = $this->client->request('GET', config()->get('pterodactyl.cdn.url'));
+                $response = $this->client->request('GET', config()->get('kriegerhost.cdn.url'));
 
                 if ($response->getStatusCode() === 200) {
                     return json_decode($response->getBody(), true);

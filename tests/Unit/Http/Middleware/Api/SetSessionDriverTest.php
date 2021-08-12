@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Tests\Unit\Http\Middleware\Api;
+namespace Kriegerhost\Tests\Unit\Http\Middleware\Api;
 
 use Mockery as m;
 use Illuminate\Contracts\Config\Repository;
-use Pterodactyl\Http\Middleware\Api\SetSessionDriver;
-use Pterodactyl\Tests\Unit\Http\Middleware\MiddlewareTestCase;
+use Kriegerhost\Http\Middleware\Api\SetSessionDriver;
+use Kriegerhost\Tests\Unit\Http\Middleware\MiddlewareTestCase;
 
 class SetSessionDriverTest extends MiddlewareTestCase
 {

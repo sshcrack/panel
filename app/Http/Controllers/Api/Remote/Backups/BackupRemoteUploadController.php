@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Remote\Backups;
+namespace Kriegerhost\Http\Controllers\Api\Remote\Backups;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Backup;
+use Kriegerhost\Models\Backup;
 use Illuminate\Http\JsonResponse;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Extensions\Backups\BackupManager;
-use Pterodactyl\Repositories\Eloquent\BackupRepository;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Extensions\Backups\BackupManager;
+use Kriegerhost\Repositories\Eloquent\BackupRepository;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -18,12 +18,12 @@ class BackupRemoteUploadController extends Controller
     public const PART_SIZE = 5 * 1024 * 1024 * 1024;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\BackupRepository
+     * @var \Kriegerhost\Repositories\Eloquent\BackupRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Extensions\Backups\BackupManager
+     * @var \Kriegerhost\Extensions\Backups\BackupManager
      */
     private $backupManager;
 
@@ -53,7 +53,7 @@ class BackupRemoteUploadController extends Controller
             throw new BadRequestHttpException('A non-empty "size" query parameter must be provided.');
         }
 
-        /** @var \Pterodactyl\Models\Backup $backup */
+        /** @var \Kriegerhost\Models\Backup $backup */
         $backup = Backup::query()->where('uuid', $backup)->firstOrFail();
 
         // Prevent backups that have already been completed from trying to

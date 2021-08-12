@@ -17,7 +17,7 @@ import { setupInterceptors } from '@/api/interceptors';
 
 interface ExtendedWindow extends Window {
     SiteConfiguration?: SiteSettings;
-    PterodactylUser?: {
+    KriegerhostUser?: {
         uuid: string;
         username: string;
         email: string;
@@ -44,17 +44,17 @@ const Pageview = () => {
 };
 
 const App = () => {
-    const { PterodactylUser, SiteConfiguration } = (window as ExtendedWindow);
-    if (PterodactylUser && !store.getState().user.data) {
+    const { KriegerhostUser, SiteConfiguration } = (window as ExtendedWindow);
+    if (KriegerhostUser && !store.getState().user.data) {
         store.getActions().user.setUserData({
-            uuid: PterodactylUser.uuid,
-            username: PterodactylUser.username,
-            email: PterodactylUser.email,
-            language: PterodactylUser.language,
-            rootAdmin: PterodactylUser.root_admin,
-            useTotp: PterodactylUser.use_totp,
-            createdAt: new Date(PterodactylUser.created_at),
-            updatedAt: new Date(PterodactylUser.updated_at),
+            uuid: KriegerhostUser.uuid,
+            username: KriegerhostUser.username,
+            email: KriegerhostUser.email,
+            language: KriegerhostUser.language,
+            rootAdmin: KriegerhostUser.root_admin,
+            useTotp: KriegerhostUser.use_totp,
+            createdAt: new Date(KriegerhostUser.created_at),
+            updatedAt: new Date(KriegerhostUser.updated_at),
         });
     }
 

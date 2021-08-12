@@ -1,20 +1,20 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Services\Locations;
+namespace Kriegerhost\Services\Locations;
 
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
 
 class LocationCreationService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\LocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\LocationRepositoryInterface
      */
     protected $repository;
 
@@ -29,9 +29,9 @@ class LocationCreationService
     /**
      * Create a new location.
      *
-     * @return \Pterodactyl\Models\Location
+     * @return \Kriegerhost\Models\Location
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function handle(array $data)
     {

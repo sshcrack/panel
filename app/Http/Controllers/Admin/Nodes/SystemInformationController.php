@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Nodes;
+namespace Kriegerhost\Http\Controllers\Admin\Nodes;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Repositories\Wings\DaemonConfigurationRepository;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Repositories\Wings\DaemonConfigurationRepository;
 
 class SystemInformationController extends Controller
 {
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonConfigurationRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonConfigurationRepository
      */
     private $repository;
 
@@ -29,7 +29,7 @@ class SystemInformationController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function __invoke(Request $request, Node $node)
     {

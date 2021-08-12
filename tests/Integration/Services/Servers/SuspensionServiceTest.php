@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Servers;
+namespace Kriegerhost\Tests\Integration\Services\Servers;
 
 use Mockery;
 use InvalidArgumentException;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Servers\SuspensionService;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Services\Servers\SuspensionService;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
 
 class SuspensionServiceTest extends IntegrationTestCase
 {
@@ -72,7 +72,7 @@ class SuspensionServiceTest extends IntegrationTestCase
     }
 
     /**
-     * @return \Pterodactyl\Services\Servers\SuspensionService
+     * @return \Kriegerhost\Services\Servers\SuspensionService
      */
     private function getService()
     {

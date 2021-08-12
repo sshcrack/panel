@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Tests\Unit\Services\Acl\Api;
+namespace Kriegerhost\Tests\Unit\Services\Acl\Api;
 
-use Pterodactyl\Models\ApiKey;
-use Pterodactyl\Tests\TestCase;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Models\ApiKey;
+use Kriegerhost\Tests\TestCase;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
 
 class AdminAclTest extends TestCase
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware\Api;
+namespace Kriegerhost\Http\Middleware\Api;
 
 use Closure;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\ApiKey;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\ApiKey;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Contracts\Repository\ApiKeyRepositoryInterface;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Contracts\Repository\ApiKeyRepositoryInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AuthenticateKey
@@ -27,7 +27,7 @@ class AuthenticateKey
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ApiKeyRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ApiKeyRepositoryInterface
      */
     private $repository;
 
@@ -47,8 +47,8 @@ class AuthenticateKey
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function handle(Request $request, Closure $next, int $keyType)
     {
@@ -78,8 +78,8 @@ class AuthenticateKey
     /**
      * Authenticate an API key.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     protected function authenticateApiKey(string $key, int $keyType): ApiKey
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Tests\Traits\Http;
+namespace Kriegerhost\Tests\Traits\Http;
 
 use Mockery as m;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\ParameterBag;
 

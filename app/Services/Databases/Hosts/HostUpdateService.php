@@ -1,20 +1,20 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Services\Databases\Hosts;
+namespace Kriegerhost\Services\Databases\Hosts;
 
-use Pterodactyl\Models\DatabaseHost;
+use Kriegerhost\Models\DatabaseHost;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Extensions\DynamicDatabaseConnection;
-use Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface;
+use Kriegerhost\Extensions\DynamicDatabaseConnection;
+use Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface;
 
 class HostUpdateService
 {
@@ -29,7 +29,7 @@ class HostUpdateService
     private $databaseManager;
 
     /**
-     * @var \Pterodactyl\Extensions\DynamicDatabaseConnection
+     * @var \Kriegerhost\Extensions\DynamicDatabaseConnection
      */
     private $dynamic;
 
@@ -39,7 +39,7 @@ class HostUpdateService
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface
      */
     private $repository;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Notifications;
+namespace Kriegerhost\Notifications;
 
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -23,7 +23,7 @@ class AccountCreated extends Notification implements ShouldQueue
     /**
      * The user model for the created user.
      *
-     * @var \Pterodactyl\Models\User
+     * @var \Kriegerhost\Models\User
      */
     public $user;
 

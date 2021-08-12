@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client;
+namespace Kriegerhost\Http\Controllers\Api\Client;
 
 use Webmozart\Assert\Assert;
 use Illuminate\Container\Container;
-use Pterodactyl\Transformers\Daemon\BaseDaemonTransformer;
-use Pterodactyl\Transformers\Api\Client\BaseClientTransformer;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Transformers\Daemon\BaseDaemonTransformer;
+use Kriegerhost\Transformers\Api\Client\BaseClientTransformer;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
 
 abstract class ClientApiController extends ApplicationApiController
 {
@@ -45,11 +45,11 @@ abstract class ClientApiController extends ApplicationApiController
     /**
      * Return an instance of an application transformer.
      *
-     * @return \Pterodactyl\Transformers\Api\Client\BaseClientTransformer
+     * @return \Kriegerhost\Transformers\Api\Client\BaseClientTransformer
      */
     public function getTransformer(string $abstract)
     {
-        /** @var \Pterodactyl\Transformers\Api\Client\BaseClientTransformer $transformer */
+        /** @var \Kriegerhost\Transformers\Api\Client\BaseClientTransformer $transformer */
         $transformer = Container::getInstance()->make($abstract);
         Assert::isInstanceOfAny($transformer, [
             BaseClientTransformer::class,

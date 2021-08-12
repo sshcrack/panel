@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Services\Deployment;
+namespace Kriegerhost\Services\Deployment;
 
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Services\Allocations\AssignmentService;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Deployment\NoViableAllocationException;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Services\Allocations\AssignmentService;
+use Kriegerhost\Contracts\Repository\AllocationRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Deployment\NoViableAllocationException;
 
 class AllocationSelectionService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\AllocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\AllocationRepositoryInterface
      */
     private $repository;
 
@@ -72,7 +72,7 @@ class AllocationSelectionService
      *
      * @return $this
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function setPorts(array $ports)
     {
@@ -101,7 +101,7 @@ class AllocationSelectionService
     /**
      * Return a single allocation that should be used as the default allocation for a server.
      *
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableAllocationException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableAllocationException
      */
     public function handle(): Allocation
     {

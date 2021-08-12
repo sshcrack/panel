@@ -1,19 +1,19 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Nests;
+namespace Kriegerhost\Http\Controllers\Api\Application\Nests;
 
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\Nest;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Transformers\Api\Application\EggTransformer;
-use Pterodactyl\Http\Requests\Api\Application\Nests\Eggs\GetEggRequest;
-use Pterodactyl\Http\Requests\Api\Application\Nests\Eggs\GetEggsRequest;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Models\Egg;
+use Kriegerhost\Models\Nest;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Transformers\Api\Application\EggTransformer;
+use Kriegerhost\Http\Requests\Api\Application\Nests\Eggs\GetEggRequest;
+use Kriegerhost\Http\Requests\Api\Application\Nests\Eggs\GetEggsRequest;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
 
 class EggController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggRepositoryInterface
      */
     private $repository;
 

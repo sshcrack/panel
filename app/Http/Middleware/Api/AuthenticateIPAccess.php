@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware\Api;
+namespace Kriegerhost\Http\Middleware\Api;
 
 use Closure;
 use IPTools\IP;

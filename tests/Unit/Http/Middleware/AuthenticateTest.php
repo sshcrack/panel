@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Tests\Unit\Http\Middleware;
+namespace Kriegerhost\Tests\Unit\Http\Middleware;
 
 use Illuminate\Auth\AuthenticationException;
-use Pterodactyl\Http\Middleware\Authenticate;
+use Kriegerhost\Http\Middleware\Authenticate;
 
 class AuthenticateTest extends MiddlewareTestCase
 {

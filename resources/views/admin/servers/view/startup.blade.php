@@ -1,4 +1,4 @@
-{{-- Pterodactyl - Panel --}}
+{{-- Kriegerhost - Panel --}}
 {{-- Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com> --}}
 
 {{-- This software is licensed under the terms of the MIT license. --}}
@@ -115,7 +115,7 @@
     $(document).ready(function () {
         $('#pEggId').select2({placeholder: 'Select a Nest Egg'}).on('change', function () {
             var selectedEgg = _.isNull($(this).val()) ? $(this).find('option').first().val() : $(this).val();
-            var parentChain = _.get(Pterodactyl.nests, $("#pNestId").val());
+            var parentChain = _.get(Kriegerhost.nests, $("#pNestId").val());
             var objectChain = _.get(parentChain, 'eggs.' + selectedEgg);
 
             $('#setDefaultImage').html(_.get(objectChain, 'docker_images.0', 'undefined'));
@@ -125,7 +125,7 @@
                 let opt = document.createElement('option');
                 opt.value = images[i];
                 opt.innerHTML = images[i];
-                if (objectChain.id === parseInt(Pterodactyl.server.egg_id) && Pterodactyl.server.image == opt.value) {
+                if (objectChain.id === parseInt(Kriegerhost.server.egg_id) && Kriegerhost.server.image == opt.value) {
                     opt.checked = true
                 }
                 $('#pDockerImage').append(opt);
@@ -134,9 +134,9 @@
                 $('#pDockerImageCustom').val('');
             })
 
-            if (objectChain.id === parseInt(Pterodactyl.server.egg_id)) {
-                if ($('#pDockerImage').val() != Pterodactyl.server.image) {
-                    $('#pDockerImageCustom').val(Pterodactyl.server.image);
+            if (objectChain.id === parseInt(Kriegerhost.server.egg_id)) {
+                if ($('#pDockerImage').val() != Kriegerhost.server.image) {
+                    $('#pDockerImageCustom').val(Kriegerhost.server.image);
                 }
             }
 
@@ -148,7 +148,7 @@
 
             $('#appendVariablesTo').html('');
             $.each(_.get(objectChain, 'variables', []), function (i, item) {
-                var setValue = _.get(Pterodactyl.server_variables, item.env_variable, item.default_value);
+                var setValue = _.get(Kriegerhost.server_variables, item.env_variable, item.default_value);
                 var isRequired = (item.required === 1) ? '<span class="label label-danger">Required</span> ' : '';
                 var dataAppend = ' \
                     <div class="col-xs-12"> \
@@ -172,7 +172,7 @@
 
         $('#pNestId').select2({placeholder: 'Select a Nest'}).on('change', function () {
             $('#pEggId').html('').select2({
-                data: $.map(_.get(Pterodactyl.nests, $(this).val() + '.eggs', []), function (item) {
+                data: $.map(_.get(Kriegerhost.nests, $(this).val() + '.eggs', []), function (item) {
                     return {
                         id: item.id,
                         text: item.name,
@@ -180,8 +180,8 @@
                 }),
             });
 
-            if (_.isObject(_.get(Pterodactyl.nests, $(this).val() + '.eggs.' + Pterodactyl.server.egg_id))) {
-                $('#pEggId').val(Pterodactyl.server.egg_id);
+            if (_.isObject(_.get(Kriegerhost.nests, $(this).val() + '.eggs.' + Kriegerhost.server.egg_id))) {
+                $('#pEggId').val(Kriegerhost.server.egg_id);
             }
 
             $('#pEggId').change();

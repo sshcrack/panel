@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Application\Nests;
+namespace Kriegerhost\Tests\Integration\Api\Application\Nests;
 
 use Illuminate\Support\Arr;
 use Illuminate\Http\Response;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Transformers\Api\Application\EggTransformer;
-use Pterodactyl\Tests\Integration\Api\Application\ApplicationApiIntegrationTestCase;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Transformers\Api\Application\EggTransformer;
+use Kriegerhost\Tests\Integration\Api\Application\ApplicationApiIntegrationTestCase;
 
 class EggControllerTest extends ApplicationApiIntegrationTestCase
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggRepositoryInterface
      */
     private $repository;
 

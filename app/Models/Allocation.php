@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 /**
  * @property int $id
@@ -14,8 +14,8 @@ namespace Pterodactyl\Models;
  * @property \Carbon\Carbon|null $updated_at
  * @property string $alias
  * @property bool $has_alias
- * @property \Pterodactyl\Models\Server|null $server
- * @property \Pterodactyl\Models\Node $node
+ * @property \Kriegerhost\Models\Server|null $server
+ * @property \Kriegerhost\Models\Node $node
  */
 class Allocation extends Model
 {

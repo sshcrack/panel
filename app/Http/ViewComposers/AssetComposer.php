@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Http\ViewComposers;
+namespace Kriegerhost\Http\ViewComposers;
 
 use Illuminate\View\View;
-use Pterodactyl\Services\Helpers\AssetHashService;
+use Kriegerhost\Services\Helpers\AssetHashService;
 
 class AssetComposer
 {
     /**
-     * @var \Pterodactyl\Services\Helpers\AssetHashService
+     * @var \Kriegerhost\Services\Helpers\AssetHashService
      */
     private $assetHashService;
 
@@ -27,7 +27,7 @@ class AssetComposer
     {
         $view->with('asset', $this->assetHashService);
         $view->with('siteConfiguration', [
-            'name' => config('app.name') ?? 'Pterodactyl',
+            'name' => config('app.name') ?? 'Kriegerhost',
             'locale' => config('app.locale') ?? 'en',
             'recaptcha' => [
                 'enabled' => config('recaptcha.enabled', false),

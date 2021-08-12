@@ -1,21 +1,21 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Remote\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Remote\Servers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Http\Requests\Api\Remote\InstallationDataRequest;
-use Pterodactyl\Events\Server\Installed as ServerInstalled;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Http\Requests\Api\Remote\InstallationDataRequest;
+use Kriegerhost\Events\Server\Installed as ServerInstalled;
 use Illuminate\Contracts\Events\Dispatcher as EventDispatcher;
 
 class ServerInstallController extends Controller
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
@@ -38,7 +38,7 @@ class ServerInstallController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function index(Request $request, string $uuid)
     {
@@ -57,8 +57,8 @@ class ServerInstallController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function store(InstallationDataRequest $request, string $uuid)
     {

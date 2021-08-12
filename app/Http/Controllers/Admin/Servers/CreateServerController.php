@@ -1,27 +1,27 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Servers;
+namespace Kriegerhost\Http\Controllers\Admin\Servers;
 
 use JavaScript;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Repositories\Eloquent\NestRepository;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Http\Requests\Admin\ServerFormRequest;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Services\Servers\ServerCreationService;
-use Pterodactyl\Repositories\Eloquent\LocationRepository;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Repositories\Eloquent\NestRepository;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Http\Requests\Admin\ServerFormRequest;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Services\Servers\ServerCreationService;
+use Kriegerhost\Repositories\Eloquent\LocationRepository;
 
 class CreateServerController extends Controller
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NodeRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NodeRepository
      */
     private $nodeRepository;
 
@@ -31,17 +31,17 @@ class CreateServerController extends Controller
     private $alert;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NestRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NestRepository
      */
     private $nestRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\LocationRepository
+     * @var \Kriegerhost\Repositories\Eloquent\LocationRepository
      */
     private $locationRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerCreationService
+     * @var \Kriegerhost\Services\Servers\ServerCreationService
      */
     private $creationService;
 
@@ -69,7 +69,7 @@ class CreateServerController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function index()
     {
@@ -103,9 +103,9 @@ class CreateServerController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableAllocationException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableAllocationException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableNodeException
      * @throws \Throwable
      */
     public function store(ServerFormRequest $request)

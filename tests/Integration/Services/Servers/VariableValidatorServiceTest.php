@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Servers;
+namespace Kriegerhost\Tests\Integration\Services\Servers;
 
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\Egg;
+use Kriegerhost\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Servers\VariableValidatorService;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Services\Servers\VariableValidatorService;
 
 class VariableValidatorServiceTest extends IntegrationTestCase
 {
@@ -127,7 +127,7 @@ class VariableValidatorServiceTest extends IntegrationTestCase
     }
 
     /**
-     * @return \Pterodactyl\Services\Servers\VariableValidatorService
+     * @return \Kriegerhost\Services\Servers\VariableValidatorService
      */
     private function getService()
     {

@@ -1,33 +1,33 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\AuditLog;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\AuditLog;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Services\Nodes\NodeJWTService;
+use Kriegerhost\Services\Nodes\NodeJWTService;
 use Illuminate\Contracts\Routing\ResponseFactory;
-use Pterodactyl\Repositories\Wings\DaemonFileRepository;
-use Pterodactyl\Transformers\Daemon\FileObjectTransformer;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\CopyFileRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\PullFileRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\ListFilesRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\ChmodFilesRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\DeleteFileRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\RenameFileRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\CreateFolderRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\CompressFilesRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\DecompressFilesRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\GetFileContentsRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Files\WriteFileContentRequest;
+use Kriegerhost\Repositories\Wings\DaemonFileRepository;
+use Kriegerhost\Transformers\Daemon\FileObjectTransformer;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\CopyFileRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\PullFileRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\ListFilesRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\ChmodFilesRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\DeleteFileRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\RenameFileRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\CreateFolderRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\CompressFilesRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\DecompressFilesRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\GetFileContentsRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Files\WriteFileContentRequest;
 
 class FileController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonFileRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonFileRepository
      */
     private $fileRepository;
 
@@ -37,7 +37,7 @@ class FileController extends ClientApiController
     private $responseFactory;
 
     /**
-     * @var \Pterodactyl\Services\Nodes\NodeJWTService
+     * @var \Kriegerhost\Services\Nodes\NodeJWTService
      */
     private $jwtService;
 
@@ -59,7 +59,7 @@ class FileController extends ClientApiController
     /**
      * Returns a listing of files in a given directory.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function directory(ListFilesRequest $request, Server $server): array
     {
@@ -81,7 +81,7 @@ class FileController extends ClientApiController
     {
         $response = $this->fileRepository->setServer($server)->getContent(
             $request->get('file'),
-            config('pterodactyl.files.max_edit_size')
+            config('kriegerhost.files.max_edit_size')
         );
 
         return new Response($response, Response::HTTP_OK, ['Content-Type' => 'text/plain']);
@@ -124,7 +124,7 @@ class FileController extends ClientApiController
     /**
      * Writes the contents of the specified file to the server.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function write(WriteFileContentRequest $request, Server $server): JsonResponse
     {
@@ -180,7 +180,7 @@ class FileController extends ClientApiController
     /**
      * Copies a file on the server.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function copy(CopyFileRequest $request, Server $server): JsonResponse
     {
@@ -197,7 +197,7 @@ class FileController extends ClientApiController
     }
 
     /**
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function compress(CompressFilesRequest $request, Server $server): array
     {
@@ -220,7 +220,7 @@ class FileController extends ClientApiController
     }
 
     /**
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function decompress(DecompressFilesRequest $request, Server $server): JsonResponse
     {
@@ -240,7 +240,7 @@ class FileController extends ClientApiController
     /**
      * Deletes files or folders for the server in the given root directory.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function delete(DeleteFileRequest $request, Server $server): JsonResponse
     {
@@ -260,7 +260,7 @@ class FileController extends ClientApiController
     /**
      * Updates file permissions for file(s) in the given root directory.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function chmod(ChmodFilesRequest $request, Server $server): JsonResponse
     {

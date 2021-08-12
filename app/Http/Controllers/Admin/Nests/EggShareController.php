@@ -1,23 +1,23 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Http\Controllers\Admin\Nests;
+namespace Kriegerhost\Http\Controllers\Admin\Nests;
 
-use Pterodactyl\Models\Egg;
+use Kriegerhost\Models\Egg;
 use Illuminate\Http\RedirectResponse;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Http\Controllers\Controller;
+use Kriegerhost\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Pterodactyl\Services\Eggs\Sharing\EggExporterService;
-use Pterodactyl\Services\Eggs\Sharing\EggImporterService;
-use Pterodactyl\Http\Requests\Admin\Egg\EggImportFormRequest;
-use Pterodactyl\Services\Eggs\Sharing\EggUpdateImporterService;
+use Kriegerhost\Services\Eggs\Sharing\EggExporterService;
+use Kriegerhost\Services\Eggs\Sharing\EggImporterService;
+use Kriegerhost\Http\Requests\Admin\Egg\EggImportFormRequest;
+use Kriegerhost\Services\Eggs\Sharing\EggUpdateImporterService;
 
 class EggShareController extends Controller
 {
@@ -27,17 +27,17 @@ class EggShareController extends Controller
     protected $alert;
 
     /**
-     * @var \Pterodactyl\Services\Eggs\Sharing\EggExporterService
+     * @var \Kriegerhost\Services\Eggs\Sharing\EggExporterService
      */
     protected $exporterService;
 
     /**
-     * @var \Pterodactyl\Services\Eggs\Sharing\EggImporterService
+     * @var \Kriegerhost\Services\Eggs\Sharing\EggImporterService
      */
     protected $importerService;
 
     /**
-     * @var \Pterodactyl\Services\Eggs\Sharing\EggUpdateImporterService
+     * @var \Kriegerhost\Services\Eggs\Sharing\EggUpdateImporterService
      */
     protected $updateImporterService;
 
@@ -57,7 +57,7 @@ class EggShareController extends Controller
     }
 
     /**
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function export(Egg $egg): Response
     {
@@ -74,10 +74,10 @@ class EggShareController extends Controller
     /**
      * Import a new service option using an XML file.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\BadJsonFormatException
-     * @throws \Pterodactyl\Exceptions\Service\InvalidFileUploadException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\BadJsonFormatException
+     * @throws \Kriegerhost\Exceptions\Service\InvalidFileUploadException
      */
     public function import(EggImportFormRequest $request): RedirectResponse
     {
@@ -90,10 +90,10 @@ class EggShareController extends Controller
     /**
      * Update an existing Egg using a new imported file.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\BadJsonFormatException
-     * @throws \Pterodactyl\Exceptions\Service\InvalidFileUploadException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\BadJsonFormatException
+     * @throws \Kriegerhost\Exceptions\Service\InvalidFileUploadException
      */
     public function update(EggImportFormRequest $request, Egg $egg): RedirectResponse
     {

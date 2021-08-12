@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Startup;
+namespace Kriegerhost\Tests\Integration\Api\Client\Server\Startup;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Models\EggVariable;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Permission;
+use Kriegerhost\Models\EggVariable;
+use Kriegerhost\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class GetStartupAndVariablesTest extends ClientApiIntegrationTestCase
 {
@@ -18,7 +18,7 @@ class GetStartupAndVariablesTest extends ClientApiIntegrationTestCase
      */
     public function testStartupVariablesAreReturnedForServer($permissions)
     {
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         [$user, $server] = $this->generateTestAccount($permissions);
 
         $egg = $this->cloneEggAndVariables($server->egg);

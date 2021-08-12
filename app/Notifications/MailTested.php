@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Notifications;
+namespace Kriegerhost\Notifications;
 
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class MailTested extends Notification
 {
     /**
-     * @var \Pterodactyl\Models\User
+     * @var \Kriegerhost\Models\User
      */
     private $user;
 
@@ -26,8 +26,8 @@ class MailTested extends Notification
     public function toMail()
     {
         return (new MailMessage())
-            ->subject('Pterodactyl Test Message')
+            ->subject('Kriegerhost Test Message')
             ->greeting('Hello ' . $this->user->name . '!')
-            ->line('This is a test of the Pterodactyl mail system. You\'re good to go!');
+            ->line('This is a test of the Kriegerhost mail system. You\'re good to go!');
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Services\Eggs\Sharing;
+namespace Kriegerhost\Services\Eggs\Sharing;
 
-use Pterodactyl\Models\Egg;
+use Kriegerhost\Models\Egg;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Egg\BadJsonFormatException;
-use Pterodactyl\Exceptions\Service\InvalidFileUploadException;
-use Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Egg\BadJsonFormatException;
+use Kriegerhost\Exceptions\Service\InvalidFileUploadException;
+use Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface;
 
 class EggUpdateImporterService
 {
@@ -18,12 +18,12 @@ class EggUpdateImporterService
     protected $connection;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggRepositoryInterface
      */
     protected $repository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggVariableRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggVariableRepositoryInterface
      */
     protected $variableRepository;
 
@@ -43,10 +43,10 @@ class EggUpdateImporterService
     /**
      * Update an existing Egg using an uploaded JSON file.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\BadJsonFormatException
-     * @throws \Pterodactyl\Exceptions\Service\InvalidFileUploadException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\BadJsonFormatException
+     * @throws \Kriegerhost\Exceptions\Service\InvalidFileUploadException
      */
     public function handle(Egg $egg, UploadedFile $file)
     {

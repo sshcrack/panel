@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Application;
+namespace Kriegerhost\Tests\Integration\Api\Application;
 
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use PHPUnit\Framework\Assert;
-use Pterodactyl\Models\ApiKey;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Models\ApiKey;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Pterodactyl\Tests\Traits\Integration\CreatesTestModels;
-use Pterodactyl\Transformers\Api\Application\BaseTransformer;
-use Pterodactyl\Transformers\Api\Client\BaseClientTransformer;
-use Pterodactyl\Tests\Traits\Http\IntegrationJsonRequestAssertions;
+use Kriegerhost\Tests\Traits\Integration\CreatesTestModels;
+use Kriegerhost\Transformers\Api\Application\BaseTransformer;
+use Kriegerhost\Transformers\Api\Client\BaseClientTransformer;
+use Kriegerhost\Tests\Traits\Http\IntegrationJsonRequestAssertions;
 
 abstract class ApplicationApiIntegrationTestCase extends IntegrationTestCase
 {
@@ -20,12 +20,12 @@ abstract class ApplicationApiIntegrationTestCase extends IntegrationTestCase
     use IntegrationJsonRequestAssertions;
 
     /**
-     * @var \Pterodactyl\Models\ApiKey
+     * @var \Kriegerhost\Models\ApiKey
      */
     private $key;
 
     /**
-     * @var \Pterodactyl\Models\User
+     * @var \Kriegerhost\Models\User
      */
     private $user;
 
@@ -40,7 +40,7 @@ abstract class ApplicationApiIntegrationTestCase extends IntegrationTestCase
         $this->user = $this->createApiUser();
         $this->key = $this->createApiKey($this->user);
 
-        $this->withHeader('Accept', 'application/vnd.pterodactyl.v1+json');
+        $this->withHeader('Accept', 'application/vnd.kriegerhost.v1+json');
         $this->withHeader('Authorization', 'Bearer ' . $this->getApiKey()->identifier . decrypt($this->getApiKey()->token));
 
         $this->withMiddleware('api..key:' . ApiKey::TYPE_APPLICATION);
@@ -110,7 +110,7 @@ abstract class ApplicationApiIntegrationTestCase extends IntegrationTestCase
      */
     protected function getTransformer(string $abstract): BaseTransformer
     {
-        /** @var \Pterodactyl\Transformers\Api\Application\BaseTransformer $transformer */
+        /** @var \Kriegerhost\Transformers\Api\Application\BaseTransformer $transformer */
         $transformer = $this->app->make($abstract);
         $transformer->setKey($this->getApiKey());
 

@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Remote;
+namespace Kriegerhost\Http\Controllers\Api\Remote;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Http\Controllers\Controller;
+use Kriegerhost\Models\Permission;
+use Kriegerhost\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Pterodactyl\Repositories\Eloquent\UserRepository;
-use Pterodactyl\Exceptions\Http\HttpForbiddenException;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Services\Servers\GetUserPermissionsService;
+use Kriegerhost\Repositories\Eloquent\UserRepository;
+use Kriegerhost\Exceptions\Http\HttpForbiddenException;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Services\Servers\GetUserPermissionsService;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Pterodactyl\Http\Requests\Api\Remote\SftpAuthenticationFormRequest;
+use Kriegerhost\Http\Requests\Api\Remote\SftpAuthenticationFormRequest;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 class SftpAuthenticationController extends Controller
@@ -20,17 +20,17 @@ class SftpAuthenticationController extends Controller
     use ThrottlesLogins;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\UserRepository
+     * @var \Kriegerhost\Repositories\Eloquent\UserRepository
      */
     private $userRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $serverRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\GetUserPermissionsService
+     * @var \Kriegerhost\Services\Servers\GetUserPermissionsService
      */
     private $permissionsService;
 
@@ -51,7 +51,7 @@ class SftpAuthenticationController extends Controller
      * Authenticate a set of credentials and return the associated server details
      * for a SFTP connection on the daemon.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function __invoke(SftpAuthenticationFormRequest $request): JsonResponse
     {
@@ -70,13 +70,13 @@ class SftpAuthenticationController extends Controller
             throw new TooManyRequestsHttpException($seconds, "Too many login attempts for this account, please try again in {$seconds} seconds.");
         }
 
-        /** @var \Pterodactyl\Models\Node $node */
+        /** @var \Kriegerhost\Models\Node $node */
         $node = $request->attributes->get('node');
         if (empty($connection['server'])) {
             throw new NotFoundHttpException();
         }
 
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = $this->userRepository->findFirstWhere([
             ['username', '=', $connection['username']],
         ]);

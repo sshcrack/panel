@@ -1,42 +1,42 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Kriegerhost\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Mount;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\MountServer;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Mount;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\MountServer;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Http\Controllers\Controller;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
-use Pterodactyl\Services\Servers\SuspensionService;
-use Pterodactyl\Repositories\Eloquent\MountRepository;
-use Pterodactyl\Services\Servers\ServerDeletionService;
-use Pterodactyl\Services\Servers\ReinstallServerService;
-use Pterodactyl\Exceptions\Model\DataValidationException;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Services\Servers\BuildModificationService;
-use Pterodactyl\Services\Databases\DatabasePasswordService;
-use Pterodactyl\Services\Servers\DetailsModificationService;
-use Pterodactyl\Services\Servers\StartupModificationService;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Repositories\Eloquent\DatabaseHostRepository;
-use Pterodactyl\Services\Databases\DatabaseManagementService;
+use Kriegerhost\Services\Servers\SuspensionService;
+use Kriegerhost\Repositories\Eloquent\MountRepository;
+use Kriegerhost\Services\Servers\ServerDeletionService;
+use Kriegerhost\Services\Servers\ReinstallServerService;
+use Kriegerhost\Exceptions\Model\DataValidationException;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Services\Servers\BuildModificationService;
+use Kriegerhost\Services\Databases\DatabasePasswordService;
+use Kriegerhost\Services\Servers\DetailsModificationService;
+use Kriegerhost\Services\Servers\StartupModificationService;
+use Kriegerhost\Contracts\Repository\NestRepositoryInterface;
+use Kriegerhost\Repositories\Eloquent\DatabaseHostRepository;
+use Kriegerhost\Services\Databases\DatabaseManagementService;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
-use Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
-use Pterodactyl\Services\Servers\ServerConfigurationStructureService;
-use Pterodactyl\Http\Requests\Admin\Servers\Databases\StoreServerDatabaseRequest;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface;
+use Kriegerhost\Contracts\Repository\AllocationRepositoryInterface;
+use Kriegerhost\Services\Servers\ServerConfigurationStructureService;
+use Kriegerhost\Http\Requests\Admin\Servers\Databases\StoreServerDatabaseRequest;
 
 class ServersController extends Controller
 {
@@ -46,12 +46,12 @@ class ServersController extends Controller
     protected $alert;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\AllocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\AllocationRepositoryInterface
      */
     protected $allocationRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\BuildModificationService
+     * @var \Kriegerhost\Services\Servers\BuildModificationService
      */
     protected $buildModificationService;
 
@@ -61,72 +61,72 @@ class ServersController extends Controller
     protected $config;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $daemonServerRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface
      */
     protected $databaseRepository;
 
     /**
-     * @var \Pterodactyl\Services\Databases\DatabaseManagementService
+     * @var \Kriegerhost\Services\Databases\DatabaseManagementService
      */
     protected $databaseManagementService;
 
     /**
-     * @var \Pterodactyl\Services\Databases\DatabasePasswordService
+     * @var \Kriegerhost\Services\Databases\DatabasePasswordService
      */
     protected $databasePasswordService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface
      */
     protected $databaseHostRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerDeletionService
+     * @var \Kriegerhost\Services\Servers\ServerDeletionService
      */
     protected $deletionService;
 
     /**
-     * @var \Pterodactyl\Services\Servers\DetailsModificationService
+     * @var \Kriegerhost\Services\Servers\DetailsModificationService
      */
     protected $detailsModificationService;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\MountRepository
+     * @var \Kriegerhost\Repositories\Eloquent\MountRepository
      */
     protected $mountRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\NestRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NestRepositoryInterface
      */
     protected $nestRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ReinstallServerService
+     * @var \Kriegerhost\Services\Servers\ReinstallServerService
      */
     protected $reinstallService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     protected $repository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerConfigurationStructureService
+     * @var \Kriegerhost\Services\Servers\ServerConfigurationStructureService
      */
     private $serverConfigurationStructureService;
 
     /**
-     * @var \Pterodactyl\Services\Servers\StartupModificationService
+     * @var \Kriegerhost\Services\Servers\StartupModificationService
      */
     private $startupModificationService;
 
     /**
-     * @var \Pterodactyl\Services\Servers\SuspensionService
+     * @var \Kriegerhost\Services\Servers\SuspensionService
      */
     protected $suspensionService;
 
@@ -178,8 +178,8 @@ class ServersController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function setDetails(Request $request, Server $server)
     {
@@ -197,9 +197,9 @@ class ServersController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function toggleInstall(Server $server)
     {
@@ -221,9 +221,9 @@ class ServersController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function reinstallServer(Server $server)
     {
@@ -238,9 +238,9 @@ class ServersController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function manageSuspension(Request $request, Server $server)
     {
@@ -257,8 +257,8 @@ class ServersController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      * @throws \Illuminate\Validation\ValidationException
      */
     public function updateBuild(Request $request, Server $server)
@@ -283,7 +283,7 @@ class ServersController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      * @throws \Throwable
      */
     public function delete(Request $request, Server $server)
@@ -371,7 +371,7 @@ class ServersController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function deleteDatabase($server, $database)
     {

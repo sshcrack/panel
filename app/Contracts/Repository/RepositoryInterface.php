@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Contracts\Repository;
+namespace Kriegerhost\Contracts\Repository;
 
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -72,7 +72,7 @@ interface RepositoryInterface
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function create(array $fields, bool $validate = true, bool $force = false);
 
@@ -81,7 +81,7 @@ interface RepositoryInterface
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function find(int $id);
 
@@ -95,7 +95,7 @@ interface RepositoryInterface
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function findFirstWhere(array $fields);
 
@@ -121,8 +121,8 @@ interface RepositoryInterface
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update($id, array $fields, bool $validate = true, bool $force = false);
 
@@ -137,7 +137,7 @@ interface RepositoryInterface
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function updateOrCreate(array $where, array $fields, bool $validate = true, bool $force = false);
 

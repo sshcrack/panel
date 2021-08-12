@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Services\Nodes;
+namespace Kriegerhost\Services\Nodes;
 
 use DateTimeImmutable;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Str;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
-use Pterodactyl\Extensions\Lcobucci\JWT\Encoding\TimestampDates;
+use Kriegerhost\Extensions\Lcobucci\JWT\Encoding\TimestampDates;
 
 class NodeJWTService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser\Pages;
+namespace Kriegerhost\Tests\Browser\Pages;
 
 class LoginPage extends BasePage
 {

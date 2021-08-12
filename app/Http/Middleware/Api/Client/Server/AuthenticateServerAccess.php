@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware\Api\Client\Server;
+namespace Kriegerhost\Http\Middleware\Api\Client\Server;
 
 use Closure;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Pterodactyl\Exceptions\Http\Server\ServerStateConflictException;
+use Kriegerhost\Exceptions\Http\Server\ServerStateConflictException;
 
 class AuthenticateServerAccess
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     private $repository;
 
@@ -40,7 +40,7 @@ class AuthenticateServerAccess
      */
     public function handle(Request $request, Closure $next)
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = $request->user();
         $server = $request->route()->parameter('server');
 

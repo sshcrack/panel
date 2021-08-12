@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser\Processes\Dashboard;
+namespace Kriegerhost\Tests\Browser\Processes\Dashboard;
 
 use PragmaRX\Google2FA\Google2FA;
 use Facebook\WebDriver\WebDriverKeys;
 use Illuminate\Support\Facades\Crypt;
-use Pterodactyl\Tests\Browser\PterodactylBrowser;
-use Pterodactyl\Tests\Browser\Pages\Dashboard\AccountPage;
+use Kriegerhost\Tests\Browser\KriegerhostBrowser;
+use Kriegerhost\Tests\Browser\Pages\Dashboard\AccountPage;
 
 class TwoFactorAuthenticationProcessTest extends DashboardTestCase
 {
@@ -15,7 +15,7 @@ class TwoFactorAuthenticationProcessTest extends DashboardTestCase
      */
     public function testModalOpenAndClose()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->loginAs($this->user)
                 ->visit(new AccountPage())
                 ->assertMissing('.modal-mask')
@@ -40,7 +40,7 @@ class TwoFactorAuthenticationProcessTest extends DashboardTestCase
      */
     public function testTwoFactorCanBeEnabled()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->loginAs($this->user)
                 ->visit(new AccountPage())
                 ->click('@2fa_button')
@@ -83,7 +83,7 @@ class TwoFactorAuthenticationProcessTest extends DashboardTestCase
             'totp_secret' => Crypt::encrypt($secret),
         ]);
 
-        $this->browse(function (PterodactylBrowser $browser) use ($secret) {
+        $this->browse(function (KriegerhostBrowser $browser) use ($secret) {
             $browser->loginAs($this->user)
                 ->visit(new AccountPage())
                 ->click('@2fa_button')

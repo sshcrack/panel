@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Contracts\Core;
+namespace Kriegerhost\Contracts\Core;
 
-use Pterodactyl\Events\Event;
+use Kriegerhost\Events\Event;
 
 interface ReceivesEvents
 {

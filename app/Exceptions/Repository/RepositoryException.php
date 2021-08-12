@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Repository;
+namespace Kriegerhost\Exceptions\Repository;
 
-use Pterodactyl\Exceptions\PterodactylException;
+use Kriegerhost\Exceptions\KriegerhostException;
 
-class RepositoryException extends PterodactylException
+class RepositoryException extends KriegerhostException
 {
 }

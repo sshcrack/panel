@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 /**
  * @property int $id
@@ -10,8 +10,8 @@ namespace Pterodactyl\Models;
  * @property string|null $description
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Illuminate\Database\Eloquent\Collection|\Pterodactyl\Models\Server[] $servers
- * @property \Illuminate\Database\Eloquent\Collection|\Pterodactyl\Models\Egg[] $eggs
+ * @property \Illuminate\Database\Eloquent\Collection|\Kriegerhost\Models\Server[] $servers
+ * @property \Illuminate\Database\Eloquent\Collection|\Kriegerhost\Models\Egg[] $eggs
  */
 class Nest extends Model
 {

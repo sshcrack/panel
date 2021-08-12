@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Kriegerhost\Services\Servers;
 
-use Pterodactyl\Models\Mount;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Mount;
+use Kriegerhost\Models\Server;
 
 class ServerConfigurationStructureService
 {

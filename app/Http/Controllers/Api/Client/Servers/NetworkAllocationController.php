@@ -1,36 +1,36 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Repositories\Eloquent\AllocationRepository;
-use Pterodactyl\Transformers\Api\Client\AllocationTransformer;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
-use Pterodactyl\Services\Allocations\FindAssignableAllocationService;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\GetNetworkRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\NewAllocationRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\DeleteAllocationRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\UpdateAllocationRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Network\SetPrimaryAllocationRequest;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Repositories\Eloquent\AllocationRepository;
+use Kriegerhost\Transformers\Api\Client\AllocationTransformer;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Services\Allocations\FindAssignableAllocationService;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Network\GetNetworkRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Network\NewAllocationRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Network\DeleteAllocationRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Network\UpdateAllocationRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Network\SetPrimaryAllocationRequest;
 
 class NetworkAllocationController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\AllocationRepository
+     * @var \Kriegerhost\Repositories\Eloquent\AllocationRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $serverRepository;
 
     /**
-     * @var \Pterodactyl\Services\Allocations\FindAssignableAllocationService
+     * @var \Kriegerhost\Services\Allocations\FindAssignableAllocationService
      */
     private $assignableAllocationService;
 
@@ -63,8 +63,8 @@ class NetworkAllocationController extends ClientApiController
     /**
      * Set the primary allocation for a server.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UpdateAllocationRequest $request, Server $server, Allocation $allocation): array
     {
@@ -80,8 +80,8 @@ class NetworkAllocationController extends ClientApiController
     /**
      * Set the primary allocation for a server.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function setPrimary(SetPrimaryAllocationRequest $request, Server $server, Allocation $allocation): array
     {
@@ -96,7 +96,7 @@ class NetworkAllocationController extends ClientApiController
      * Set the notes for the allocation for a server.
      *s.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function store(NewAllocationRequest $request, Server $server): array
     {
@@ -116,7 +116,7 @@ class NetworkAllocationController extends ClientApiController
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function delete(DeleteAllocationRequest $request, Server $server, Allocation $allocation)
     {

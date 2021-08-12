@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Repositories\Wings\DaemonPowerRepository;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
-use Pterodactyl\Http\Requests\Api\Client\Servers\SendPowerRequest;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Repositories\Wings\DaemonPowerRepository;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Http\Requests\Api\Client\Servers\SendPowerRequest;
 
 class PowerController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonPowerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonPowerRepository
      */
     private $repository;
 
@@ -28,7 +28,7 @@ class PowerController extends ClientApiController
     /**
      * Send a power action to a server.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws \Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException
      */
     public function index(SendPowerRequest $request, Server $server): Response
     {

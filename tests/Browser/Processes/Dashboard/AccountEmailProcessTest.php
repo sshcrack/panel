@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser\Processes\Dashboard;
+namespace Kriegerhost\Tests\Browser\Processes\Dashboard;
 
-use Pterodactyl\Tests\Browser\PterodactylBrowser;
-use Pterodactyl\Tests\Browser\Pages\Dashboard\AccountPage;
+use Kriegerhost\Tests\Browser\KriegerhostBrowser;
+use Kriegerhost\Tests\Browser\Pages\Dashboard\AccountPage;
 
 class AccountEmailProcessTest extends DashboardTestCase
 {
@@ -12,7 +12,7 @@ class AccountEmailProcessTest extends DashboardTestCase
      */
     public function testEmailCanBeChanged()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->loginAs($this->user)
                 ->visit(new AccountPage())
                 ->assertValue('@email', $this->user->email)
@@ -32,7 +32,7 @@ class AccountEmailProcessTest extends DashboardTestCase
      */
     public function testInvalidEmailShowsErrors()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->loginAs($this->user)
                 ->visit(new AccountPage())
                 ->assertMissing('@email ~ .input-help.error')
@@ -49,7 +49,7 @@ class AccountEmailProcessTest extends DashboardTestCase
      */
     public function testInvalidPasswordShowsError()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->loginAs($this->user)
                 ->visit(new AccountPage())
                 ->type('@email', 'new.email@example.com')

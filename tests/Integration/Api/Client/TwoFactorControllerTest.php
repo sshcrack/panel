@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client;
+namespace Kriegerhost\Tests\Integration\Api\Client;
 
 use Carbon\Carbon;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Illuminate\Http\Response;
 use PragmaRX\Google2FA\Google2FA;
-use Pterodactyl\Models\RecoveryToken;
+use Kriegerhost\Models\RecoveryToken;
 use PHPUnit\Framework\ExpectationFailedException;
 
 class TwoFactorControllerTest extends ClientApiIntegrationTestCase
@@ -17,7 +17,7 @@ class TwoFactorControllerTest extends ClientApiIntegrationTestCase
      */
     public function testTwoFactorImageDataIsReturned()
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create(['use_totp' => false]);
 
         $this->assertFalse($user->use_totp);
@@ -41,7 +41,7 @@ class TwoFactorControllerTest extends ClientApiIntegrationTestCase
      */
     public function testErrorIsReturnedWhenTwoFactorIsAlreadyEnabled()
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create(['use_totp' => true]);
 
         $response = $this->actingAs($user)->getJson('/api/client/account/two-factor');
@@ -56,7 +56,7 @@ class TwoFactorControllerTest extends ClientApiIntegrationTestCase
      */
     public function testValidationErrorIsReturnedIfInvalidDataIsPassedToEnabled2FA()
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create(['use_totp' => false]);
 
         $response = $this->actingAs($user)->postJson('/api/client/account/two-factor', [
@@ -73,7 +73,7 @@ class TwoFactorControllerTest extends ClientApiIntegrationTestCase
      */
     public function testTwoFactorCanBeEnabledOnAccount()
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create(['use_totp' => false]);
 
         // Make the initial call to get the account setup for 2FA.
@@ -104,7 +104,7 @@ class TwoFactorControllerTest extends ClientApiIntegrationTestCase
         // Ensure the recovery tokens that were created include a "created_at" timestamp
         // value on them.
         //
-        // @see https://github.com/pterodactyl/panel/issues/3163
+        // @see https://github.com/kriegerhost/panel/issues/3163
         $this->assertNotNull($tokens[0]->created_at);
 
         $tokens = $tokens->pluck('token')->toArray();
@@ -128,7 +128,7 @@ class TwoFactorControllerTest extends ClientApiIntegrationTestCase
     {
         Carbon::setTestNow(Carbon::now());
 
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create(['use_totp' => true]);
 
         $response = $this->actingAs($user)->deleteJson('/api/client/account/two-factor', [
@@ -159,7 +159,7 @@ class TwoFactorControllerTest extends ClientApiIntegrationTestCase
     {
         Carbon::setTestNow(Carbon::now());
 
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create(['use_totp' => false]);
 
         $response = $this->actingAs($user)->deleteJson('/api/client/account/two-factor', [

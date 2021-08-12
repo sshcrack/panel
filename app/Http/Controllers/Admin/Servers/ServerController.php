@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Servers;
+namespace Kriegerhost\Http\Controllers\Admin\Servers;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Contracts\View\Factory;
 use Spatie\QueryBuilder\AllowedFilter;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Models\Filters\AdminServerFilter;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Models\Filters\AdminServerFilter;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
 
 class ServerController extends Controller
 {
@@ -19,7 +19,7 @@ class ServerController extends Controller
     private $view;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
@@ -47,7 +47,7 @@ class ServerController extends Controller
                 AllowedFilter::exact('owner_id'),
                 AllowedFilter::custom('*', new AdminServerFilter()),
             ])
-            ->paginate(config()->get('pterodactyl.paginate.admin.servers'));
+            ->paginate(config()->get('kriegerhost.paginate.admin.servers'));
 
         return $this->view->make('admin.servers.index', ['servers' => $servers]);
     }

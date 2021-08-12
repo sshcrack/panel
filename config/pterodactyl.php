@@ -19,7 +19,7 @@ return [
     |
     | Each panel installation is assigned a unique UUID to identify the
     | author of custom services, and make upgrades easier by identifying
-    | standard Pterodactyl shipped services.
+    | standard Kriegerhost shipped services.
     */
     'service' => [
         'author' => env('APP_SERVICE_AUTHOR', 'unknown@unknown.com'),
@@ -123,7 +123,7 @@ return [
     */
     'cdn' => [
         'cache_time' => 60,
-        'url' => 'https://cdn.pterodactyl.io/releases/latest.json',
+        'url' => 'https://cdn.krieger.host/releases/latest.json',
     ],
 
     /*
@@ -176,7 +176,7 @@ return [
         'remote/*',
     ],
 
-    'default_api_version' => 'application/vnd.pterodactyl.v1+json',
+    'default_api_version' => 'application/vnd.kriegerhost.v1+json',
 
     /*
     |--------------------------------------------------------------------------

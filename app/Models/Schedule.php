@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
 use Cron\CronExpression;
 use Carbon\CarbonImmutable;
 use Illuminate\Container\Container;
-use Pterodactyl\Contracts\Extensions\HashidsInterface;
+use Kriegerhost\Contracts\Extensions\HashidsInterface;
 
 /**
  * @property int $id
@@ -24,8 +24,8 @@ use Pterodactyl\Contracts\Extensions\HashidsInterface;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $hashid
- * @property \Pterodactyl\Models\Server $server
- * @property \Pterodactyl\Models\Task[]|\Illuminate\Support\Collection $tasks
+ * @property \Kriegerhost\Models\Server $server
+ * @property \Kriegerhost\Models\Task[]|\Illuminate\Support\Collection $tasks
  */
 class Schedule extends Model
 {

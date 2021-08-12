@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Policies;
+namespace Kriegerhost\Policies;
 
 use Carbon\Carbon;
-use Pterodactyl\Models\User;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\User;
+use Kriegerhost\Models\Server;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 
 class ServerPolicy
@@ -34,7 +34,7 @@ class ServerPolicy
         $key = sprintf('ServerPolicy.%s.%s', $user->uuid, $server->uuid);
 
         $permissions = $this->cache->remember($key, Carbon::now()->addSeconds(5), function () use ($user, $server) {
-            /** @var \Pterodactyl\Models\Subuser|null $subuser */
+            /** @var \Kriegerhost\Models\Subuser|null $subuser */
             $subuser = $server->subusers()->where('user_id', $user->id)->first();
 
             return $subuser ? $subuser->permissions : [];

@@ -1,31 +1,31 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Services\Servers\StartupCommandService;
-use Pterodactyl\Services\Servers\VariableValidatorService;
-use Pterodactyl\Repositories\Eloquent\ServerVariableRepository;
-use Pterodactyl\Transformers\Api\Client\EggVariableTransformer;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Services\Servers\StartupCommandService;
+use Kriegerhost\Services\Servers\VariableValidatorService;
+use Kriegerhost\Repositories\Eloquent\ServerVariableRepository;
+use Kriegerhost\Transformers\Api\Client\EggVariableTransformer;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Startup\GetStartupRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Startup\UpdateStartupVariableRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Startup\GetStartupRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Startup\UpdateStartupVariableRequest;
 
 class StartupController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Services\Servers\VariableValidatorService
+     * @var \Kriegerhost\Services\Servers\VariableValidatorService
      */
     private $service;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerVariableRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerVariableRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\StartupCommandService
+     * @var \Kriegerhost\Services\Servers\StartupCommandService
      */
     private $startupCommandService;
 
@@ -68,12 +68,12 @@ class StartupController extends ClientApiController
      * @return array
      *
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UpdateStartupVariableRequest $request, Server $server)
     {
-        /** @var \Pterodactyl\Models\EggVariable $variable */
+        /** @var \Kriegerhost\Models\EggVariable $variable */
         $variable = $server->variables()->where('env_variable', $request->input('key'))->first();
 
         if (is_null($variable) || !$variable->user_viewable) {

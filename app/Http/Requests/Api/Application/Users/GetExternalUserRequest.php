@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Application\Users;
+namespace Kriegerhost\Http\Requests\Api\Application\Users;
 
-use Pterodactyl\Models\User;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
-use Pterodactyl\Http\Requests\Api\Application\ApplicationApiRequest;
+use Kriegerhost\Models\User;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Http\Requests\Api\Application\ApplicationApiRequest;
 
 class GetExternalUserRequest extends ApplicationApiRequest
 {

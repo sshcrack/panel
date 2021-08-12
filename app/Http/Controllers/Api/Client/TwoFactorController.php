@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client;
+namespace Kriegerhost\Http\Controllers\Api\Client;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -8,14 +8,14 @@ use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Validation\ValidationException;
-use Pterodactyl\Services\Users\TwoFactorSetupService;
-use Pterodactyl\Services\Users\ToggleTwoFactorService;
+use Kriegerhost\Services\Users\TwoFactorSetupService;
+use Kriegerhost\Services\Users\ToggleTwoFactorService;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class TwoFactorController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Services\Users\TwoFactorSetupService
+     * @var \Kriegerhost\Services\Users\TwoFactorSetupService
      */
     private $setupService;
 
@@ -25,7 +25,7 @@ class TwoFactorController extends ClientApiController
     private $validation;
 
     /**
-     * @var \Pterodactyl\Services\Users\ToggleTwoFactorService
+     * @var \Kriegerhost\Services\Users\ToggleTwoFactorService
      */
     private $toggleTwoFactorService;
 
@@ -51,8 +51,8 @@ class TwoFactorController extends ClientApiController
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function index(Request $request)
     {
@@ -75,7 +75,7 @@ class TwoFactorController extends ClientApiController
      * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
      * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
      * @throws \PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException
-     * @throws \Pterodactyl\Exceptions\Service\User\TwoFactorAuthenticationTokenInvalid
+     * @throws \Kriegerhost\Exceptions\Service\User\TwoFactorAuthenticationTokenInvalid
      */
     public function store(Request $request)
     {
@@ -109,7 +109,7 @@ class TwoFactorController extends ClientApiController
             throw new BadRequestHttpException('The password provided was not valid.');
         }
 
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = $request->user();
 
         $user->update([

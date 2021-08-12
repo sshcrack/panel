@@ -1,6 +1,6 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
@@ -16,7 +16,7 @@ class MigrateToNewServiceSystem extends Migration
     public function up()
     {
         DB::transaction(function () {
-            $service = DB::table('services')->where('author', config('pterodactyl.service.core'))->where('folder', 'srcds')->first();
+            $service = DB::table('services')->where('author', config('kriegerhost.service.core'))->where('folder', 'srcds')->first();
             if (!$service) {
                 return;
             }

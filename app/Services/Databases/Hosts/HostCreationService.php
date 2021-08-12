@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Services\Databases\Hosts;
+namespace Kriegerhost\Services\Databases\Hosts;
 
-use Pterodactyl\Models\DatabaseHost;
+use Kriegerhost\Models\DatabaseHost;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Extensions\DynamicDatabaseConnection;
-use Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface;
+use Kriegerhost\Extensions\DynamicDatabaseConnection;
+use Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface;
 
 class HostCreationService
 {
@@ -22,7 +22,7 @@ class HostCreationService
     private $databaseManager;
 
     /**
-     * @var \Pterodactyl\Extensions\DynamicDatabaseConnection
+     * @var \Kriegerhost\Extensions\DynamicDatabaseConnection
      */
     private $dynamic;
 
@@ -32,7 +32,7 @@ class HostCreationService
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseHostRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseHostRepositoryInterface
      */
     private $repository;
 

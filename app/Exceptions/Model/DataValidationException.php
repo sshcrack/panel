@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Model;
+namespace Kriegerhost\Exceptions\Model;
 
 use Illuminate\Contracts\Validation\Validator;
-use Pterodactyl\Exceptions\PterodactylException;
+use Kriegerhost\Exceptions\KriegerhostException;
 use Illuminate\Contracts\Support\MessageProvider;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
-class DataValidationException extends PterodactylException implements HttpExceptionInterface, MessageProvider
+class DataValidationException extends KriegerhostException implements HttpExceptionInterface, MessageProvider
 {
     /**
      * The validator instance.

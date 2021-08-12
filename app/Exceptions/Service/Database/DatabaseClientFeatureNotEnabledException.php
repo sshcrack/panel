@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Service\Database;
+namespace Kriegerhost\Exceptions\Service\Database;
 
-use Pterodactyl\Exceptions\PterodactylException;
+use Kriegerhost\Exceptions\KriegerhostException;
 
-class DatabaseClientFeatureNotEnabledException extends PterodactylException
+class DatabaseClientFeatureNotEnabledException extends KriegerhostException
 {
     public function __construct()
     {

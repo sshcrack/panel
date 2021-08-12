@@ -1,37 +1,37 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Models\Permission;
+use Kriegerhost\Models\Permission;
 use Illuminate\Support\Facades\Log;
-use Pterodactyl\Repositories\Eloquent\SubuserRepository;
-use Pterodactyl\Services\Subusers\SubuserCreationService;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Transformers\Api\Client\SubuserTransformer;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Subusers\GetSubuserRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Subusers\StoreSubuserRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Subusers\DeleteSubuserRequest;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Subusers\UpdateSubuserRequest;
+use Kriegerhost\Repositories\Eloquent\SubuserRepository;
+use Kriegerhost\Services\Subusers\SubuserCreationService;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Transformers\Api\Client\SubuserTransformer;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Subusers\GetSubuserRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Subusers\StoreSubuserRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Subusers\DeleteSubuserRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Subusers\UpdateSubuserRequest;
 
 class SubuserController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\SubuserRepository
+     * @var \Kriegerhost\Repositories\Eloquent\SubuserRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Subusers\SubuserCreationService
+     * @var \Kriegerhost\Services\Subusers\SubuserCreationService
      */
     private $creationService;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $serverRepository;
 
@@ -81,9 +81,9 @@ class SubuserController extends ClientApiController
      *
      * @return array
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Service\Subuser\ServerSubuserExistsException
-     * @throws \Pterodactyl\Exceptions\Service\Subuser\UserIsServerOwnerException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Service\Subuser\ServerSubuserExistsException
+     * @throws \Kriegerhost\Exceptions\Service\Subuser\UserIsServerOwnerException
      * @throws \Throwable
      */
     public function store(StoreSubuserRequest $request, Server $server)
@@ -102,12 +102,12 @@ class SubuserController extends ClientApiController
     /**
      * Update a given subuser in the system for the server.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UpdateSubuserRequest $request, Server $server): array
     {
-        /** @var \Pterodactyl\Models\Subuser $subuser */
+        /** @var \Kriegerhost\Models\Subuser $subuser */
         $subuser = $request->attributes->get('subuser');
 
         $permissions = $this->getDefaultPermissions($request);
@@ -144,7 +144,7 @@ class SubuserController extends ClientApiController
      */
     public function delete(DeleteSubuserRequest $request, Server $server)
     {
-        /** @var \Pterodactyl\Models\Subuser $subuser */
+        /** @var \Kriegerhost\Models\Subuser $subuser */
         $subuser = $request->attributes->get('subuser');
 
         $this->repository->delete($subuser->id);

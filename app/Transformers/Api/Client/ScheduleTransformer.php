@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Client;
+namespace Kriegerhost\Transformers\Api\Client;
 
-use Pterodactyl\Models\Task;
-use Pterodactyl\Models\Schedule;
+use Kriegerhost\Models\Task;
+use Kriegerhost\Models\Schedule;
 use Illuminate\Database\Eloquent\Model;
 
 class ScheduleTransformer extends BaseClientTransformer
@@ -58,7 +58,7 @@ class ScheduleTransformer extends BaseClientTransformer
      *
      * @return \League\Fractal\Resource\Collection
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function includeTasks(Schedule $model)
     {

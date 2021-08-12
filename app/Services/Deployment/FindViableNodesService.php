@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Services\Deployment;
+namespace Kriegerhost\Services\Deployment;
 
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Webmozart\Assert\Assert;
-use Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException;
+use Kriegerhost\Exceptions\Service\Deployment\NoViableNodeException;
 
 class FindViableNodesService
 {
@@ -81,7 +81,7 @@ class FindViableNodesService
      *
      * @return \Illuminate\Support\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      *
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableNodeException
      */
     public function handle(int $perPage = null, int $page = null)
     {

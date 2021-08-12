@@ -1,24 +1,24 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Services\Servers;
+namespace Kriegerhost\Tests\Integration\Services\Servers;
 
 use Mockery;
-use Pterodactyl\Models\Egg;
+use Kriegerhost\Models\Egg;
 use GuzzleHttp\Psr7\Request;
-use Pterodactyl\Models\Node;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\Node;
+use Kriegerhost\Models\User;
 use GuzzleHttp\Psr7\Response;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Location;
-use Pterodactyl\Models\Allocation;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Location;
+use Kriegerhost\Models\Allocation;
 use Illuminate\Foundation\Testing\WithFaker;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Validation\ValidationException;
-use Pterodactyl\Models\Objects\DeploymentObject;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Services\Servers\ServerCreationService;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Models\Objects\DeploymentObject;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Services\Servers\ServerCreationService;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class ServerCreationServiceTest extends IntegrationTestCase
 {
@@ -47,18 +47,18 @@ class ServerCreationServiceTest extends IntegrationTestCase
      */
     public function testServerIsCreatedWithDeploymentObject()
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create();
 
-        /** @var \Pterodactyl\Models\Location $location */
+        /** @var \Kriegerhost\Models\Location $location */
         $location = Location::factory()->create();
 
-        /** @var \Pterodactyl\Models\Node $node */
+        /** @var \Kriegerhost\Models\Node $node */
         $node = Node::factory()->create([
             'location_id' => $location->id,
         ]);
 
-        /** @var \Pterodactyl\Models\Allocation[]|\Illuminate\Database\Eloquent\Collection $allocations */
+        /** @var \Kriegerhost\Models\Allocation[]|\Illuminate\Database\Eloquent\Collection $allocations */
         $allocations = Allocation::factory()->times(5)->create([
             'node_id' => $node->id,
         ]);
@@ -158,18 +158,18 @@ class ServerCreationServiceTest extends IntegrationTestCase
      */
     public function testErrorEncounteredByWingsCausesServerToBeDeleted()
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create();
 
-        /** @var \Pterodactyl\Models\Location $location */
+        /** @var \Kriegerhost\Models\Location $location */
         $location = Location::factory()->create();
 
-        /** @var \Pterodactyl\Models\Node $node */
+        /** @var \Kriegerhost\Models\Node $node */
         $node = Node::factory()->create([
             'location_id' => $location->id,
         ]);
 
-        /** @var \Pterodactyl\Models\Allocation $allocation */
+        /** @var \Kriegerhost\Models\Allocation $allocation */
         $allocation = Allocation::factory()->create([
             'node_id' => $node->id,
         ]);
@@ -210,7 +210,7 @@ class ServerCreationServiceTest extends IntegrationTestCase
     }
 
     /**
-     * @return \Pterodactyl\Services\Servers\ServerCreationService
+     * @return \Kriegerhost\Services\Servers\ServerCreationService
      */
     private function getService()
     {

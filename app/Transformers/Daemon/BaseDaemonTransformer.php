@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Transformers\Daemon;
+namespace Kriegerhost\Transformers\Daemon;
 
 use League\Fractal\TransformerAbstract;
 

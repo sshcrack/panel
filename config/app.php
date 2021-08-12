@@ -5,7 +5,7 @@ return [
     |--------------------------------------------------------------------------
     | Application Version
     |--------------------------------------------------------------------------
-    | This value is set when creating a Pterodactyl release. You should not
+    | This value is set when creating a Kriegerhost release. You should not
     | change this value if you are not maintaining your own internal versions.
     */
 
@@ -21,7 +21,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Pterodactyl'),
+    'name' => env('APP_NAME', 'Kriegerhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -173,15 +173,15 @@ return [
         /*
          * Application Service Providers...
          */
-        Pterodactyl\Providers\AppServiceProvider::class,
-        Pterodactyl\Providers\AuthServiceProvider::class,
-        Pterodactyl\Providers\BackupsServiceProvider::class,
-        Pterodactyl\Providers\BladeServiceProvider::class,
-        Pterodactyl\Providers\EventServiceProvider::class,
-        Pterodactyl\Providers\HashidsServiceProvider::class,
-        Pterodactyl\Providers\RouteServiceProvider::class,
-        Pterodactyl\Providers\RepositoryServiceProvider::class,
-        Pterodactyl\Providers\ViewComposerServiceProvider::class,
+        Kriegerhost\Providers\AppServiceProvider::class,
+        Kriegerhost\Providers\AuthServiceProvider::class,
+        Kriegerhost\Providers\BackupsServiceProvider::class,
+        Kriegerhost\Providers\BladeServiceProvider::class,
+        Kriegerhost\Providers\EventServiceProvider::class,
+        Kriegerhost\Providers\HashidsServiceProvider::class,
+        Kriegerhost\Providers\RouteServiceProvider::class,
+        Kriegerhost\Providers\RepositoryServiceProvider::class,
+        Kriegerhost\Providers\ViewComposerServiceProvider::class,
 
         /*
          * Additional Dependencies
@@ -234,7 +234,7 @@ return [
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
-        'Theme' => Pterodactyl\Extensions\Facades\Theme::class,
+        'Theme' => Kriegerhost\Extensions\Facades\Theme::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,

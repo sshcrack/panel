@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Providers;
+namespace Kriegerhost\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -12,7 +12,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Pterodactyl\Models\Server' => 'Pterodactyl\Policies\ServerPolicy',
+        'Kriegerhost\Models\Server' => 'Kriegerhost\Policies\ServerPolicy',
     ];
 
     /**

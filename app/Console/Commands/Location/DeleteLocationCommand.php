@@ -1,22 +1,22 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Console\Commands\Location;
+namespace Kriegerhost\Console\Commands\Location;
 
 use Illuminate\Console\Command;
-use Pterodactyl\Services\Locations\LocationDeletionService;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Services\Locations\LocationDeletionService;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
 
 class DeleteLocationCommand extends Command
 {
     /**
-     * @var \Pterodactyl\Services\Locations\LocationDeletionService
+     * @var \Kriegerhost\Services\Locations\LocationDeletionService
      */
     protected $deletionService;
 
@@ -31,7 +31,7 @@ class DeleteLocationCommand extends Command
     protected $locations;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\LocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\LocationRepositoryInterface
      */
     protected $repository;
 
@@ -56,8 +56,8 @@ class DeleteLocationCommand extends Command
     /**
      * Respond to the command request.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Location\HasActiveNodesException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Location\HasActiveNodesException
      */
     public function handle()
     {

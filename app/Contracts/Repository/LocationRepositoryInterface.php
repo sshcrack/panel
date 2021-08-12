@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Contracts\Repository;
+namespace Kriegerhost\Contracts\Repository;
 
-use Pterodactyl\Models\Location;
+use Kriegerhost\Models\Location;
 use Illuminate\Support\Collection;
 
 interface LocationRepositoryInterface extends RepositoryInterface
@@ -22,7 +22,7 @@ interface LocationRepositoryInterface extends RepositoryInterface
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function getWithNodes(int $id): Location;
 
@@ -31,7 +31,7 @@ interface LocationRepositoryInterface extends RepositoryInterface
      *
      * @return mixed
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function getWithNodeCount(int $id): Location;
 }

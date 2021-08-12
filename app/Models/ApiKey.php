@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Models;
+namespace Kriegerhost\Models;
 
-use Pterodactyl\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
 
 /**
  * @property int $id

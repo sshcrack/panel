@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Services\Helpers;
+namespace Kriegerhost\Services\Helpers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Filesystem\FilesystemManager;
@@ -78,7 +78,7 @@ class AssetHashService
             'referrerpolicy' => 'no-referrer',
         ];
 
-        if (config('pterodactyl.assets.use_hash')) {
+        if (config('kriegerhost.assets.use_hash')) {
             $attributes['integrity'] = $this->integrity($resource);
         }
 
@@ -102,7 +102,7 @@ class AssetHashService
             'crossorigin' => 'anonymous',
         ];
 
-        if (config('pterodactyl.assets.use_hash')) {
+        if (config('kriegerhost.assets.use_hash')) {
             $attributes['integrity'] = $this->integrity($resource);
         }
 

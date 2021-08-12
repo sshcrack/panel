@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions\Transformer;
+namespace Kriegerhost\Exceptions\Transformer;
 
-use Pterodactyl\Exceptions\PterodactylException;
+use Kriegerhost\Exceptions\KriegerhostException;
 
-class InvalidTransformerLevelException extends PterodactylException
+class InvalidTransformerLevelException extends KriegerhostException
 {
 }

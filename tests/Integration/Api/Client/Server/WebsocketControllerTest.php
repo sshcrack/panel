@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server;
+namespace Kriegerhost\Tests\Integration\Api\Client\Server;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Response;
 use Lcobucci\JWT\Configuration;
-use Pterodactyl\Models\Permission;
+use Kriegerhost\Models\Permission;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Validation\Constraint\SignedWith;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Kriegerhost\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class WebsocketControllerTest extends ClientApiIntegrationTestCase
 {
@@ -33,8 +33,8 @@ class WebsocketControllerTest extends ClientApiIntegrationTestCase
      */
     public function testJwtAndWebsocketUrlAreReturnedForServerOwner()
     {
-        /** @var \Pterodactyl\Models\User $user */
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\User $user */
+        /** @var \Kriegerhost\Models\Server $server */
         [$user, $server] = $this->generateTestAccount();
 
         // Force the node to HTTPS since we want to confirm it gets transformed to wss:// in the URL.
@@ -86,8 +86,8 @@ class WebsocketControllerTest extends ClientApiIntegrationTestCase
     {
         $permissions = [Permission::ACTION_WEBSOCKET_CONNECT, Permission::ACTION_CONTROL_CONSOLE];
 
-        /** @var \Pterodactyl\Models\User $user */
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\User $user */
+        /** @var \Kriegerhost\Models\Server $server */
         [$user, $server] = $this->generateTestAccount($permissions);
 
         $response = $this->actingAs($user)->getJson("/api/client/servers/{$server->uuid}/websocket");

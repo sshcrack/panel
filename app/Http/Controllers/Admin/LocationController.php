@@ -1,23 +1,23 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Kriegerhost\Http\Controllers\Admin;
 
-use Pterodactyl\Models\Location;
+use Kriegerhost\Models\Location;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Http\Requests\Admin\LocationFormRequest;
-use Pterodactyl\Services\Locations\LocationUpdateService;
-use Pterodactyl\Services\Locations\LocationCreationService;
-use Pterodactyl\Services\Locations\LocationDeletionService;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Http\Requests\Admin\LocationFormRequest;
+use Kriegerhost\Services\Locations\LocationUpdateService;
+use Kriegerhost\Services\Locations\LocationCreationService;
+use Kriegerhost\Services\Locations\LocationDeletionService;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
 
 class LocationController extends Controller
 {
@@ -27,22 +27,22 @@ class LocationController extends Controller
     protected $alert;
 
     /**
-     * @var \Pterodactyl\Services\Locations\LocationCreationService
+     * @var \Kriegerhost\Services\Locations\LocationCreationService
      */
     protected $creationService;
 
     /**
-     * @var \Pterodactyl\Services\Locations\LocationDeletionService
+     * @var \Kriegerhost\Services\Locations\LocationDeletionService
      */
     protected $deletionService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\LocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\LocationRepositoryInterface
      */
     protected $repository;
 
     /**
-     * @var \Pterodactyl\Services\Locations\LocationUpdateService
+     * @var \Kriegerhost\Services\Locations\LocationUpdateService
      */
     protected $updateService;
 
@@ -82,7 +82,7 @@ class LocationController extends Controller
      *
      * @return \Illuminate\View\View
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function view($id)
     {
@@ -131,7 +131,7 @@ class LocationController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function delete(Location $location)
     {

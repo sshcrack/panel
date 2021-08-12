@@ -1,23 +1,23 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Repositories\Eloquent\SubuserRepository;
-use Pterodactyl\Transformers\Api\Client\ServerTransformer;
-use Pterodactyl\Services\Servers\GetUserPermissionsService;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
-use Pterodactyl\Http\Requests\Api\Client\Servers\GetServerRequest;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Repositories\Eloquent\SubuserRepository;
+use Kriegerhost\Transformers\Api\Client\ServerTransformer;
+use Kriegerhost\Services\Servers\GetUserPermissionsService;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Http\Requests\Api\Client\Servers\GetServerRequest;
 
 class ServerController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\SubuserRepository
+     * @var \Kriegerhost\Repositories\Eloquent\SubuserRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\GetUserPermissionsService
+     * @var \Kriegerhost\Services\Servers\GetUserPermissionsService
      */
     private $permissionsService;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Contracts\Repository;
+namespace Kriegerhost\Contracts\Repository;
 
 interface AllocationRepositoryInterface extends RepositoryInterface
 {
@@ -13,7 +13,7 @@ interface AllocationRepositoryInterface extends RepositoryInterface
     /**
      * Return a single allocation from those meeting the requirements.
      *
-     * @return \Pterodactyl\Models\Allocation|null
+     * @return \Kriegerhost\Models\Allocation|null
      */
     public function getRandomAllocation(array $nodes, array $ports, bool $dedicated = false);
 }

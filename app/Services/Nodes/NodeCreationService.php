@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Services\Nodes;
+namespace Kriegerhost\Services\Nodes;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Str;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Contracts\Repository\NodeRepositoryInterface;
+use Kriegerhost\Contracts\Repository\NodeRepositoryInterface;
 
 class NodeCreationService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\NodeRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NodeRepositoryInterface
      */
     protected $repository;
 
@@ -32,9 +32,9 @@ class NodeCreationService
     /**
      * Create a new node on the panel.
      *
-     * @return \Pterodactyl\Models\Node
+     * @return \Kriegerhost\Models\Node
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function handle(array $data)
     {

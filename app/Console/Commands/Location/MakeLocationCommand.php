@@ -1,21 +1,21 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Console\Commands\Location;
+namespace Kriegerhost\Console\Commands\Location;
 
 use Illuminate\Console\Command;
-use Pterodactyl\Services\Locations\LocationCreationService;
+use Kriegerhost\Services\Locations\LocationCreationService;
 
 class MakeLocationCommand extends Command
 {
     /**
-     * @var \Pterodactyl\Services\Locations\LocationCreationService
+     * @var \Kriegerhost\Services\Locations\LocationCreationService
      */
     protected $creationService;
 
@@ -44,7 +44,7 @@ class MakeLocationCommand extends Command
     /**
      * Handle the command execution process.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function handle()
     {

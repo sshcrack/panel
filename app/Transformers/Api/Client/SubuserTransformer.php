@@ -1,8 +1,8 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Client;
+namespace Kriegerhost\Transformers\Api\Client;
 
-use Pterodactyl\Models\Subuser;
+use Kriegerhost\Models\Subuser;
 
 class SubuserTransformer extends BaseClientTransformer
 {
@@ -19,7 +19,7 @@ class SubuserTransformer extends BaseClientTransformer
      *
      * @return array|void
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     public function transform(Subuser $model)
     {

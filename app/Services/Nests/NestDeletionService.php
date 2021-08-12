@@ -1,27 +1,27 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Services\Nests;
+namespace Kriegerhost\Services\Nests;
 
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Exceptions\Service\HasActiveServersException;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Contracts\Repository\NestRepositoryInterface;
+use Kriegerhost\Exceptions\Service\HasActiveServersException;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
 
 class NestDeletionService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     protected $serverRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\NestRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NestRepositoryInterface
      */
     protected $repository;
 
@@ -39,7 +39,7 @@ class NestDeletionService
     /**
      * Delete a nest from the system only if there are no servers attached to it.
      *
-     * @throws \Pterodactyl\Exceptions\Service\HasActiveServersException
+     * @throws \Kriegerhost\Exceptions\Service\HasActiveServersException
      */
     public function handle(int $nest): int
     {

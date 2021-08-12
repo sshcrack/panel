@@ -1,25 +1,25 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client;
+namespace Kriegerhost\Tests\Integration\Api\Client;
 
 use ReflectionClass;
-use Pterodactyl\Models\Node;
-use Pterodactyl\Models\Task;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\Node;
+use Kriegerhost\Models\Task;
+use Kriegerhost\Models\User;
 use Webmozart\Assert\Assert;
 use InvalidArgumentException;
-use Pterodactyl\Models\Backup;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Subuser;
-use Pterodactyl\Models\Database;
-use Pterodactyl\Models\Location;
-use Pterodactyl\Models\Schedule;
+use Kriegerhost\Models\Backup;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Subuser;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Models\Location;
+use Kriegerhost\Models\Schedule;
 use Illuminate\Support\Collection;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Models\DatabaseHost;
-use Pterodactyl\Tests\Integration\TestResponse;
-use Pterodactyl\Tests\Integration\IntegrationTestCase;
-use Pterodactyl\Transformers\Api\Client\BaseClientTransformer;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Models\DatabaseHost;
+use Kriegerhost\Tests\Integration\TestResponse;
+use Kriegerhost\Tests\Integration\IntegrationTestCase;
+use Kriegerhost\Transformers\Api\Client\BaseClientTransformer;
 
 abstract class ClientApiIntegrationTestCase extends IntegrationTestCase
 {
@@ -93,14 +93,14 @@ abstract class ClientApiIntegrationTestCase extends IntegrationTestCase
      */
     protected function generateTestAccount(array $permissions = []): array
     {
-        /** @var \Pterodactyl\Models\User $user */
+        /** @var \Kriegerhost\Models\User $user */
         $user = User::factory()->create();
 
         if (empty($permissions)) {
             return [$user, $this->createServerModel(['user_id' => $user->id])];
         }
 
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         $server = $this->createServerModel();
 
         Subuser::query()->create([
@@ -116,12 +116,12 @@ abstract class ClientApiIntegrationTestCase extends IntegrationTestCase
      * Asserts that the data passed through matches the output of the data from the transformer. This
      * will remove the "relationships" key when performing the comparison.
      *
-     * @param \Pterodactyl\Models\Model|\Illuminate\Database\Eloquent\Model $model
+     * @param \Kriegerhost\Models\Model|\Illuminate\Database\Eloquent\Model $model
      */
     protected function assertJsonTransformedWith(array $data, $model)
     {
         $reflect = new ReflectionClass($model);
-        $transformer = sprintf('\\Pterodactyl\\Transformers\\Api\\Client\\%sTransformer', $reflect->getShortName());
+        $transformer = sprintf('\\Kriegerhost\\Transformers\\Api\\Client\\%sTransformer', $reflect->getShortName());
 
         $transformer = new $transformer();
         $this->assertInstanceOf(BaseClientTransformer::class, $transformer);

@@ -96,5 +96,5 @@ return [
     |
     */
 
-    'prefix' => env('CACHE_PREFIX', str_slug(env('APP_NAME', 'pterodactyl'), '_') . '_cache'),
+    'prefix' => env('CACHE_PREFIX', str_slug(env('APP_NAME', 'kriegerhost'), '_') . '_cache'),
 ];

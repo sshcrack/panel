@@ -1,42 +1,42 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Locations;
+namespace Kriegerhost\Http\Controllers\Api\Application\Locations;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Location;
+use Kriegerhost\Models\Location;
 use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
-use Pterodactyl\Services\Locations\LocationUpdateService;
-use Pterodactyl\Services\Locations\LocationCreationService;
-use Pterodactyl\Services\Locations\LocationDeletionService;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
-use Pterodactyl\Transformers\Api\Application\LocationTransformer;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
-use Pterodactyl\Http\Requests\Api\Application\Locations\GetLocationRequest;
-use Pterodactyl\Http\Requests\Api\Application\Locations\GetLocationsRequest;
-use Pterodactyl\Http\Requests\Api\Application\Locations\StoreLocationRequest;
-use Pterodactyl\Http\Requests\Api\Application\Locations\DeleteLocationRequest;
-use Pterodactyl\Http\Requests\Api\Application\Locations\UpdateLocationRequest;
+use Kriegerhost\Services\Locations\LocationUpdateService;
+use Kriegerhost\Services\Locations\LocationCreationService;
+use Kriegerhost\Services\Locations\LocationDeletionService;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Transformers\Api\Application\LocationTransformer;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Http\Requests\Api\Application\Locations\GetLocationRequest;
+use Kriegerhost\Http\Requests\Api\Application\Locations\GetLocationsRequest;
+use Kriegerhost\Http\Requests\Api\Application\Locations\StoreLocationRequest;
+use Kriegerhost\Http\Requests\Api\Application\Locations\DeleteLocationRequest;
+use Kriegerhost\Http\Requests\Api\Application\Locations\UpdateLocationRequest;
 
 class LocationController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Services\Locations\LocationCreationService
+     * @var \Kriegerhost\Services\Locations\LocationCreationService
      */
     private $creationService;
 
     /**
-     * @var \Pterodactyl\Services\Locations\LocationDeletionService
+     * @var \Kriegerhost\Services\Locations\LocationDeletionService
      */
     private $deletionService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\LocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\LocationRepositoryInterface
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Services\Locations\LocationUpdateService
+     * @var \Kriegerhost\Services\Locations\LocationUpdateService
      */
     private $updateService;
 
@@ -86,7 +86,7 @@ class LocationController extends ApplicationApiController
      * Store a new location on the Panel and return a HTTP/201 response code with the
      * new location attached.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function store(StoreLocationRequest $request): JsonResponse
     {
@@ -105,8 +105,8 @@ class LocationController extends ApplicationApiController
     /**
      * Update a location on the Panel and return the updated record to the user.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UpdateLocationRequest $request): array
     {
@@ -120,7 +120,7 @@ class LocationController extends ApplicationApiController
     /**
      * Delete a location from the Panel.
      *
-     * @throws \Pterodactyl\Exceptions\Service\Location\HasActiveNodesException
+     * @throws \Kriegerhost\Exceptions\Service\Location\HasActiveNodesException
      */
     public function delete(DeleteLocationRequest $request): Response
     {

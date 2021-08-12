@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser\Processes\Authentication;
+namespace Kriegerhost\Tests\Browser\Processes\Authentication;
 
 use Facebook\WebDriver\WebDriverKeys;
-use Pterodactyl\Tests\Browser\BrowserTestCase;
-use Pterodactyl\Tests\Browser\Pages\LoginPage;
-use Pterodactyl\Tests\Browser\PterodactylBrowser;
+use Kriegerhost\Tests\Browser\BrowserTestCase;
+use Kriegerhost\Tests\Browser\Pages\LoginPage;
+use Kriegerhost\Tests\Browser\KriegerhostBrowser;
 
 class LoginProcessTest extends BrowserTestCase
 {
@@ -26,7 +26,7 @@ class LoginProcessTest extends BrowserTestCase
      */
     public function testLoginUsingEmail()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->visit(new LoginPage())
                 ->waitFor('@username')
                 ->type('@username', $this->user->email)
@@ -43,7 +43,7 @@ class LoginProcessTest extends BrowserTestCase
      */
     public function testLoginUsingUsername()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->visit(new LoginPage())
                 ->waitFor('@username')
                 ->type('@username', $this->user->username)
@@ -61,7 +61,7 @@ class LoginProcessTest extends BrowserTestCase
      */
     public function testLoginWithErrors()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->logout()
                 ->visit(new LoginPage())
                 ->waitFor('@username')

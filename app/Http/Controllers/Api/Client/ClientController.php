@@ -1,20 +1,20 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client;
+namespace Kriegerhost\Http\Controllers\Api\Client;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Permission;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Permission;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-use Pterodactyl\Models\Filters\MultiFieldServerFilter;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Transformers\Api\Client\ServerTransformer;
-use Pterodactyl\Http\Requests\Api\Client\GetServersRequest;
+use Kriegerhost\Models\Filters\MultiFieldServerFilter;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Transformers\Api\Client\ServerTransformer;
+use Kriegerhost\Http\Requests\Api\Client\GetServersRequest;
 
 class ClientController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 

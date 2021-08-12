@@ -1,16 +1,16 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Kriegerhost\Services\Servers;
 
 use Illuminate\Support\Arr;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\Allocation;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\Allocation;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Exceptions\DisplayException;
+use Kriegerhost\Exceptions\DisplayException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class BuildModificationService
 {
@@ -20,19 +20,19 @@ class BuildModificationService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $daemonServerRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerConfigurationStructureService
+     * @var \Kriegerhost\Services\Servers\ServerConfigurationStructureService
      */
     private $structureService;
 
     /**
      * BuildModificationService constructor.
      *
-     * @param \Pterodactyl\Services\Servers\ServerConfigurationStructureService $structureService
+     * @param \Kriegerhost\Services\Servers\ServerConfigurationStructureService $structureService
      */
     public function __construct(
         ServerConfigurationStructureService $structureService,
@@ -47,10 +47,10 @@ class BuildModificationService
     /**
      * Change the build details for a specified server.
      *
-     * @return \Pterodactyl\Models\Server
+     * @return \Kriegerhost\Models\Server
      *
      * @throws \Throwable
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function handle(Server $server, array $data)
     {
@@ -102,7 +102,7 @@ class BuildModificationService
     /**
      * Process the allocations being assigned in the data and ensure they are available for a server.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     private function processAllocations(Server $server, array &$data)
     {

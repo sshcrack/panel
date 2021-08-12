@@ -1,20 +1,20 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Kriegerhost\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Prologue\Alerts\AlertsMessageBag;
 use Spatie\QueryBuilder\QueryBuilder;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Http\Controllers\Controller;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Http\Controllers\Controller;
 use Illuminate\Contracts\Translation\Translator;
-use Pterodactyl\Services\Users\UserUpdateService;
-use Pterodactyl\Traits\Helpers\AvailableLanguages;
-use Pterodactyl\Services\Users\UserCreationService;
-use Pterodactyl\Services\Users\UserDeletionService;
-use Pterodactyl\Http\Requests\Admin\UserFormRequest;
-use Pterodactyl\Contracts\Repository\UserRepositoryInterface;
+use Kriegerhost\Services\Users\UserUpdateService;
+use Kriegerhost\Traits\Helpers\AvailableLanguages;
+use Kriegerhost\Services\Users\UserCreationService;
+use Kriegerhost\Services\Users\UserDeletionService;
+use Kriegerhost\Http\Requests\Admin\UserFormRequest;
+use Kriegerhost\Contracts\Repository\UserRepositoryInterface;
 
 class UserController extends Controller
 {
@@ -26,17 +26,17 @@ class UserController extends Controller
     protected $alert;
 
     /**
-     * @var \Pterodactyl\Services\Users\UserCreationService
+     * @var \Kriegerhost\Services\Users\UserCreationService
      */
     protected $creationService;
 
     /**
-     * @var \Pterodactyl\Services\Users\UserDeletionService
+     * @var \Kriegerhost\Services\Users\UserDeletionService
      */
     protected $deletionService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\UserRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\UserRepositoryInterface
      */
     protected $repository;
 
@@ -46,7 +46,7 @@ class UserController extends Controller
     protected $translator;
 
     /**
-     * @var \Pterodactyl\Services\Users\UserUpdateService
+     * @var \Kriegerhost\Services\Users\UserUpdateService
      */
     protected $updateService;
 
@@ -122,7 +122,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function delete(Request $request, User $user)
     {
@@ -156,8 +156,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function update(UserFormRequest $request, User $user)
     {
@@ -173,7 +173,7 @@ class UserController extends Controller
     /**
      * Get a JSON response of users on the system.
      *
-     * @return \Illuminate\Support\Collection|\Pterodactyl\Models\Model
+     * @return \Illuminate\Support\Collection|\Kriegerhost\Models\Model
      */
     public function json(Request $request)
     {

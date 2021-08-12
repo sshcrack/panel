@@ -1,4 +1,4 @@
-{{-- Pterodactyl - Panel --}}
+{{-- Kriegerhost - Panel --}}
 {{-- Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com> --}}
 
 {{-- This software is licensed under the terms of the MIT license. --}}
@@ -60,7 +60,7 @@
                     <label class="control-label">Author</label>
                     <div>
                         <input type="text" readonly class="form-control" value="{{ $nest->author }}" />
-                        <p class="text-muted small">The author of this service option. Please direct questions and issues to them unless this is an official option authored by <code>support@pterodactyl.io</code>.</p>
+                        <p class="text-muted small">The author of this service option. Please direct questions and issues to them unless this is an official option authored by <code>support@krieger.host</code>.</p>
                     </div>
                 </div>
                 <div class="form-group">

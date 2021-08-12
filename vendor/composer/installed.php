@@ -6,7 +6,7 @@
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'reference' => NULL,
-        'name' => 'pterodactyl/panel',
+        'name' => 'kriegerhost/panel',
         'dev' => false,
     ),
     'versions' => array(
@@ -674,7 +674,7 @@
             'reference' => 'e4573f47750dd6c92dca5aee543fa77513cbd8d3',
             'dev_requirement' => false,
         ),
-        'pterodactyl/panel' => array(
+        'kriegerhost/panel' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'type' => 'library',

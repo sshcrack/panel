@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Services\Databases;
+namespace Kriegerhost\Services\Databases;
 
-use Pterodactyl\Models\Database;
-use Pterodactyl\Helpers\Utilities;
+use Kriegerhost\Models\Database;
+use Kriegerhost\Helpers\Utilities;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Pterodactyl\Extensions\DynamicDatabaseConnection;
-use Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface;
+use Kriegerhost\Extensions\DynamicDatabaseConnection;
+use Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface;
 
 class DatabasePasswordService
 {
@@ -17,7 +17,7 @@ class DatabasePasswordService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Extensions\DynamicDatabaseConnection
+     * @var \Kriegerhost\Extensions\DynamicDatabaseConnection
      */
     private $dynamic;
 
@@ -27,7 +27,7 @@ class DatabasePasswordService
     private $encrypter;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\DatabaseRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\DatabaseRepositoryInterface
      */
     private $repository;
 
@@ -49,7 +49,7 @@ class DatabasePasswordService
     /**
      * Updates a password for a given database.
      *
-     * @param \Pterodactyl\Models\Database|int $database
+     * @param \Kriegerhost\Models\Database|int $database
      *
      * @throws \Throwable
      */

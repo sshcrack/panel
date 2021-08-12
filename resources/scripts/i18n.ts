@@ -18,7 +18,7 @@ i18n
                 XHR,
             ],
             backendOptions: [ {
-                prefix: 'pterodactyl_lng__',
+                prefix: 'kriegerhost_lng__',
                 expirationTime: 7 * 24 * 60 * 60 * 1000, // 7 days, in milliseconds
                 store: window.localStorage,
             }, {

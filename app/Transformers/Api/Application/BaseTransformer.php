@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Transformers\Api\Application;
+namespace Kriegerhost\Transformers\Api\Application;
 
 use Carbon\CarbonImmutable;
-use Pterodactyl\Models\ApiKey;
+use Kriegerhost\Models\ApiKey;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use League\Fractal\TransformerAbstract;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException;
 
 /**
  * @method array transform(Model $model)
@@ -18,7 +18,7 @@ abstract class BaseTransformer extends TransformerAbstract
     public const RESPONSE_TIMEZONE = 'UTC';
 
     /**
-     * @var \Pterodactyl\Models\ApiKey
+     * @var \Kriegerhost\Models\ApiKey
      */
     private $key;
 
@@ -72,13 +72,13 @@ abstract class BaseTransformer extends TransformerAbstract
      * Create a new instance of the transformer and pass along the currently
      * set API key.
      *
-     * @return \Pterodactyl\Transformers\Api\Application\BaseTransformer
+     * @return \Kriegerhost\Transformers\Api\Application\BaseTransformer
      *
-     * @throws \Pterodactyl\Exceptions\Transformer\InvalidTransformerLevelException
+     * @throws \Kriegerhost\Exceptions\Transformer\InvalidTransformerLevelException
      */
     protected function makeTransformer(string $abstract, array $parameters = [])
     {
-        /** @var \Pterodactyl\Transformers\Api\Application\BaseTransformer $transformer */
+        /** @var \Kriegerhost\Transformers\Api\Application\BaseTransformer $transformer */
         $transformer = Container::getInstance()->makeWith($abstract, $parameters);
         $transformer->setKey($this->getKey());
 

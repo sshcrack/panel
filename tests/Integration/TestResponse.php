@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration;
+namespace Kriegerhost\Tests\Integration;
 
 use Illuminate\Http\Response;
 use Illuminate\Testing\Assert as PHPUnit;
-use Pterodactyl\Exceptions\DisplayException;
+use Kriegerhost\Exceptions\DisplayException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Testing\TestResponse as IlluminateTestResponse;
 
@@ -17,7 +17,7 @@ class TestResponse extends IlluminateTestResponse
      *
      * @param int $status
      *
-     * @return \Pterodactyl\Tests\Integration\TestResponse
+     * @return \Kriegerhost\Tests\Integration\TestResponse
      */
     public function assertStatus($status)
     {

@@ -1,28 +1,28 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Services\Eggs;
+namespace Kriegerhost\Services\Eggs;
 
-use Pterodactyl\Contracts\Repository\EggRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Egg\HasChildrenException;
-use Pterodactyl\Exceptions\Service\HasActiveServersException;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Contracts\Repository\EggRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Egg\HasChildrenException;
+use Kriegerhost\Exceptions\Service\HasActiveServersException;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
 
 class EggDeletionService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\EggRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\EggRepositoryInterface
      */
     protected $repository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     protected $serverRepository;
 
@@ -40,8 +40,8 @@ class EggDeletionService
     /**
      * Delete an Egg from the database if it has no active servers attached to it.
      *
-     * @throws \Pterodactyl\Exceptions\Service\HasActiveServersException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\HasChildrenException
+     * @throws \Kriegerhost\Exceptions\Service\HasActiveServersException
+     * @throws \Kriegerhost\Exceptions\Service\Egg\HasChildrenException
      */
     public function handle(int $egg): int
     {

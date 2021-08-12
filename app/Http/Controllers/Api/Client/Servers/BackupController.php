@@ -1,42 +1,42 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Client\Servers;
 
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Backup;
-use Pterodactyl\Models\Server;
-use Pterodactyl\Models\AuditLog;
+use Kriegerhost\Models\Backup;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Models\AuditLog;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Models\Permission;
+use Kriegerhost\Models\Permission;
 use Illuminate\Auth\Access\AuthorizationException;
-use Pterodactyl\Services\Backups\DeleteBackupService;
-use Pterodactyl\Services\Backups\DownloadLinkService;
-use Pterodactyl\Services\Backups\InitiateBackupService;
-use Pterodactyl\Repositories\Wings\DaemonBackupRepository;
-use Pterodactyl\Transformers\Api\Client\BackupTransformer;
-use Pterodactyl\Http\Controllers\Api\Client\ClientApiController;
+use Kriegerhost\Services\Backups\DeleteBackupService;
+use Kriegerhost\Services\Backups\DownloadLinkService;
+use Kriegerhost\Services\Backups\InitiateBackupService;
+use Kriegerhost\Repositories\Wings\DaemonBackupRepository;
+use Kriegerhost\Transformers\Api\Client\BackupTransformer;
+use Kriegerhost\Http\Controllers\Api\Client\ClientApiController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Pterodactyl\Http\Requests\Api\Client\Servers\Backups\StoreBackupRequest;
+use Kriegerhost\Http\Requests\Api\Client\Servers\Backups\StoreBackupRequest;
 
 class BackupController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Services\Backups\InitiateBackupService
+     * @var \Kriegerhost\Services\Backups\InitiateBackupService
      */
     private $initiateBackupService;
 
     /**
-     * @var \Pterodactyl\Services\Backups\DeleteBackupService
+     * @var \Kriegerhost\Services\Backups\DeleteBackupService
      */
     private $deleteBackupService;
 
     /**
-     * @var \Pterodactyl\Services\Backups\DownloadLinkService
+     * @var \Kriegerhost\Services\Backups\DownloadLinkService
      */
     private $downloadLinkService;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonBackupRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonBackupRepository
      */
     private $repository;
 
@@ -85,7 +85,7 @@ class BackupController extends ClientApiController
      */
     public function store(StoreBackupRequest $request, Server $server): array
     {
-        /** @var \Pterodactyl\Models\Backup $backup */
+        /** @var \Kriegerhost\Models\Backup $backup */
         $backup = $server->audit(AuditLog::SERVER__BACKUP_STARTED, function (AuditLog $model, Server $server) use ($request) {
             $action = $this->initiateBackupService
                 ->setIgnoredFiles(explode(PHP_EOL, $request->input('ignored') ?? ''));

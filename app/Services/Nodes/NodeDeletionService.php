@@ -1,29 +1,29 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Services\Nodes;
+namespace Kriegerhost\Services\Nodes;
 
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Illuminate\Contracts\Translation\Translator;
-use Pterodactyl\Contracts\Repository\NodeRepositoryInterface;
-use Pterodactyl\Exceptions\Service\HasActiveServersException;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Contracts\Repository\NodeRepositoryInterface;
+use Kriegerhost\Exceptions\Service\HasActiveServersException;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
 
 class NodeDeletionService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\NodeRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NodeRepositoryInterface
      */
     protected $repository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     protected $serverRepository;
 
@@ -48,11 +48,11 @@ class NodeDeletionService
     /**
      * Delete a node from the panel if no servers are attached to it.
      *
-     * @param int|\Pterodactyl\Models\Node $node
+     * @param int|\Kriegerhost\Models\Node $node
      *
      * @return bool|null
      *
-     * @throws \Pterodactyl\Exceptions\Service\HasActiveServersException
+     * @throws \Kriegerhost\Exceptions\Service\HasActiveServersException
      */
     public function handle($node)
     {

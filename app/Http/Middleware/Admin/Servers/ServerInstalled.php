@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Http\Middleware\Admin\Servers;
+namespace Kriegerhost\Http\Middleware\Admin\Servers;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -18,7 +18,7 @@ class ServerInstalled
      */
     public function handle(Request $request, Closure $next)
     {
-        /** @var \Pterodactyl\Models\Server|null $server */
+        /** @var \Kriegerhost\Models\Server|null $server */
         $server = $request->route()->parameter('server');
 
         if (!$server instanceof Server) {

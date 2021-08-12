@@ -1,35 +1,35 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application\Servers;
+namespace Kriegerhost\Http\Controllers\Api\Application\Servers;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
-use Pterodactyl\Services\Servers\ServerCreationService;
-use Pterodactyl\Services\Servers\ServerDeletionService;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
-use Pterodactyl\Transformers\Api\Application\ServerTransformer;
-use Pterodactyl\Http\Requests\Api\Application\Servers\GetServerRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\GetServersRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\ServerWriteRequest;
-use Pterodactyl\Http\Requests\Api\Application\Servers\StoreServerRequest;
-use Pterodactyl\Http\Controllers\Api\Application\ApplicationApiController;
+use Kriegerhost\Services\Servers\ServerCreationService;
+use Kriegerhost\Services\Servers\ServerDeletionService;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Transformers\Api\Application\ServerTransformer;
+use Kriegerhost\Http\Requests\Api\Application\Servers\GetServerRequest;
+use Kriegerhost\Http\Requests\Api\Application\Servers\GetServersRequest;
+use Kriegerhost\Http\Requests\Api\Application\Servers\ServerWriteRequest;
+use Kriegerhost\Http\Requests\Api\Application\Servers\StoreServerRequest;
+use Kriegerhost\Http\Controllers\Api\Application\ApplicationApiController;
 
 class ServerController extends ApplicationApiController
 {
     /**
-     * @var \Pterodactyl\Services\Servers\ServerCreationService
+     * @var \Kriegerhost\Services\Servers\ServerCreationService
      */
     private $creationService;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerDeletionService
+     * @var \Kriegerhost\Services\Servers\ServerDeletionService
      */
     private $deletionService;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     private $repository;
 
@@ -68,11 +68,11 @@ class ServerController extends ApplicationApiController
      *
      * @throws \Throwable
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableAllocationException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableAllocationException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableNodeException
      */
     public function store(StoreServerRequest $request): JsonResponse
     {
@@ -94,7 +94,7 @@ class ServerController extends ApplicationApiController
     }
 
     /**
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function delete(ServerWriteRequest $request, Server $server, string $force = ''): Response
     {

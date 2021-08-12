@@ -1,23 +1,23 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Console\Commands\User;
+namespace Kriegerhost\Console\Commands\User;
 
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\User;
 use Webmozart\Assert\Assert;
 use Illuminate\Console\Command;
-use Pterodactyl\Services\Users\UserDeletionService;
+use Kriegerhost\Services\Users\UserDeletionService;
 
 class DeleteUserCommand extends Command
 {
     /**
-     * @var \Pterodactyl\Services\Users\UserDeletionService
+     * @var \Kriegerhost\Services\Users\UserDeletionService
      */
     protected $deletionService;
 
@@ -27,7 +27,7 @@ class DeleteUserCommand extends Command
     protected $description = 'Deletes a user from the Panel if no servers are attached to their account.';
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\UserRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\UserRepositoryInterface
      */
     protected $repository;
 
@@ -49,7 +49,7 @@ class DeleteUserCommand extends Command
     /**
      * @return bool
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function handle()
     {

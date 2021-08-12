@@ -1,12 +1,12 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration;
+namespace Kriegerhost\Tests\Integration;
 
 use Carbon\CarbonImmutable;
-use Pterodactyl\Tests\TestCase;
+use Kriegerhost\Tests\TestCase;
 use Illuminate\Database\Eloquent\Model;
-use Pterodactyl\Tests\Traits\Integration\CreatesTestModels;
-use Pterodactyl\Transformers\Api\Application\BaseTransformer;
+use Kriegerhost\Tests\Traits\Integration\CreatesTestModels;
+use Kriegerhost\Transformers\Api\Application\BaseTransformer;
 
 abstract class IntegrationTestCase extends TestCase
 {

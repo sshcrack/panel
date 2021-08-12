@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Http\Requests\Api\Application\Allocations;
+namespace Kriegerhost\Http\Requests\Api\Application\Allocations;
 
-use Pterodactyl\Models\Node;
-use Pterodactyl\Models\Allocation;
-use Pterodactyl\Services\Acl\Api\AdminAcl;
-use Pterodactyl\Http\Requests\Api\Application\ApplicationApiRequest;
+use Kriegerhost\Models\Node;
+use Kriegerhost\Models\Allocation;
+use Kriegerhost\Services\Acl\Api\AdminAcl;
+use Kriegerhost\Http\Requests\Api\Application\ApplicationApiRequest;
 
 class DeleteAllocationRequest extends ApplicationApiRequest
 {

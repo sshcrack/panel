@@ -1,16 +1,16 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Console\Commands;
+namespace Kriegerhost\Console\Commands;
 
 use Illuminate\Console\Command;
-use Pterodactyl\Services\Helpers\SoftwareVersionService;
+use Kriegerhost\Services\Helpers\SoftwareVersionService;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 class InfoCommand extends Command
@@ -31,7 +31,7 @@ class InfoCommand extends Command
     protected $signature = 'p:info';
 
     /**
-     * @var \Pterodactyl\Services\Helpers\SoftwareVersionService
+     * @var \Kriegerhost\Services\Helpers\SoftwareVersionService
      */
     protected $versionService;
 
@@ -56,7 +56,7 @@ class InfoCommand extends Command
             ['Panel Version', $this->config->get('app.version')],
             ['Latest Version', $this->versionService->getPanel()],
             ['Up-to-Date', $this->versionService->isLatestPanel() ? 'Yes' : $this->formatText('No', 'bg=red')],
-            ['Unique Identifier', $this->config->get('pterodactyl.service.author')],
+            ['Unique Identifier', $this->config->get('kriegerhost.service.author')],
         ], 'compact');
 
         $this->output->title('Application Configuration');

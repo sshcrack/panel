@@ -1,18 +1,18 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Console\Commands\Environment;
+namespace Kriegerhost\Console\Commands\Environment;
 
 use DateTimeZone;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\Kernel;
-use Pterodactyl\Traits\Commands\EnvironmentWriterTrait;
+use Kriegerhost\Traits\Commands\EnvironmentWriterTrait;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 class AppSettingsCommand extends Command
@@ -89,7 +89,7 @@ class AppSettingsCommand extends Command
     /**
      * Handle command execution.
      *
-     * @throws \Pterodactyl\Exceptions\PterodactylException
+     * @throws \Kriegerhost\Exceptions\KriegerhostException
      */
     public function handle()
     {
@@ -100,7 +100,7 @@ class AppSettingsCommand extends Command
         $this->output->comment(trans('command/messages.environment.app.author_help'));
         $this->variables['APP_SERVICE_AUTHOR'] = $this->option('author') ?? $this->ask(
             trans('command/messages.environment.app.author'),
-            $this->config->get('pterodactyl.service.author', 'unknown@unknown.com')
+            $this->config->get('kriegerhost.service.author', 'unknown@unknown.com')
         );
 
         $this->output->comment(trans('command/messages.environment.app.app_url_help'));

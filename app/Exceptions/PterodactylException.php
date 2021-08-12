@@ -1,9 +1,9 @@
 <?php
 
-namespace Pterodactyl\Exceptions;
+namespace Kriegerhost\Exceptions;
 
 use Exception;
 
-class PterodactylException extends Exception
+class KriegerhostException extends Exception
 {
 }

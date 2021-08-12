@@ -1,11 +1,11 @@
 <?php
 
-namespace Pterodactyl\Tests\Unit\Http\Middleware;
+namespace Kriegerhost\Tests\Unit\Http\Middleware;
 
 use Mockery as m;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\RedirectResponse;
-use Pterodactyl\Http\Middleware\RedirectIfAuthenticated;
+use Kriegerhost\Http\Middleware\RedirectIfAuthenticated;
 
 class RedirectIfAuthenticatedTest extends MiddlewareTestCase
 {

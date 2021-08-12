@@ -1,18 +1,18 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin;
+namespace Kriegerhost\Http\Controllers\Admin;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Nest;
-use Pterodactyl\Models\Mount;
-use Pterodactyl\Models\Location;
+use Kriegerhost\Models\Nest;
+use Kriegerhost\Models\Mount;
+use Kriegerhost\Models\Location;
 use Prologue\Alerts\AlertsMessageBag;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Http\Requests\Admin\MountFormRequest;
-use Pterodactyl\Repositories\Eloquent\MountRepository;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Contracts\Repository\LocationRepositoryInterface;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Http\Requests\Admin\MountFormRequest;
+use Kriegerhost\Repositories\Eloquent\MountRepository;
+use Kriegerhost\Contracts\Repository\NestRepositoryInterface;
+use Kriegerhost\Contracts\Repository\LocationRepositoryInterface;
 
 class MountController extends Controller
 {
@@ -22,17 +22,17 @@ class MountController extends Controller
     protected $alert;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\NestRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\NestRepositoryInterface
      */
     protected $nestRepository;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\LocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\LocationRepositoryInterface
      */
     protected $locationRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\MountRepository
+     * @var \Kriegerhost\Repositories\Eloquent\MountRepository
      */
     protected $repository;
 
@@ -70,7 +70,7 @@ class MountController extends Controller
      *
      * @return \Illuminate\View\View
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function view($id)
     {

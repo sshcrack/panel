@@ -1,15 +1,15 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Events\Server;
+namespace Kriegerhost\Events\Server;
 
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Queue\SerializesModels;
 
 class Deleted
@@ -19,7 +19,7 @@ class Deleted
     /**
      * The Eloquent model of the server.
      *
-     * @var \Pterodactyl\Models\Server
+     * @var \Kriegerhost\Models\Server
      */
     public $server;
 

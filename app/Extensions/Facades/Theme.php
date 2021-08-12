@@ -1,6 +1,6 @@
 <?php
 
-namespace Pterodactyl\Extensions\Facades;
+namespace Kriegerhost\Extensions\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

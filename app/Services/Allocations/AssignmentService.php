@@ -1,17 +1,17 @@
 <?php
 
-namespace Pterodactyl\Services\Allocations;
+namespace Kriegerhost\Services\Allocations;
 
 use Exception;
 use IPTools\Network;
-use Pterodactyl\Models\Node;
+use Kriegerhost\Models\Node;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Contracts\Repository\AllocationRepositoryInterface;
-use Pterodactyl\Exceptions\Service\Allocation\CidrOutOfRangeException;
-use Pterodactyl\Exceptions\Service\Allocation\PortOutOfRangeException;
-use Pterodactyl\Exceptions\Service\Allocation\InvalidPortMappingException;
-use Pterodactyl\Exceptions\Service\Allocation\TooManyPortsInRangeException;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Contracts\Repository\AllocationRepositoryInterface;
+use Kriegerhost\Exceptions\Service\Allocation\CidrOutOfRangeException;
+use Kriegerhost\Exceptions\Service\Allocation\PortOutOfRangeException;
+use Kriegerhost\Exceptions\Service\Allocation\InvalidPortMappingException;
+use Kriegerhost\Exceptions\Service\Allocation\TooManyPortsInRangeException;
 
 class AssignmentService
 {
@@ -28,7 +28,7 @@ class AssignmentService
     protected $connection;
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\AllocationRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\AllocationRepositoryInterface
      */
     protected $repository;
 
@@ -44,11 +44,11 @@ class AssignmentService
     /**
      * Insert allocations into the database and link them to a specific node.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\CidrOutOfRangeException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\InvalidPortMappingException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\PortOutOfRangeException
-     * @throws \Pterodactyl\Exceptions\Service\Allocation\TooManyPortsInRangeException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\CidrOutOfRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\InvalidPortMappingException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\PortOutOfRangeException
+     * @throws \Kriegerhost\Exceptions\Service\Allocation\TooManyPortsInRangeException
      */
     public function handle(Node $node, array $data)
     {

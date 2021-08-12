@@ -1,20 +1,20 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Kriegerhost\Services\Servers;
 
-use Pterodactyl\Models\Server;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Models\Server;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
 
 class TransferService
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $daemonServerRepository;
 
@@ -32,7 +32,7 @@ class TransferService
     /**
      * Requests an archive from the daemon.
      *
-     * @param int|\Pterodactyl\Models\Server $server
+     * @param int|\Kriegerhost\Models\Server $server
      *
      * @throws \Throwable
      */

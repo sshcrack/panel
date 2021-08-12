@@ -1,34 +1,34 @@
 <?php
 
-namespace Pterodactyl\Services\Servers;
+namespace Kriegerhost\Services\Servers;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Arr;
-use Pterodactyl\Models\Egg;
-use Pterodactyl\Models\User;
+use Kriegerhost\Models\Egg;
+use Kriegerhost\Models\User;
 use Webmozart\Assert\Assert;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Server;
 use Illuminate\Support\Collection;
-use Pterodactyl\Models\Allocation;
+use Kriegerhost\Models\Allocation;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Models\Objects\DeploymentObject;
-use Pterodactyl\Repositories\Eloquent\EggRepository;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Repositories\Wings\DaemonServerRepository;
-use Pterodactyl\Services\Deployment\FindViableNodesService;
-use Pterodactyl\Repositories\Eloquent\ServerVariableRepository;
-use Pterodactyl\Services\Deployment\AllocationSelectionService;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Models\Objects\DeploymentObject;
+use Kriegerhost\Repositories\Eloquent\EggRepository;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Repositories\Wings\DaemonServerRepository;
+use Kriegerhost\Services\Deployment\FindViableNodesService;
+use Kriegerhost\Repositories\Eloquent\ServerVariableRepository;
+use Kriegerhost\Services\Deployment\AllocationSelectionService;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class ServerCreationService
 {
     /**
-     * @var \Pterodactyl\Services\Deployment\AllocationSelectionService
+     * @var \Kriegerhost\Services\Deployment\AllocationSelectionService
      */
     private $allocationSelectionService;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerConfigurationStructureService
+     * @var \Kriegerhost\Services\Servers\ServerConfigurationStructureService
      */
     private $configurationStructureService;
 
@@ -38,46 +38,46 @@ class ServerCreationService
     private $connection;
 
     /**
-     * @var \Pterodactyl\Services\Deployment\FindViableNodesService
+     * @var \Kriegerhost\Services\Deployment\FindViableNodesService
      */
     private $findViableNodesService;
 
     /**
-     * @var \Pterodactyl\Services\Servers\VariableValidatorService
+     * @var \Kriegerhost\Services\Servers\VariableValidatorService
      */
     private $validatorService;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\EggRepository
+     * @var \Kriegerhost\Repositories\Eloquent\EggRepository
      */
     private $eggRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerVariableRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerVariableRepository
      */
     private $serverVariableRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Wings\DaemonServerRepository
+     * @var \Kriegerhost\Repositories\Wings\DaemonServerRepository
      */
     private $daemonServerRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\ServerDeletionService
+     * @var \Kriegerhost\Services\Servers\ServerDeletionService
      */
     private $serverDeletionService;
 
     /**
      * CreationService constructor.
      *
-     * @param \Pterodactyl\Services\Servers\ServerConfigurationStructureService $configurationStructureService
-     * @param \Pterodactyl\Services\Servers\ServerDeletionService $serverDeletionService
-     * @param \Pterodactyl\Services\Servers\VariableValidatorService $validatorService
+     * @param \Kriegerhost\Services\Servers\ServerConfigurationStructureService $configurationStructureService
+     * @param \Kriegerhost\Services\Servers\ServerDeletionService $serverDeletionService
+     * @param \Kriegerhost\Services\Servers\VariableValidatorService $validatorService
      */
     public function __construct(
         AllocationSelectionService $allocationSelectionService,
@@ -110,11 +110,11 @@ class ServerCreationService
      * no node_id the node_is will be picked from the allocation.
      *
      * @throws \Throwable
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableAllocationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableNodeException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableAllocationException
      */
     public function handle(array $data, DeploymentObject $deployment = null): Server
     {
@@ -149,7 +149,7 @@ class ServerCreationService
         //
         // If that connection fails out we will attempt to perform a cleanup by just
         // deleting the server itself from the system.
-        /** @var \Pterodactyl\Models\Server $server */
+        /** @var \Kriegerhost\Models\Server $server */
         $server = $this->connection->transaction(function () use ($data, $eggVariableData) {
             // Create the server and assign any additional allocations to it.
             $server = $this->createModel($data);
@@ -181,9 +181,9 @@ class ServerCreationService
     /**
      * Gets an allocation to use for automatic deployment.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableAllocationException
-     * @throws \Pterodactyl\Exceptions\Service\Deployment\NoViableNodeException
+     * @throws \Kriegerhost\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableAllocationException
+     * @throws \Kriegerhost\Exceptions\Service\Deployment\NoViableNodeException
      */
     private function configureDeployment(array $data, DeploymentObject $deployment): Allocation
     {
@@ -202,13 +202,13 @@ class ServerCreationService
     /**
      * Store the server in the database and return the model.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     private function createModel(array $data): Server
     {
         $uuid = $this->generateUniqueUuidCombo();
 
-        /** @var \Pterodactyl\Models\Server $model */
+        /** @var \Kriegerhost\Models\Server $model */
         $model = $this->repository->create([
             'external_id' => Arr::get($data, 'external_id'),
             'uuid' => $uuid,

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser\Processes\Authentication;
+namespace Kriegerhost\Tests\Browser\Processes\Authentication;
 
-use Pterodactyl\Tests\Browser\BrowserTestCase;
-use Pterodactyl\Tests\Browser\Pages\LoginPage;
-use Pterodactyl\Tests\Browser\PterodactylBrowser;
+use Kriegerhost\Tests\Browser\BrowserTestCase;
+use Kriegerhost\Tests\Browser\Pages\LoginPage;
+use Kriegerhost\Tests\Browser\KriegerhostBrowser;
 
 class ForgotPasswordProcessTest extends BrowserTestCase
 {
@@ -14,7 +14,7 @@ class ForgotPasswordProcessTest extends BrowserTestCase
      */
     public function testResetPasswordWithInvalidAccount()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->visit(new LoginPage())
                 ->assertSee(trans('auth.forgot_password.label'))
                 ->click('@forgotPassword')
@@ -38,7 +38,7 @@ class ForgotPasswordProcessTest extends BrowserTestCase
      */
     public function testEmailCarryover()
     {
-        $this->browse(function (PterodactylBrowser $browser) {
+        $this->browse(function (KriegerhostBrowser $browser) {
             $browser->visit(new LoginPage())
                 ->type('@username', 'dane@example.com')
                 ->click('@forgotPassword')

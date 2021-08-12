@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Tests\Integration\Api\Client\Server\Backup;
+namespace Kriegerhost\Tests\Integration\Api\Client\Server\Backup;
 
 use Mockery;
 use Illuminate\Http\Response;
-use Pterodactyl\Models\Backup;
-use Pterodactyl\Models\AuditLog;
-use Pterodactyl\Models\Permission;
-use Pterodactyl\Repositories\Wings\DaemonBackupRepository;
-use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
+use Kriegerhost\Models\Backup;
+use Kriegerhost\Models\AuditLog;
+use Kriegerhost\Models\Permission;
+use Kriegerhost\Repositories\Wings\DaemonBackupRepository;
+use Kriegerhost\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
 
 class DeleteBackupTest extends ClientApiIntegrationTestCase
 {
@@ -40,7 +40,7 @@ class DeleteBackupTest extends ClientApiIntegrationTestCase
     {
         [$user, $server] = $this->generateTestAccount([Permission::ACTION_BACKUP_DELETE]);
 
-        /** @var \Pterodactyl\Models\Backup $backup */
+        /** @var \Kriegerhost\Models\Backup $backup */
         $backup = Backup::factory()->create(['server_id' => $server->id]);
 
         $this->repository->expects('setServer->delete')->with(Mockery::on(function ($value) use ($backup) {

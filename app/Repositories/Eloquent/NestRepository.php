@@ -1,17 +1,17 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Repositories\Eloquent;
+namespace Kriegerhost\Repositories\Eloquent;
 
-use Pterodactyl\Models\Nest;
-use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Kriegerhost\Models\Nest;
+use Kriegerhost\Contracts\Repository\NestRepositoryInterface;
+use Kriegerhost\Exceptions\Repository\RecordNotFoundException;
 
 class NestRepository extends EloquentRepository implements NestRepositoryInterface
 {
@@ -30,9 +30,9 @@ class NestRepository extends EloquentRepository implements NestRepositoryInterfa
      *
      * @param int $id
      *
-     * @return \Illuminate\Database\Eloquent\Collection|\Pterodactyl\Models\Nest
+     * @return \Illuminate\Database\Eloquent\Collection|\Kriegerhost\Models\Nest
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function getWithEggs(int $id = null)
     {
@@ -53,9 +53,9 @@ class NestRepository extends EloquentRepository implements NestRepositoryInterfa
     /**
      * Return a nest or all nests and the count of eggs and servers for that nest.
      *
-     * @return \Pterodactyl\Models\Nest|\Illuminate\Database\Eloquent\Collection
+     * @return \Kriegerhost\Models\Nest|\Illuminate\Database\Eloquent\Collection
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function getWithCounts(int $id = null)
     {
@@ -76,7 +76,7 @@ class NestRepository extends EloquentRepository implements NestRepositoryInterfa
     /**
      * Return a nest along with its associated eggs and the servers relation on those eggs.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function getWithEggServers(int $id): Nest
     {

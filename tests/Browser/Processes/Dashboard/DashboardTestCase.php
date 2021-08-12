@@ -1,13 +1,13 @@
 <?php
 
-namespace Pterodactyl\Tests\Browser\Processes\Dashboard;
+namespace Kriegerhost\Tests\Browser\Processes\Dashboard;
 
-use Pterodactyl\Tests\Browser\BrowserTestCase;
+use Kriegerhost\Tests\Browser\BrowserTestCase;
 
 abstract class DashboardTestCase extends BrowserTestCase
 {
     /**
-     * @var \Pterodactyl\Models\User
+     * @var \Kriegerhost\Models\User
      */
     protected $user;
 

@@ -42,7 +42,7 @@ return array(
     'Spatie\\Fractal\\' => array($vendorDir . '/spatie/laravel-fractal/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
-    'Pterodactyl\\' => array($baseDir . '/app'),
+    'Kriegerhost\\' => array($baseDir . '/app'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),

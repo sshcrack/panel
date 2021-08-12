@@ -1,20 +1,20 @@
 <?php
 
-namespace Pterodactyl\Jobs\Schedule;
+namespace Kriegerhost\Jobs\Schedule;
 
 use Exception;
-use Pterodactyl\Jobs\Job;
+use Kriegerhost\Jobs\Job;
 use Carbon\CarbonImmutable;
-use Pterodactyl\Models\Task;
+use Kriegerhost\Models\Task;
 use InvalidArgumentException;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Pterodactyl\Services\Backups\InitiateBackupService;
-use Pterodactyl\Repositories\Wings\DaemonPowerRepository;
-use Pterodactyl\Repositories\Wings\DaemonCommandRepository;
-use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
+use Kriegerhost\Services\Backups\InitiateBackupService;
+use Kriegerhost\Repositories\Wings\DaemonPowerRepository;
+use Kriegerhost\Repositories\Wings\DaemonCommandRepository;
+use Kriegerhost\Exceptions\Http\Connection\DaemonConnectionException;
 
 class RunTaskJob extends Job implements ShouldQueue
 {
@@ -23,7 +23,7 @@ class RunTaskJob extends Job implements ShouldQueue
     use SerializesModels;
 
     /**
-     * @var \Pterodactyl\Models\Task
+     * @var \Kriegerhost\Models\Task
      */
     public $task;
 
@@ -37,7 +37,7 @@ class RunTaskJob extends Job implements ShouldQueue
      */
     public function __construct(Task $task, $manualRun = false)
     {
-        $this->queue = config('pterodactyl.queues.standard');
+        $this->queue = config('kriegerhost.queues.standard');
         $this->task = $task;
         $this->manualRun = $manualRun;
     }
@@ -102,7 +102,7 @@ class RunTaskJob extends Job implements ShouldQueue
      */
     private function queueNextTask()
     {
-        /** @var \Pterodactyl\Models\Task|null $nextTask */
+        /** @var \Kriegerhost\Models\Task|null $nextTask */
         $nextTask = Task::query()->where('schedule_id', $this->task->schedule_id)
             ->where('sequence_id', $this->task->sequence_id + 1)
             ->first();

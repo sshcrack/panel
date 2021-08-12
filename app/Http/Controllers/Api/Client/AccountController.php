@@ -1,20 +1,20 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Client;
+namespace Kriegerhost\Http\Controllers\Api\Client;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
-use Pterodactyl\Services\Users\UserUpdateService;
-use Pterodactyl\Transformers\Api\Client\AccountTransformer;
-use Pterodactyl\Http\Requests\Api\Client\Account\UpdateEmailRequest;
-use Pterodactyl\Http\Requests\Api\Client\Account\UpdatePasswordRequest;
+use Kriegerhost\Services\Users\UserUpdateService;
+use Kriegerhost\Transformers\Api\Client\AccountTransformer;
+use Kriegerhost\Http\Requests\Api\Client\Account\UpdateEmailRequest;
+use Kriegerhost\Http\Requests\Api\Client\Account\UpdatePasswordRequest;
 
 class AccountController extends ClientApiController
 {
     /**
-     * @var \Pterodactyl\Services\Users\UserUpdateService
+     * @var \Kriegerhost\Services\Users\UserUpdateService
      */
     private $updateService;
 
@@ -44,8 +44,8 @@ class AccountController extends ClientApiController
     /**
      * Update the authenticated user's email address.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function updateEmail(UpdateEmailRequest $request): JsonResponse
     {
@@ -58,8 +58,8 @@ class AccountController extends ClientApiController
      * Update the authenticated user's password. All existing sessions will be logged
      * out immediately.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function updatePassword(UpdatePasswordRequest $request): JsonResponse
     {

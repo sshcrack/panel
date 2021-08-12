@@ -1,21 +1,21 @@
 <?php
 /**
- * Pterodactyl - Panel
+ * Kriegerhost - Panel
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>.
  *
  * This software is licensed under the terms of the MIT license.
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Console\Commands\User;
+namespace Kriegerhost\Console\Commands\User;
 
 use Illuminate\Console\Command;
-use Pterodactyl\Services\Users\UserCreationService;
+use Kriegerhost\Services\Users\UserCreationService;
 
 class MakeUserCommand extends Command
 {
     /**
-     * @var \Pterodactyl\Services\Users\UserCreationService
+     * @var \Kriegerhost\Services\Users\UserCreationService
      */
     protected $creationService;
 
@@ -43,7 +43,7 @@ class MakeUserCommand extends Command
      * Handle command request to create a new user.
      *
      * @throws \Exception
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     * @throws \Kriegerhost\Exceptions\Model\DataValidationException
      */
     public function handle()
     {

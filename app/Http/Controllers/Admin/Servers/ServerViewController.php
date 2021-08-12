@@ -1,22 +1,22 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Admin\Servers;
+namespace Kriegerhost\Http\Controllers\Admin\Servers;
 
 use JavaScript;
 use Illuminate\Http\Request;
-use Pterodactyl\Models\Nest;
-use Pterodactyl\Models\Server;
+use Kriegerhost\Models\Nest;
+use Kriegerhost\Models\Server;
 use Illuminate\Contracts\View\Factory;
-use Pterodactyl\Exceptions\DisplayException;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Services\Servers\EnvironmentService;
-use Pterodactyl\Repositories\Eloquent\NestRepository;
-use Pterodactyl\Repositories\Eloquent\NodeRepository;
-use Pterodactyl\Repositories\Eloquent\MountRepository;
-use Pterodactyl\Repositories\Eloquent\ServerRepository;
-use Pterodactyl\Traits\Controllers\JavascriptInjection;
-use Pterodactyl\Repositories\Eloquent\LocationRepository;
-use Pterodactyl\Repositories\Eloquent\DatabaseHostRepository;
+use Kriegerhost\Exceptions\DisplayException;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Services\Servers\EnvironmentService;
+use Kriegerhost\Repositories\Eloquent\NestRepository;
+use Kriegerhost\Repositories\Eloquent\NodeRepository;
+use Kriegerhost\Repositories\Eloquent\MountRepository;
+use Kriegerhost\Repositories\Eloquent\ServerRepository;
+use Kriegerhost\Traits\Controllers\JavascriptInjection;
+use Kriegerhost\Repositories\Eloquent\LocationRepository;
+use Kriegerhost\Repositories\Eloquent\DatabaseHostRepository;
 
 class ServerViewController extends Controller
 {
@@ -28,37 +28,37 @@ class ServerViewController extends Controller
     private $view;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\DatabaseHostRepository
+     * @var \Kriegerhost\Repositories\Eloquent\DatabaseHostRepository
      */
     private $databaseHostRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\ServerRepository
+     * @var \Kriegerhost\Repositories\Eloquent\ServerRepository
      */
     private $repository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\MountRepository
+     * @var \Kriegerhost\Repositories\Eloquent\MountRepository
      */
     protected $mountRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NestRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NestRepository
      */
     private $nestRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\LocationRepository
+     * @var \Kriegerhost\Repositories\Eloquent\LocationRepository
      */
     private $locationRepository;
 
     /**
-     * @var \Pterodactyl\Repositories\Eloquent\NodeRepository
+     * @var \Kriegerhost\Repositories\Eloquent\NodeRepository
      */
     private $nodeRepository;
 
     /**
-     * @var \Pterodactyl\Services\Servers\EnvironmentService
+     * @var \Kriegerhost\Services\Servers\EnvironmentService
      */
     private $environmentService;
 
@@ -126,7 +126,7 @@ class ServerViewController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws \Kriegerhost\Exceptions\Repository\RecordNotFoundException
      */
     public function startup(Request $request, Server $server)
     {
@@ -180,7 +180,7 @@ class ServerViewController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws \Kriegerhost\Exceptions\DisplayException
      */
     public function manage(Request $request, Server $server)
     {

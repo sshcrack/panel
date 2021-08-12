@@ -1,15 +1,15 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Api\Application;
+namespace Kriegerhost\Http\Controllers\Api\Application;
 
 use Illuminate\Http\Request;
 use Webmozart\Assert\Assert;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Container\Container;
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Extensions\Spatie\Fractalistic\Fractal;
-use Pterodactyl\Transformers\Api\Application\BaseTransformer;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Extensions\Spatie\Fractalistic\Fractal;
+use Kriegerhost\Transformers\Api\Application\BaseTransformer;
 
 abstract class ApplicationApiController extends Controller
 {
@@ -19,7 +19,7 @@ abstract class ApplicationApiController extends Controller
     protected $request;
 
     /**
-     * @var \Pterodactyl\Extensions\Spatie\Fractalistic\Fractal
+     * @var \Kriegerhost\Extensions\Spatie\Fractalistic\Fractal
      */
     protected $fractal;
 
@@ -55,11 +55,11 @@ abstract class ApplicationApiController extends Controller
     /**
      * Return an instance of an application transformer.
      *
-     * @return \Pterodactyl\Transformers\Api\Application\BaseTransformer
+     * @return \Kriegerhost\Transformers\Api\Application\BaseTransformer
      */
     public function getTransformer(string $abstract)
     {
-        /** @var \Pterodactyl\Transformers\Api\Application\BaseTransformer $transformer */
+        /** @var \Kriegerhost\Transformers\Api\Application\BaseTransformer $transformer */
         $transformer = Container::getInstance()->make($abstract);
         $transformer->setKey($this->request->attributes->get('api_key'));
 

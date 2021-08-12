@@ -1,14 +1,14 @@
 <?php
 
-namespace Pterodactyl\Http\Controllers\Base;
+namespace Kriegerhost\Http\Controllers\Base;
 
-use Pterodactyl\Http\Controllers\Controller;
-use Pterodactyl\Contracts\Repository\ServerRepositoryInterface;
+use Kriegerhost\Http\Controllers\Controller;
+use Kriegerhost\Contracts\Repository\ServerRepositoryInterface;
 
 class IndexController extends Controller
 {
     /**
-     * @var \Pterodactyl\Contracts\Repository\ServerRepositoryInterface
+     * @var \Kriegerhost\Contracts\Repository\ServerRepositoryInterface
      */
     protected $repository;
 
